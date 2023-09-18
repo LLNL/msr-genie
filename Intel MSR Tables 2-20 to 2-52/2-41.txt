@@ -1,0 +1,37 @@
+80H	128	MSR_TRACE_HUB_STH_ACPIBAR_BASE	Package	NPK Address Used by AET Messages (R/W)
+		0		Lock Bit If set, this MSR cannot be re-written anymore. Lock bit has to be set in order for the AET packets to be directed to NPK MMIO.
+		17:1		Reserved
+		63:18		ACPIBAR_BASE_ADDRESS AET target address in NPK MMIO space.
+1F4H	500	MSR_PRMRR_PHYS_BASE	Core	Processor Reserved Memory Range Register - Physical Base Control Register (R/W)
+		2:0		MemType PRMRR BASE MemType.		
+		11:3		Reserved		
+		45:12		Base PRMRR Base Address.		
+		63:46		Reserved	
+1F5H	501	MSR_PRMRR_PHYS_MASK	Core	Processor Reserved Memory Range Register - Physical Mask Control Register (R/W)
+		9:0		Reserved	
+		10		Lock Lock bit for the PRMRR.	
+		11		VLD Enable bit for the PRMRR.	
+		45:12		Mask PRMRR MASK bits.	
+		63:46		Reserved	
+1FBH	507	MSR_PRMRR_VALID_CONFIG	Core	Valid PRMRR Configurations (R/W)
+		0		1M supported MEE size.	
+		4:1		Reserved	
+		5		32M supported MEE size.	
+		6		64M supported MEE size.	
+		7		128M supported MEE size.	
+		31:8		Reserved
+2F4H	756	MSR_UNCORE_PRMRR_PHYS_BASE1	Package	(R/W) The PRMRR range is used to protect the processor reserved memory from unauthorized reads and writes. Any IO access to this range is aborted. This register controls the location of the PRMRR range by indicating its starting address. It functions in tandem with the PRMRR mask register.
+		11:0		Reserved	
+		PAWIDTH-1:12		Range Base This field corresponds to bits PAWIDTH-1:12 of the base address memory range which is allocated to PRMRR memory.	
+		63:PAWIDTH		Reserved
+2F5H	757	MSR_UNCORE_PRMRR_PHYS_MASK1	Package	(R/W) This register controls the size of the PRMRR range by indicating which address bits must match the PRMRR base register value.
+		9:0		Reserved		
+		10		Lock Setting this bit locks all writeable settings in this register, including itself.		
+		11		Range_En Indicates whether the PRMRR range is enabled and valid.	
+		38:12		Range_Mask This field indicates which address bits must match PRMRR base in order to qualify as an PRMRR access.
+		63:39		Reserved	
+620H	1568	MSR_RING_RATIO_LIMIT	Package	Ring Ratio Limit (R/W) This register provides Min/Max Ratio Limits for the LLC and Ring.
+		6:0		MAX_Ratio This field is used to limit the max ratio of the LLC/Ring.		
+		7		Reserved		
+		14:8		MIN_Ratio Writing to this field controls the minimum possible ratio of the LLC/Ring.		
+		63:15		Reserved		

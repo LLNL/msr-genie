@@ -1,0 +1,64 @@
+33H	51	MSR_MEMORY_CTRL	Core	Memory Control Register
+		28:0		Reserved.
+		29		SPLIT_LOCK_DISABLE If set to 1, a split lock will cause an #AC(0) exception. See Section 9.1.2.3, “Features to Disable Bus Locks.”
+		30		Reserved.
+		31		Reserved.
+48H	72	IA32_SPEC_CTRL	Core	See Table 2-2.
+49H	73	IA32_PREDICT_CMD	Thread	See Table 2-2.
+8CH	140	IA32_SGXLEPUBKEYHASH0	Thread	See Table 2-2.
+8DH	141	IA32_SGXLEPUBKEYHASH1	Thread	See Table 2-2.
+8EH	142	IA32_SGXLEPUBKEYHASH2	Thread	See Table 2-2.
+8FH	143	IA32_SGXLEPUBKEYHASH3	Thread	See Table 2-2.
+A0H	160	MSR_BIOS_MCU_ERRORCODE	Package	BIOS MCU ERRORCODE (R/O) This MSR indicates if WRMSR 0x79 failed to configure PRM memory and gives a hint to debug BIOS.
+		15:0	Package	Error Codes (R/O)
+		30:16		Reserved.
+		31	Thread	MCU Partial Success (R/O) When set to 1, WRMSR 0x79 skipped part of the functionality during BIOS.
+A5H	165	MSR_FIT_BIOS_ERROR	Thread	FIT BIOS ERROR (R/W) Report error codes for debug in case the processor failed to parse the Firmware Table in BIOS. Can also be used to log BIOS information.
+		7:0		Error Codes (R/W) Error codes for debug.
+		15:8		Entry Type (R/W) Failed FIT entry type.
+		16		FIT MCU Entry (R/W) FIT contains MCU entry.
+		62:17		Reserved.
+		63		LOCK (R/W) When set to 1, writes to this MSR will be skipped.
+10BH	267	IA32_FLUSH_CMD	Thread	See Table 2-2.
+151H	337	MSR_BIOS_DONE	Thread	BIOS Done (R/WO)
+		0	Thread	BIOS Done Indication (R/WO) Set by BIOS when it finishes programming the processor and wants to lock the memory configuration from changes by software that is running on this thread. Writes to the bit will be ignored if EAX[0] is 0.
+		1	Package	Package BIOS Done Indication (R/O) When set to 1, all threads in the package have bit 0 of this MSR set.
+		31:2		Reserved.
+1F1H	497	MSR_CRASHLOG_CONTROL	Thread	Write Data to a Crash Log Configuration
+		0		CDDIS: CrashDump_Disable If set, indicates that Crash Dump is disabled.
+		63:1		Reserved.
+2A0H	672	MSR_PRMRR_BASE_0	Core	Processor Reserved Memory Range Register - Physical Base Control Register (R/W)
+		2:0		MEMTYPE: PRMRR BASE Memory Type.
+		3		CONFIGURED: PRMRR BASE Configured.
+		11:4		Reserved.
+		51:12		BASE: PRMRR Base Address.
+		63:52		Reserved.
+30CH	780	IA32_FIXED_CTR3	Thread	Fixed-Function Performance Counter Register 3 (R/W) Bit definitions are the same as found in IA32_FIXED_CTR0, offset 309H. See Table 2-2.
+329H	809	MSR_PERF_METRICS	Thread	Performance Metrics (R/W) Reports metrics directly. Software can check (and/or expose to its guests) the availability of PERF_METRICS feature using IA32_PERF_CAPABILITIES.PERF_METRICS_AVAILABL E (bit 15).
+		7:0		Retiring. Percent of utilized slots by uops that eventually retire (commit).		
+		15:8		Bad Speculation. Percent of wasted slots due to incorrect speculation, covering utilized by uops that do not retire, or recovery bubbles (unutilized slots).		
+		23:16		Frontend Bound. Percent of unutilized slots where front-end did not deliver a uop while back-end is ready.		
+		31:24		Backend Bound. Percent of unutilized slots where a uop was not delivered to back-end due to lack of back- end resources.		
+		63:25		Reserved.
+3F2H	1010	MSR_PEBS_DATA_CFG	Thread	PEBS Data Configuration (R/W) Provides software the capability to select data groups of interest and thus reduce the record size in memory and record generation latency. Hence, a PEBS record's size and layout vary based on the selected groups. The MSR also allows software to select LBR depth for branch data records.
+		0		Memory Info. Setting this bit will capture memory information such as the linear address, data source and latency of the memory access in the PEBS record.
+		1		GPRs. Setting this bit will capture the contents of the General Purpose registers in the PEBS record.
+		2		XMMs. Setting this bit will capture the contents of the XMM registers in the PEBS record.
+		3		LBRs. Setting this bit will capture LBR TO, FROM, and INFO in the PEBS record.
+		23:4		Reserved.
+		31:24		LBR Entries. Set the field to the desired number of entries - 1. For example, if the LBR_entries field is 0, a single entry will be included in the record. To include 32 LBR entries, set the LBR_entries field to 31 (0x1F). To ensure all PEBS records are 16-byte aligned, software can use LBR_entries that is multiple of 3.
+541H	1345	MSR_CORE_UARCH_CTL	Core	Core Microarchitecture Control MSR (R/W)
+		0		L1 Scrubbing Enable When set to 1, enable L1 scrubbing.
+		31:1		Reserved.
+657H	1623	MSR_FAST_UNCORE_MSRS_CTL	Thread	Fast WRMSR/RDMSR Control MSR (R/W)
+		3:0		FAST_ACCESS_ENABLE: Bit 0: When set to '1', provides a hint for the hardware to enable fast access mode for the IA32_HWP_REQUEST MSR. This bit is sticky and is cleaned by the hardware only during reset time. This bit is valid only if FAST_UNCORE_MSRS_CAPABILITY[0] is set. Setting this bit will cause CPUID[6].EAX[18] to be set.		
+		31:4		Reserved.
+65EH	1630	MSR_FAST_UNCORE_MSRS_STATUS	Thread	Indication of Uncore MSRs, Post Write Activates
+		0		Indicates whether the CPU is still in the middle of writing IA32_HWP_REQUEST MSR, even after the WRMSR instruction has retired. A value of 1 indicates the last write of IA32_HWP_REQUEST is still ongoing. A value of 0 indicates the last write of IA32_HWP_REQUEST is visible outside the logical processor. Software can use the status of this bit to avoid overwriting IA32_HWP_REQUEST.
+		31:1		Reserved.
+65FH	1631	MSR_FAST_UNCORE_MSRS_CAPABILITY	Thread	Fast WRMSR/RDMSR Enumeration MSR (R/O)
+		3:0		MSRS_CAPABILITY: Bit 0: If set to ‘1’, hardware supports the fast access mode for the IA32_HWP_REQUEST MSR.
+		31:4		Reserved.
+772H	1906	IA32_HWP_REQUEST_PKG	Package	See Table 2-2.
+775H	1909	IA32_PECI_HWP_REQUEST_INFO	Thread	See Table 2-2.
+777H	1911	IA32_HWP_STATUS	Thread	See Table 2-2.

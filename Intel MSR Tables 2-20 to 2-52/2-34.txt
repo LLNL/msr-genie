@@ -1,0 +1,68 @@
+38EH	910	IA32_PERF_GLOBAL_STATUS	Thread	See Table 2-2. See Section 20.6.2.2, “Global Counter Control Facilities.”
+		0		Ovf_PMC0		
+		1		Ovf_PMC1		
+		2		Ovf_PMC2		
+		3		Ovf_PMC3		
+		31:4		Reserved		
+		32		Ovf_FixedCtr0		
+		33		Ovf_FixedCtr1		
+		34		Ovf_FixedCtr2		
+		54:35		Reserved		
+		55		Trace_ToPA_PMI See Section 33.2.7.2, “Table of Physical Addresses (ToPA).”		
+		60:56		Reserved
+		61		Ovf_Uncore
+		62		Ovf_BufDSSAVE		
+		63		CondChgd
+390H	912	IA32_PERF_GLOBAL_OVF_CTRL	Thread	See Table 2-2. See Section 20.6.2.2, “Global Counter Control Facilities.”
+		0		Set 1 to clear Ovf_PMC0
+		1		Set 1 to clear Ovf_PMC1
+		2		Set 1 to clear Ovf_PMC2
+		3		Set 1 to clear Ovf_PMC3
+		31:4		Reserved
+		32		Set 1 to clear Ovf_FixedCtr0
+		33		Set 1 to clear Ovf_FixedCtr1
+		34		Set 1 to clear Ovf_FixedCtr2
+		54:35		Reserved.
+		55		Set 1 to clear Trace_ToPA_PMI. See Section 33.2.7.2, “Table of Physical Addresses (ToPA).”
+		60:56		Reserved
+		61		Set 1 to clear Ovf_Uncore
+		62		Set 1 to clear Ovf_BufDSSAVE
+		63		Set 1 to clear CondChgd
+560H	1376	IA32_RTIT_OUTPUT_BASE	THREAD	Trace Output Base Register (R/W)
+		6:0		Reserved
+		MAXPHYADDR1-1:7		Base physical address.
+		63:MAXPHYADDR		Reserved
+561H	1377	IA32_RTIT_OUTPUT_MASK_PTRS	THREAD	Trace Output Mask Pointers Register (R/W)
+		6:0		Reserved
+		31:7		MaskOrTableOffset
+		63:32		Output Offset.
+570H	1392	IA32_RTIT_CTL	Thread	Trace Control Register (R/W)
+		0		TraceEn		
+		1		Reserved, must be zero.		
+		2		OS		
+		3		User		
+		6:4		Reserved, must be zero.		
+		7		CR3Filter		
+		8		ToPA Writing 0 will #GP if also setting TraceEn.
+		9		Reserved, must be zero.
+		10		TSCEn		
+		11		DisRETC		
+		12		Reserved, must be zero.		
+		13		Reserved; writing 0 will #GP if also setting TraceEn.		
+		63:14		Reserved, must be zero.	
+571H	1393	IA32_RTIT_STATUS	Thread	Tracing Status Register (R/W)
+		0		Reserved, writes ignored.	
+		1		ContexEn, writes ignored.	
+		2		TriggerEn, writes ignored.	
+		3		Reserved	
+		4		Error (R/W)	
+		5		Stopped	
+		63:6		Reserved, must be zero.	
+572H	1394	IA32_RTIT_CR3_MATCH	THREAD	Trace Filter CR3 Match Register (R/W)
+		4:0		Reserved	
+		63:5		CR3[63:5] value to match.	
+620H	1568	MSR UNCORE_RATIO_LIMIT	Package	Uncore Ratio Limit (R/W) Out of reset, the min_ratio and max_ratio fields represent the widest possible range of uncore frequencies. Writing to these fields allows software to control the minimum and the maximum frequency that hardware will select.
+		63:15		Reserved		
+		14:8		MIN_RATIO Writing to this field controls the minimum possible ratio of the LLC/Ring.		
+		7		Reserved		
+		6:0		MAX_RATIO This field is used to limit the max ratio of the LLC/Ring.	

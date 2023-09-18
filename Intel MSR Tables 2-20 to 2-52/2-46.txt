@@ -1,0 +1,59 @@
+33H	51	MSR_MEMORY_CTRL	Core	Memory Control Register
+		26:0		Reserved.
+		27		UC_STORE_THROTTLE If set to 1, when enabled, the processor will only allow one in-progress UC store at a time.
+		28		UC_LOCK_DISABLE If set to 1, a UC lock will cause a #GP(0) exception. See Section 9.1.2.3, “Features to Disable Bus Locks.”
+		29		SPLIT_LOCK_DISABLE If set to 1, a split lock will cause an #AC(0) exception. See Section 9.1.2.3, “Features to Disable Bus Locks.”
+		30		Reserved.
+		31		Reserved.
+BCH	188	IA32_MISC_PACKAGE_CTLS	Package	Power Filtering Control (R/W) IA32_ARCH_CAPABILITIES[bit 10] enumerates support for this MSR. See Table 2-2.
+C7H	199	IA32_PMC6	Core	General Performance Counter 6 (R/W) See Table 2-2.
+C8H	200	IA32_PMC7	Core	General Performance Counter 7 (R/W) See Table 2-2.
+CFH	207	IA32_CORE_CAPABILITIES	Package	IA32 Core Capabilities Register (R/O) If CPUID.(EAX=07H, ECX=0):EDX[30] = 1. This MSR provides an architectural enumeration function for model-specific behavior.
+		0		STLB_QOS_SUPPORTED When set to 1, the STLB QoS feature is supported and the STLB QoS MSRs (1A8FH -1A97H) are accessible. When set to 0, access to these MSRs will #GP.		
+		1		Reserved		
+		2		FUSA_SUPPORTED		
+		3		RSM_IN_CPL0_ONLY When set to 1, the RSM instruction is only allowed in CPL0 (#GP triggered in any CPL != 0). When set to 0, then any CPL may execute the RSM instruction.		
+		4		UC_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 28 of MSR_MEMORY_CTRL (MSR address 33H).
+		5		SPLIT_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 29 of MSR_MEMORY_CTRL.
+		6		SNOOP_FILTER_QOS_SUPPORTED When set to 1, the Snoop Filter Qos Mask MSRs are supported. When set to 0, access to these MSRs will #GP.
+		7		UC_STORE_THROTTLING_SUPPORTED When set 1, UC Store throttle capability exist through MSR_MEMORY_CTRL (33H) bit 27.
+		31:8		Reserved
+E1H	225	IA32_UMWAIT_CONTROL		UMWAIT Control (R/W) See Table 2-2.
+10AH	266	IA32_ARCH_CAPABILITIES		Enumeration of Architectural Features (R/O) See Table 2-2.
+18CH	396	IA32_PERFEVTSEL6	Core	See Table 2-20.
+18DH	397	IA32_PERFEVTSEL7	Core	See Table 2-20.
+195H	405	IA32_OVERCLOCKING_STATUS	Package	Overclocking Status (R/O) IA32_ARCH_CAPABILITIES[bit 23] enumerates support for this MSR. See Table 2-2.
+1ADH	429	MSR_PRIMARY_TURBO_RATIO_LIMIT	Package	Primary Maximum Turbo Ratio Limit (R/W) Software can configure these limits when MSR_PLATFORM_INFO[28] = 1. Specifies Maximum Ratio Limit for each group. Maximum ratio for groups with more cores must decrease monotonically.
+		7:0		MAX_TURBO_GROUP_0: Maximum turbo ratio limit with 1 core active.		
+		15:8		MAX_TURBO_GROUP_1: Maximum turbo ratio limit with 2 cores active.		
+		23:16		MAX_TURBO_GROUP_2: Maximum turbo ratio limit with 3 cores active.		
+		31:24		MAX_TURBO_GROUP_3: Maximum turbo ratio limit with 4 cores active.		
+		39:32		MAX_TURBO_GROUP_4: Maximum turbo ratio limit with 5 cores active.		
+		47:40		MAX_TURBO_GROUP_5: Maximum turbo ratio limit with 6 cores active.
+		55:48		MAX_TURBO_GROUP_6: Maximum turbo ratio limit with 7 cores active.
+		63:56		MAX_TURBO_GROUP_7: Maximum turbo ratio limit with 8 cores active.
+493H	1171	IA32_VMX_EXIT_CTLS2		See Table 2-2.
+4C7H	1223	IA32_A_PMC6		Full Width Writable IA32_PMC6 Alias (R/W) See Table 2-2.
+4C8H	1224	IA32_A_PMC7		Full Width Writable IA32_PMC7 Alias (R/W) See Table 2-2.
+650H	1616	MSR_SECONDARY_TURBO_RATIO_LIMIT	Package	Secondary Maximum Turbo Ratio Limit (R/W) Software can configure these limits when MSR_PLATFORM_INFO[28] = 1. Specifies Maximum Ratio Limit for each group. Maximum ratio for groups with more cores must decrease monotonically.
+		7:0		MAX_TURBO_GROUP_0: Maximum turbo ratio limit with 1 core active.
+		15:8		MAX_TURBO_GROUP_1: Maximum turbo ratio limit with 2 cores active.
+		23:16		MAX_TURBO_GROUP_2: Maximum turbo ratio limit with 3 cores active.
+		31:24		MAX_TURBO_GROUP_3: Maximum turbo ratio limit with 4 cores active.
+		39:32		MAX_TURBO_GROUP_4: Maximum turbo ratio limit with 5 cores active.
+		47:40		MAX_TURBO_GROUP_5: Maximum turbo ratio limit with 6 cores active.
+		55:48		MAX_TURBO_GROUP_6: Maximum turbo ratio limit with 7 cores active.
+		63:56		MAX_TURBO_GROUP_7: Maximum turbo ratio limit with 8 cores active.
+664H	1636	MSR_MC6_RESIDENCY_COUNTER	Module	Module C6 Residency Counter (R/0) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
+		63:0		Time that this module is in module-specific C6 states since last reset. Counts at 1 Mhz frequency.
+6E1H	1761	IA32_PKRS		Specifies the PK permissions associated with each protection domain for supervisor pages (R/W) See Table 2-2.
+776H	1910	IA32_HWP_CTL		See Table 2-2.
+981H	2433	IA32_TME_CAPABILITY		Memory Encryption Capability MSR See Table 2-2.
+1200H - 121FH	4608 - 4639	IA32_LBR_x_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+14CEH	5326	IA32_LBR_CTL		Last Branch Record Enabling and Configuration Register (R/W) See Table 2-2.
+14CFH	5327	IA32_LBR_DEPTH		Last Branch Record Maximum Stack Depth Register (R/W) See Table 2-2.
+1500H - 151FH	5376 - 5407	IA32_LBR_x_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1600H - 161FH	5632 - 5663	IA32_LBR_x_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+17D2H	6098	IA32_THREAD_FEEDBACK_CHAR		Thread Feedback Characteristics (R/O) See Table 2-2.
+17D4H	6100	IA32_HW_FEEDBACK_THREAD_CONFIG		Hardware Feedback Thread Configuration (R/W) See Table 2-2.
+17DAH	6106	IA32_HRESET_ENABLE		History Reset Enable (R/W) See Table 2-2.

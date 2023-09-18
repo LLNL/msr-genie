@@ -1,0 +1,153 @@
+41DH	1053	IA32_MC7_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+41EH	1054	IA32_MC7_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+41FH	1055	IA32_MC7_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+420H	1056	IA32_MC8_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+421H	1057	IA32_MC8_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+422H	1058	IA32_MC8_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+423H	1059	IA32_MC8_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+424H	1060	IA32_MC9_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+425H	1061	IA32_MC9_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+426H	1062	IA32_MC9_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+427H	1063	IA32_MC9_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+428H	1064	IA32_MC10_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+429H	1065	IA32_MC10_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+42AH	1066	IA32_MC10_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+42BH	1067	IA32_MC10_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+42CH	1068	IA32_MC11_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+42DH	1069	IA32_MC11_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+42EH	1070	IA32_MC11_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+42FH	1071	IA32_MC11_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+430H	1072	IA32_MC12_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+431H	1073	IA32_MC12_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+432H	1074	IA32_MC12_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+433H	1075	IA32_MC12_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+434H	1076	IA32_MC13_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+435H	1077	IA32_MC13_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+436H	1078	IA32_MC13_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+437H	1079	IA32_MC13_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+438H	1080	IA32_MC14_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+439H	1081	IA32_MC14_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+43AH	1082	IA32_MC14_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+43BH	1083	IA32_MC14_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+43CH	1084	IA32_MC15_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+43DH	1085	IA32_MC15_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+43EH	1086	IA32_MC15_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+43FH	1087	IA32_MC15_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+440H	1088	IA32_MC16_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+441H	1089	IA32_MC16_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+442H	1090	IA32_MC16_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+443H	1091	IA32_MC16_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+444H	1092	IA32_MC17_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+445H	1093	IA32_MC17_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+446H	1094	IA32_MC17_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+447H	1095	IA32_MC17_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+448H	1096	IA32_MC18_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+449H	1097	IA32_MC18_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+44AH	1098	IA32_MC18_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+44BH	1099	IA32_MC18_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+44CH	1100	IA32_MC19_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
+44DH	1101	IA32_MC19_STATUS	Package	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
+44EH	1102	IA32_MC19_ADDR	Package	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
+44FH	1103	IA32_MC19_MISC	Package	See Section 16.3.2.4, “IA32_MCi_MISC MSRs.”
+613H	1555	MSR_PKG_PERF_STATUS	Package	Package RAPL Perf Status (R/O)
+618H	1560	MSR_DRAM_POWER_LIMIT	Package	DRAM RAPL Power Limit Control (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
+619H	1561	MSR_DRAM_ENERGY_STATUS	Package	DRAM Energy Status (R/O) See Section 15.10.5, “DRAM RAPL Domain.”
+61BH	1563	MSR_DRAM_PERF_STATUS	Package	DRAM Performance Throttling Status (R/O) See Section 15.10.5, “DRAM RAPL Domain.”
+61CH	1564	MSR_DRAM_POWER_INFO	Package	DRAM RAPL Parameters (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
+639H	1593	MSR_PP0_ENERGY_STATUS	Package	PP0 Energy Status (R/O) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
+C08H	3080	MSR_U_PMON_UCLK_FIXED_CTL	Package	Uncore U-box UCLK Fixed Counter Control
+C09H	3081	MSR_U_PMON_UCLK_FIXED_CTR	Package	Uncore U-box UCLK Fixed Counter
+C10H	3088	MSR_U_PMON_EVNTSEL0	Package	Uncore U-box Perfmon Event Select for U-box Counter 0
+C11H	3089	MSR_U_PMON_EVNTSEL1	Package	Uncore U-box Perfmon Event Select for U-box Counter 1
+C16H	3094	MSR_U_PMON_CTR0	Package	Uncore U-box Perfmon Counter 0
+C17H	3095	MSR_U_PMON_CTR1	Package	Uncore U-box Perfmon Counter 1
+C24H	3108	MSR_PCU_PMON_BOX_CTL	Package	Uncore PCU Perfmon for PCU-box-wide Control
+C30H	3120	MSR_PCU_PMON_EVNTSEL0	Package	Uncore PCU Perfmon Event Select for PCU Counter 0
+C31H	3121	MSR_PCU_PMON_EVNTSEL1	Package	Uncore PCU Perfmon Event Select for PCU Counter 1
+C32H	3122	MSR_PCU_PMON_EVNTSEL2	Package	Uncore PCU Perfmon Event Select for PCU Counter 2
+C33H	3123	MSR_PCU_PMON_EVNTSEL3	Package	Uncore PCU Perfmon Event Select for PCU Counter 3
+C34H	3124	MSR_PCU_PMON_BOX_FILTER	Package	Uncore PCU Perfmon box-wide Filter
+C36H	3126	MSR_PCU_PMON_CTR0	Package	Uncore PCU Perfmon Counter 0
+C37H	3127	MSR_PCU_PMON_CTR1	Package	Uncore PCU Perfmon Counter 1
+C38H	3128	MSR_PCU_PMON_CTR2	Package	Uncore PCU Perfmon Counter 2
+C39H	3129	MSR_PCU_PMON_CTR3	Package	Uncore PCU Perfmon Counter 3
+D04H	3332	MSR_C0_PMON_BOX_CTL	Package	Uncore C-box 0 Perfmon Local Box Wide Control
+D10H	3344	MSR_C0_PMON_EVNTSEL0	Package	Uncore C-box 0 Perfmon Event Select for C-box 0 Counter 0
+D11H	3345	MSR_C0_PMON_EVNTSEL1	Package	Uncore C-box 0 Perfmon Event Select for C-box 0 Counter 1
+D12H	3346	MSR_C0_PMON_EVNTSEL2	Package	Uncore C-box 0 Perfmon Event Select for C-box 0 Counter 2
+D13H	3347	MSR_C0_PMON_EVNTSEL3	Package	Uncore C-box 0 Perfmon Event Select for C-box 0 Counter 3
+D14H	3348	MSR_C0_PMON_BOX_FILTER	Package	Uncore C-box 0 Perfmon Box Wide Filter
+D16H	3350	MSR_C0_PMON_CTR0	Package	Uncore C-box 0 Perfmon Counter 0
+D17H	3351	MSR_C0_PMON_CTR1	Package	Uncore C-box 0 Perfmon Counter 1
+D18H	3352	MSR_C0_PMON_CTR2	Package	Uncore C-box 0 Perfmon Counter 2
+D19H	3353	MSR_C0_PMON_CTR3	Package	Uncore C-box 0 Perfmon Counter 3
+D24H	3364	MSR_C1_PMON_BOX_CTL	Package	Uncore C-box 1 Perfmon Local Box Wide Control
+D30H	3376	MSR_C1_PMON_EVNTSEL0	Package	Uncore C-box 1 Perfmon Event Select for C-box 1 Counter 0
+D31H	3377	MSR_C1_PMON_EVNTSEL1	Package	Uncore C-box 1 Perfmon Event Select for C-box 1 Counter 1
+D32H	3378	MSR_C1_PMON_EVNTSEL2	Package	Uncore C-box 1 Perfmon Event Select for C-box 1 Counter 2
+D33H	3379	MSR_C1_PMON_EVNTSEL3	Package	Uncore C-box 1 Perfmon Event Select for C-box 1 Counter 3
+D34H	3380	MSR_C1_PMON_BOX_FILTER	Package	Uncore C-box 1 Perfmon Box Wide Filter
+D36H	3382	MSR_C1_PMON_CTR0	Package	Uncore C-box 1 Perfmon Counter 0
+D37H	3383	MSR_C1_PMON_CTR1	Package	Uncore C-box 1 Perfmon Counter 1
+D38H	3384	MSR_C1_PMON_CTR2	Package	Uncore C-box 1 Perfmon Counter 2
+D39H	3385	MSR_C1_PMON_CTR3	Package	Uncore C-box 1 Perfmon Counter 3
+D44H	3396	MSR_C2_PMON_BOX_CTL	Package	Uncore C-box 2 Perfmon Local Box Wide Control
+D50H	3408	MSR_C2_PMON_EVNTSEL0	Package	Uncore C-box 2 Perfmon Event Select for C-box 2 Counter 0
+D51H	3409	MSR_C2_PMON_EVNTSEL1	Package	Uncore C-box 2 Perfmon Event Select for C-box 2 Counter 1
+D52H	3410	MSR_C2_PMON_EVNTSEL2	Package	Uncore C-box 2 Perfmon Event Select for C-box 2 Counter 2
+D53H	3411	MSR_C2_PMON_EVNTSEL3	Package	Uncore C-box 2 Perfmon Event Select for C-box 2 Counter 3
+D54H	3412	MSR_C2_PMON_BOX_FILTER	Package	Uncore C-box 2 Perfmon Box Wide Filter
+D56H	3414	MSR_C2_PMON_CTR0	Package	Uncore C-box 2 Perfmon Counter 0
+D57H	3415	MSR_C2_PMON_CTR1	Package	Uncore C-box 2 Perfmon Counter 1
+D58H	3416	MSR_C2_PMON_CTR2	Package	Uncore C-box 2 Perfmon Counter 2
+D59H	3417	MSR_C2_PMON_CTR3	Package	Uncore C-box 2 Perfmon Counter 3
+D64H	3428	MSR_C3_PMON_BOX_CTL	Package	Uncore C-box 3 Perfmon Local Box Wide Control
+D70H	3440	MSR_C3_PMON_EVNTSEL0	Package	Uncore C-box 3 Perfmon Event Select for C-box 3 Counter 0
+D71H	3441	MSR_C3_PMON_EVNTSEL1	Package	Uncore C-box 3 Perfmon Event Select for C-box 3 Counter 1
+D72H	3442	MSR_C3_PMON_EVNTSEL2	Package	Uncore C-box 3 Perfmon Event Select for C-box 3 Counter 2
+D73H	3443	MSR_C3_PMON_EVNTSEL3	Package	Uncore C-box 3 Perfmon Event Select for C-box 3 Counter 3
+D74H	3444	MSR_C3_PMON_BOX_FILTER	Package	Uncore C-box 3 Perfmon Box Wide Filter
+D76H	3446	MSR_C3_PMON_CTR0	Package	Uncore C-box 3 Perfmon Counter 0
+D77H	3447	MSR_C3_PMON_CTR1	Package	Uncore C-box 3 Perfmon Counter 1
+D78H	3448	MSR_C3_PMON_CTR2	Package	Uncore C-box 3 Perfmon Counter 2
+D79H	3449	MSR_C3_PMON_CTR3	Package	Uncore C-box 3 Perfmon Counter 3
+D84H	3460	MSR_C4_PMON_BOX_CTL	Package	Uncore C-box 4 Perfmon Local Box Wide Control
+D90H	3472	MSR_C4_PMON_EVNTSEL0	Package	Uncore C-box 4 Perfmon Event Select for C-box 4 Counter 0
+D91H	3473	MSR_C4_PMON_EVNTSEL1	Package	Uncore C-box 4 Perfmon Event Select for C-box 4 Counter 1
+D92H	3474	MSR_C4_PMON_EVNTSEL2	Package	Uncore C-box 4 Perfmon Event Select for C-box 4 Counter 2
+D93H	3475	MSR_C4_PMON_EVNTSEL3	Package	Uncore C-box 4 Perfmon Event Select for C-box 4 Counter 3
+D94H	3476	MSR_C4_PMON_BOX_FILTER	Package	Uncore C-box 4 Perfmon Box Wide Filter
+D96H	3478	MSR_C4_PMON_CTR0	Package	Uncore C-box 4 Perfmon Counter 0
+D97H	3479	MSR_C4_PMON_CTR1	Package	Uncore C-box 4 Perfmon Counter 1
+D98H	3480	MSR_C4_PMON_CTR2	Package	Uncore C-box 4 Perfmon Counter 2
+D99H	3481	MSR_C4_PMON_CTR3	Package	Uncore C-box 4 Perfmon Counter 3
+DA4H	3492	MSR_C5_PMON_BOX_CTL	Package	Uncore C-box 5 Perfmon Local Box Wide Control
+DB0H	3504	MSR_C5_PMON_EVNTSEL0	Package	Uncore C-box 5 Perfmon Event Select for C-box 5 Counter 0
+DB1H	3505	MSR_C5_PMON_EVNTSEL1	Package	Uncore C-box 5 Perfmon Event Select for C-box 5 Counter 1
+DB2H	3506	MSR_C5_PMON_EVNTSEL2	Package	Uncore C-box 5 Perfmon Event Select for C-box 5 Counter 2
+DB3H	3507	MSR_C5_PMON_EVNTSEL3	Package	Uncore C-box 5 Perfmon Event Select for C-box 5 Counter 3
+DB4H	3508	MSR_C5_PMON_BOX_FILTER	Package	Uncore C-box 5 Perfmon Box Wide Filter
+DB6H	3510	MSR_C5_PMON_CTR0	Package	Uncore C-box 5 Perfmon Counter 0
+DB7H	3511	MSR_C5_PMON_CTR1	Package	Uncore C-box 5 Perfmon Counter 1
+DB8H	3512	MSR_C5_PMON_CTR2	Package	Uncore C-box 5 Perfmon Counter 2
+DB9H	3513	MSR_C5_PMON_CTR3	Package	Uncore C-box 5 Perfmon Counter 3
+DC4H	3524	MSR_C6_PMON_BOX_CTL	Package	Uncore C-box 6 Perfmon Local Box Wide Control
+DD0H	3536	MSR_C6_PMON_EVNTSEL0	Package	Uncore C-box 6 Perfmon Event Select for C-box 6 Counter 0
+DD1H	3537	MSR_C6_PMON_EVNTSEL1	Package	Uncore C-box 6 Perfmon Event Select for C-box 6 Counter 1
+DD2H	3538	MSR_C6_PMON_EVNTSEL2	Package	Uncore C-box 6 Perfmon Event Select for C-box 6 Counter 2
+DD3H	3539	MSR_C6_PMON_EVNTSEL3	Package	Uncore C-box 6 Perfmon Event Select for C-box 6 Counter 3
+DD4H	3540	MSR_C6_PMON_BOX_FILTER	Package	Uncore C-box 6 Perfmon Box Wide Filter
+DD6H	3542	MSR_C6_PMON_CTR0	Package	Uncore C-box 6 Perfmon Counter 0
+DD7H	3543	MSR_C6_PMON_CTR1	Package	Uncore C-box 6 Perfmon Counter 1
+DD8H	3544	MSR_C6_PMON_CTR2	Package	Uncore C-box 6 Perfmon Counter 2
+DD9H	3545	MSR_C6_PMON_CTR3	Package	Uncore C-box 6 Perfmon Counter 3
+DE4H	3556	MSR_C7_PMON_BOX_CTL	Package	Uncore C-box 7 Perfmon Local Box Wide Control
+DF0H	3568	MSR_C7_PMON_EVNTSEL0	Package	Uncore C-box 7 Perfmon Event Select for C-box 7 Counter 0
+DF1H	3569	MSR_C7_PMON_EVNTSEL1	Package	Uncore C-box 7 Perfmon Event Select for C-box 7 Counter 1
+DF2H	3570	MSR_C7_PMON_EVNTSEL2	Package	Uncore C-box 7 Perfmon Event Select for C-box 7 Counter 2
+DF3H	3571	MSR_C7_PMON_EVNTSEL3	Package	Uncore C-box 7 Perfmon Event Select for C-box 7 Counter 3
+DF4H	3572	MSR_C7_PMON_BOX_FILTER	Package	Uncore C-box 7 Perfmon Box Wide Filter
+DF6H	3574	MSR_C7_PMON_CTR0	Package	Uncore C-box 7 Perfmon Counter 0
+DF7H	3575	MSR_C7_PMON_CTR1	Package	Uncore C-box 7 Perfmon Counter 1
+DF8H	3576	MSR_C7_PMON_CTR2	Package	Uncore C-box 7 Perfmon Counter 2
+DF9H	3577	MSR_C7_PMON_CTR3	Package	Uncore C-box 7 Perfmon Counter 3

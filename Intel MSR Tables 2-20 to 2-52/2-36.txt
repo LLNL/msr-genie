@@ -1,0 +1,215 @@
+4EH	78	IA32_PPIN_CTL (MSR_PPIN_CTL)	Package	Protected Processor Inventory Number Enable Control (R/W)
+		0		LockOut (R/WO) See Table 2-2.
+		1		Enable_PPIN (R/W) See Table 2-2.
+		63:2		Reserved
+4FH	79	IA32_PPIN (MSR_PPIN)	Package	Protected Processor Inventory Number (R/O)
+		63:0		Protected Processor Inventory Number (R/O) See Table 2-2.
+CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management and other model specific features enumeration. See http://biosbits.org.
+		7:0		Reserved
+		15:8	Package	Maximum Non-Turbo Ratio (R/O) See Table 2-26.
+		22:16		Reserved.
+		23	Package	PPIN_CAP (R/O) See Table 2-26.
+		27:24		Reserved
+		28	Package	Programmable Ratio Limit for Turbo Mode (R/O) See Table 2-26.
+		29	Package	Programmable TDP Limit for Turbo Mode (R/O) See Table 2-26.
+		30	Package	Programmable TJ OFFSET (R/O) See Table 2-26.
+		39:31		Reserved
+		47:40	Package	Maximum Efficiency Ratio (R/O) See Table 2-26.
+		63:48		Reserved
+E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states. See http://biosbits.org.
+		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-state support) 001b: C2 010b: C6 (non-retention) 011b: C6 (retention) 111b: No Package C state limits. All C states supported by the processor are available.		
+		9:3		Reserved		
+		10		I/O MWAIT Redirection Enable (R/W)		
+		14:11		Reserved		
+		15		CFG Lock (R/WO)
+		16		Automatic C-State Conversion Enable (R/W) If 1, the processor will convert HALT or MWAT(C1) to MWAIT(C6).
+		24:17		Reserved
+		25		C3 State Auto Demotion Enable (R/W)
+		26		C1 State Auto Demotion Enable (R/W)
+		27		Enable C3 Undemotion (R/W)
+		28		Enable C1 Undemotion (R/W)
+		29		Package C State Demotion Enable (R/W)
+		30		Package C State UnDemotion Enable (R/W)
+		63:31		Reserved
+179H	377	IA32_MCG_CAP	Thread	Global Machine Check Capability (R/O)
+		7:0		Count
+		8		MCG_CTL_P
+		9		MCG_EXT_P
+		10		MCP_CMCI_P
+		11		MCG_TES_P
+		15:12		Reserved
+		23:16		MCG_EXT_CNT
+		24		MCG_SER_P
+		25		MCG_EM_P
+		26		MCG_ELOG_P
+		63:27		Reserved
+17DH	381	MSR_SMM_MCA_CAP	Thread	Enhanced SMM Capabilities (SMM-RO) Reports SMM capability Enhancement. Accessible only while in SMM.
+		57:0		Reserved
+		58		SMM_Code_Access_Chk (SMM-RO) If set to 1, indicates that the SMM code access restriction is supported and a host-space interface available to SMM handler.
+		59		Long_Flow_Indication (SMM-RO) If set to 1, indicates that the SMM long flow indicator is supported and a host-space interface available to SMM handler.
+		63:60		Reserved
+19CH	412	IA32_THERM_STATUS	Core	Thermal Monitor Status (R/W) See Table 2-2.
+		0		Thermal Status (R/O) See Table 2-2.
+		1		Thermal Status Log (R/WC0) See Table 2-2.		
+		2		PROTCHOT # or FORCEPR# Status (R/O) See Table 2-2.		
+		3		PROTCHOT # or FORCEPR# Log (R/WC0) See Table 2-2.		
+		4		Critical Temperature Status (R/O) See Table 2-2.		
+		5		Critical Temperature Status Log (R/WC0) See Table 2-2.		
+		6		Thermal Threshold #1 Status (R/O) See Table 2-2.		
+		7		Thermal Threshold #1 Log (R/WC0) See Table 2-2.		
+		8		Thermal Threshold #2 Status (R/O) See Table 2-2.		
+		9		Thermal Threshold #2 Log (R/WC0) See Table 2-2.		
+		10		Power Limitation Status (R/O) See Table 2-2.		
+		11		Power Limitation Log (R/WC0) See Table 2-2.		
+		12		Current Limit Status (R/O) See Table 2-2.		
+		13		Current Limit Log (R/WC0) See Table 2-2.		
+		14		Cross Domain Limit Status (R/O) See Table 2-2.		
+		15		Cross Domain Limit Log (R/WC0) See Table 2-2.		
+		22:16		Digital Readout (R/O) See Table 2-2.		
+		26:23		Reserved		
+		30:27		Resolution in Degrees Celsius (R/O) See Table 2-2.
+		31		Reading Valid (R/O) See Table 2-2.
+		63:32		Reserved	
+1A2H	418	MSR_TEMPERATURE_TARGET	Package	Temperature Target
+		15:0		Reserved	
+		23:16		Temperature Target (R/O) See Table 2-26.	
+		27:24		TCC Activation Offset (R/W) See Table 2-26.	
+		63:28		Reserved.
+1ADH	429	MSR_TURBO_RATIO_LIMIT	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
+		7:0	Package	Maximum Ratio Limit for 1C	
+		15:8	Package	Maximum Ratio Limit for 2C	
+		23:16	Package	Maximum Ratio Limit for 3C	
+		31:24	Package	Maximum Ratio Limit for 4C	
+		39:32	Package	Maximum Ratio Limit for 5C	
+		47:40	Package	Maximum Ratio Limit for 6C	
+		55:48	Package	Maximum Ratio Limit for 7C	
+		63:56	Package	Maximum Ratio Limit for 8C	
+1AEH	430	MSR_TURBO_RATIO_LIMIT1	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
+		7:0	Package	Maximum Ratio Limit for 9C	
+		15:8	Package	Maximum Ratio Limit for 10C	
+		23:16	Package	Maximum Ratio Limit for 11C	
+		31:24	Package	Maximum Ratio Limit for 12C	
+		39:32	Package	Maximum Ratio Limit for 13C	
+		47:40	Package	Maximum Ratio Limit for 14C	
+		55:48	Package	Maximum Ratio Limit for 15C	
+		63:56	Package	Maximum Ratio Limit for 16C	
+606H	1542	MSR_RAPL_POWER_UNIT	Package	Unit Multipliers Used in RAPL Interfaces (R/O)
+		3:0	Package	Power Units See Section 15.10.1, “RAPL Interfaces.”		
+		7:4	Package	Reserved
+		12:8	Package	Energy Status Units Energy related information (in Joules) is based on the multiplier, 1/2^ESU; where ESU is an unsigned integer represented by bits 12:8. Default value is 0EH (or 61 micro-joules).
+		15:13	Package	Reserved	
+		19:16	Package	Time Units See Section 15.10.1, “RAPL Interfaces.”	
+		63:20		Reserved
+618H	1560	MSR_DRAM_POWER_LIMIT	Package	DRAM RAPL Power Limit Control (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
+619H	1561	MSR_DRAM_ENERGY_STATUS	Package	DRAM Energy Status (R/O) Energy consumed by DRAM devices.
+		31:0		Energy in 15.3 micro-joules. Requires BIOS configuration to enable DRAM RAPL mode 0 (Direct VR).	
+		63:32		Reserved
+61BH	1563	MSR_DRAM_PERF_STATUS	Package	DRAM Performance Throttling Status (R/O) See Section 15.10.5, “DRAM RAPL Domain.”
+61CH	1564	MSR_DRAM_POWER_INFO	Package	DRAM RAPL Parameters (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
+620H	1568	MSR UNCORE_RATIO_LIMIT	Package	Uncore Ratio Limit (R/W) Out of reset, the min_ratio and max_ratio fields represent the widest possible range of uncore frequencies. Writing to these fields allows software to control the minimum and the maximum frequency that hardware will select.
+		63:15		Reserved	
+		14:8		MIN_RATIO Writing to this field controls the minimum possible ratio of the LLC/Ring.	
+		7		Reserved	
+		6:0		MAX_RATIO This field is used to limit the max ratio of the LLC/Ring.	
+639H	1593	MSR_PP0_ENERGY_STATUS	Package	Reserved (R/O) Reads return 0.
+690H	1680	MSR_CORE_PERF_LIMIT_REASONS	Package	Indicator of Frequency Clipping in Processor Cores (R/W) (Frequency refers to processor core frequency.)
+		0		PROCHOT Status (R0) When set, processor core frequency is reduced below the operating system request due to assertion of external PROCHOT.
+		1		Thermal Status (R0) When set, frequency is reduced below the operating system request due to a thermal event.		
+		2		Power Budget Management Status (R0) When set, frequency is reduced below the operating system request due to PBM limit.		
+		3		Platform Configuration Services Status (R0) When set, frequency is reduced below the operating system request due to PCS limit.		
+		4		Reserved		
+		5		Autonomous Utilization-Based Frequency Control Status (R0) When set, frequency is reduced below the operating system request because the processor has detected that utilization is low.		
+		6		VR Therm Alert Status (R0) When set, frequency is reduced below the operating system request due to a thermal alert from the Voltage Regulator.		
+		7		Reserved		
+		8		Electrical Design Point Status (R0) When set, frequency is reduced below the operating system request due to electrical design point constraints (e.g., maximum electrical current consumption).		
+		9		Reserved		
+		10		Multi-Core Turbo Status (R0) When set, frequency is reduced below the operating system request due to Multi-Core Turbo limits.		
+		12:11		Reserved		
+		13		Core Frequency P1 Status (R0) When set, frequency is reduced below max non-turbo P1.		
+		14		Core Max N-Core Turbo Frequency Limiting Status (R0) When set, frequency is reduced below max n-core turbo frequency.		
+		15		Core Frequency Limiting Status (R0) When set, frequency is reduced below the operating system request.	
+		16		PROCHOT Log When set, indicates that the PROCHOT Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		17		Thermal Log When set, indicates that the Thermal Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		18		Power Budget Management Log When set, indicates that the PBM Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		19		Platform Configuration Services Log When set, indicates that the PCS Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		20		Reserved		
+		21		Autonomous Utilization-Based Frequency Control Log When set, indicates that the AUBFC Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		22		VR Therm Alert Log When set, indicates that the VR Therm Alert Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		23		Reserved		
+		24		Electrical Design Point Log When set, indicates that the EDP Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		25		Reserved		
+		26		Multi-Core Turbo Log When set, indicates that the Multi-Core Turbo Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		28:27		Reserved
+		29		Core Frequency P1 Log When set, indicates that the Core Frequency P1 Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		30		Core Max N-Core Turbo Frequency Limiting Log When set, indicates that the Core Max n-core Turbo Frequency Limiting Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		31		Core Frequency Limiting Log When set, indicates that the Core Frequency Limiting Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		63:32		Reserved
+770H	1904	IA32_PM_ENABLE	Package	See Section 15.4.2, “Enabling HWP.”
+771H	1905	IA32_HWP_CAPABILITIES	Thread	See Section 15.4.3, “HWP Performance Range and Dynamic Capabilities.”
+774H	1908	IA32_HWP_REQUEST	Thread	See Section 15.4.4, “Managing HWP.”
+		7:0		Minimum Performance (R/W)
+		15:8		Maximum Performance (R/W)
+		23:16		Desired Performance (R/W)
+		63:24		Reserved
+777H	1911	IA32_HWP_STATUS	Thread	See Section 15.4.5, “HWP Feedback.”
+		1:0		Reserved		
+		2		Excursion to Minimum (R/O)		
+		63:3		Reserved
+C8DH	3213	IA32_QM_EVTSEL	Thread	Monitoring Event Select Register (R/W) If CPUID.(EAX=07H, ECX=0):EBX.RDT-M[bit 12] = 1.
+		7:0		EventID (R/W) Event encoding: 0x00: No monitoring. 0x01: L3 occupancy monitoring. 0x02: Total memory bandwidth monitoring. 0x03: Local memory bandwidth monitoring. All other encoding reserved.
+		31:8		Reserved
+		41:32		RMID (R/W)
+		63:42		Reserved
+C8FH	3215	IA32_PQR_ASSOC	THREAD	Resource Association Register (R/W)
+		9:0		RMID
+		31:10		Reserved
+		51:32		COS (R/W)
+		63:52		Reserved
+C90H	3216	IA32_L3_QOS_MASK_0	Package	L3 Class Of Service Mask - COS 0 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=0.
+		0:19		CBM: Bit vector of available L3 ways for COS 0 enforcement.
+		63:20		Reserved
+C91H	3217	IA32_L3_QOS_MASK_1	Package	L3 Class Of Service Mask - COS 1 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=1.
+		0:19		CBM: Bit vector of available L3 ways for COS 1 enforcement.
+		63:20		Reserved
+C92H	3218	IA32_L3_QOS_MASK_2	Package	L3 Class Of Service Mask - COS 2 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=2.
+		0:19		CBM: Bit vector of available L3 ways for COS 2 enforcement.
+		63:20		Reserved
+C93H	3219	IA32_L3_QOS_MASK_3	Package	L3 Class Of Service Mask - COS 3 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=3.
+		0:19		CBM: Bit vector of available L3 ways for COS 3 enforcement.
+		63:20		Reserved
+C94H	3220	IA32_L3_QOS_MASK_4	Package	L3 Class Of Service Mask - COS 4 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=4.
+		0:19		CBM: Bit vector of available L3 ways for COS 4 enforcement.
+		63:20		Reserved
+C95H	3221	IA32_L3_QOS_MASK_5	Package	L3 Class Of Service Mask - COS 5 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=5.
+		0:19		CBM: Bit vector of available L3 ways for COS 5 enforcement.		
+		63:20		Reserved	
+C96H	3222	IA32_L3_QOS_MASK_6	Package	L3 Class Of Service Mask - COS 6 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=6.
+		0:19		CBM: Bit vector of available L3 ways for COS 6 enforcement.	
+		63:20		Reserved
+C97H	3223	IA32_L3_QOS_MASK_7	Package	L3 Class Of Service Mask - COS 7 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=7.
+		0:19		CBM: Bit vector of available L3 ways for COS 7 enforcement.	
+		63:20		Reserved	
+C98H	3224	IA32_L3_QOS_MASK_8	Package	L3 Class Of Service Mask - COS 8 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=8.
+		0:19		CBM: Bit vector of available L3 ways for COS 8 enforcement.	
+		63:20		Reserved	
+C99H	3225	IA32_L3_QOS_MASK_9	Package	L3 Class Of Service Mask - COS 9 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=9.
+		0:19		CBM: Bit vector of available L3 ways for COS 9 enforcement.	
+		63:20		Reserved	
+C9AH	3226	IA32_L3_QOS_MASK_10	Package	L3 Class Of Service Mask - COS 10 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=10.
+		0:19		CBM: Bit vector of available L3 ways for COS 10 enforcement.	
+		63:20		Reserved	
+C9BH	3227	IA32_L3_QOS_MASK_11	Package	L3 Class Of Service Mask - COS 11 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=11.
+		0:19		CBM: Bit vector of available L3 ways for COS 11 enforcement.	
+		63:20		Reserved	
+C9CH	3228	IA32_L3_QOS_MASK_12	Package	L3 Class Of Service Mask - COS 12 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=12.
+		0:19		CBM: Bit vector of available L3 ways for COS 12 enforcement.		
+		63:20		Reserved		
+C9DH	3229	IA32_L3_QOS_MASK_13	Package	L3 Class Of Service Mask - COS 13 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=13.
+		0:19		CBM: Bit vector of available L3 ways for COS 13 enforcement.		
+		63:20		Reserved
+C9EH	3230	IA32_L3_QOS_MASK_14	Package	L3 Class Of Service Mask - COS 14 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=14.
+		0:19		CBM: Bit vector of available L3 ways for COS 14 enforcement.
+		63:20		Reserved
+C9FH	3231	IA32_L3_QOS_MASK_15	Package	L3 Class Of Service Mask - COS 15 (R/W) If CPUID.(EAX=10H, ECX=1):EDX.COS_MAX[15:0] >=15.
+		0:19		CBM: Bit vector of available L3 ways for COS 15 enforcement.		
+		63:20		Reserved

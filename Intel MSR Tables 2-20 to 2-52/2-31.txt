@@ -1,0 +1,21 @@
+E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states. See http://biosbits.org.
+		3:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 0000b: C0/C1 (no package C-state support) 0001b: C2 0010b: C3 0011b: C6 0100b: C7 0101b: C7s 0110b: C8 0111b: C9 1000b: C10		
+		9:4		Reserved		
+		10		I/O MWAIT Redirection Enable (R/W)		
+		14:11		Reserved		
+		15		CFG Lock (R/WO)
+		24:16		Reserved
+		25		C3 State Auto Demotion Enable (R/W)		
+		26		C1 State Auto Demotion Enable (R/W)		
+		27		Enable C3 Undemotion (R/W)		
+		28		Enable C1 Undemotion (R/W)		
+		63:29		Reserved
+630H	1584	MSR_PKG_C8_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
+		59:0		Package C8 Residency Counter (R/O) Value since last reset that this package is in processor- specific C8 states. Count at the same frequency as the TSC.
+		63:60		Reserved
+631H	1585	MSR_PKG_C9_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
+		59:0		Package C9 Residency Counter (R/O) Value since last reset that this package is in processor- specific C9 states. Count at the same frequency as the TSC.
+		63:60		Reserved
+632H	1586	MSR_PKG_C10_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
+		59:0		Package C10 Residency Counter (R/O) Value since last reset that this package is in processor- specific C10 states. Count at the same frequency as the TSC.		
+		63:60		Reserved
