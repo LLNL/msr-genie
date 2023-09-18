@@ -1,0 +1,91 @@
+1ACH	428	MSR_TURBO_RATIO_LIMIT3	Package	Config Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
+		62:0	Package	Reserved		
+		63	Package	Semaphore for Turbo Ratio Limit Configuration If 1, the processor uses override configuration1 specified in MSR_TURBO_RATIO_LIMIT, MSR_TURBO_RATIO_LIMIT1, and MSR_TURBO_RATIO_LIMIT2. If 0, the processor uses factory-set configuration (Default).	
+285H	645	IA32_MC5_CTL2	Package	See Table 2-2.
+286H	646	IA32_MC6_CTL2	Package	See Table 2-2.
+287H	647	IA32_MC7_CTL2	Package	See Table 2-2.
+288H	648	IA32_MC8_CTL2	Package	See Table 2-2.
+289H	649	IA32_MC9_CTL2	Package	See Table 2-2.
+28AH	650	IA32_MC10_CTL2	Package	See Table 2-2.
+28BH	651	IA32_MC11_CTL2	Package	See Table 2-2.
+28CH	652	IA32_MC12_CTL2	Package	See Table 2-2.
+28DH	653	IA32_MC13_CTL2	Package	See Table 2-2.
+28EH	654	IA32_MC14_CTL2	Package	See Table 2-2.
+28FH	655	IA32_MC15_CTL2	Package	See Table 2-2.
+290H	656	IA32_MC16_CTL2	Package	See Table 2-2.
+291H	657	IA32_MC17_CTL2	Package	See Table 2-2.
+292H	658	IA32_MC18_CTL2	Package	See Table 2-2.
+293H	659	IA32_MC19_CTL2	Package	See Table 2-2.
+294H	660	IA32_MC20_CTL2	Package	See Table 2-2.
+295H	661	IA32_MC21_CTL2	Package	See Table 2-2.
+414H	1044	IA32_MC5_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC5 reports MC errors from the Intel QPI 0 module.
+415H	1045	IA32_MC5_STATUS	Package	
+416H	1046	IA32_MC5_ADDR	Package	
+417H	1047	IA32_MC5_MISC	Package	
+418H	1048	IA32_MC6_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC6 reports MC errors from the integrated I/O module.
+419H	1049	IA32_MC6_STATUS	Package	
+41AH	1050	IA32_MC6_ADDR	Package	
+41BH	1051	IA32_MC6_MISC	Package	
+41CH	1052	IA32_MC7_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC7 reports MC errors from the home agent HA 0.
+41DH	1053	IA32_MC7_STATUS	Package	
+41EH	1054	IA32_MC7_ADDR	Package	
+41FH	1055	IA32_MC7_MISC	Package	
+420H	1056	IA32_MC8_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC8 reports MC errors from the home agent HA 1.
+421H	1057	IA32_MC8_STATUS	Package	
+422H	1058	IA32_MC8_ADDR	Package	
+423H	1059	IA32_MC8_MISC	Package	
+424H	1060	IA32_MC9_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+425H	1061	IA32_MC9_STATUS	Package	
+426H	1062	IA32_MC9_ADDR	Package	
+427H	1063	IA32_MC9_MISC	Package	
+428H	1064	IA32_MC10_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+429H	1065	IA32_MC10_STATUS	Package	
+42AH	1066	IA32_MC10_ADDR	Package	
+42BH	1067	IA32_MC10_MISC	Package	
+42CH	1068	IA32_MC11_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+42DH	1069	IA32_MC11_STATUS	Package	
+42EH	1070	IA32_MC11_ADDR	Package	
+42FH	1071	IA32_MC11_MISC	Package	
+430H	1072	IA32_MC12_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+431H	1073	IA32_MC12_STATUS	Package	
+432H	1074	IA32_MC12_ADDR	Package	
+433H	1075	IA32_MC12_MISC	Package	
+434H	1076	IA32_MC13_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+435H	1077	IA32_MC13_STATUS	Package	
+436H	1078	IA32_MC13_ADDR	Package	
+437H	1079	IA32_MC13_MISC	Package	
+438H	1080	IA32_MC14_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+439H	1081	IA32_MC14_STATUS	Package	
+43AH	1082	IA32_MC14_ADDR	Package	
+43BH	1083	IA32_MC14_MISC	Package	
+43CH	1084	IA32_MC15_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+43DH	1085	IA32_MC15_STATUS	Package	
+43EH	1086	IA32_MC15_ADDR	Package	
+43FH	1087	IA32_MC15_MISC	Package	
+440H	1088	IA32_MC16_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
+441H	1089	IA32_MC16_STATUS	Package	
+442H	1090	IA32_MC16_ADDR	Package	
+443H	1091	IA32_MC16_MISC	Package	
+444H	1092	IA32_MC17_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC17 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo0, CBo3, CBo6, CBo9, CBo12, CBo15.
+445H	1093	IA32_MC17_STATUS	Package	
+446H	1094	IA32_MC17_ADDR	Package	
+447H	1095	IA32_MC17_MISC	Package	
+448H	1096	IA32_MC18_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC18 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo1, CBo4, CBo7, CBo10, CBo13, CBo16.
+449H	1097	IA32_MC18_STATUS	Package	
+44AH	1098	IA32_MC18_ADDR	Package	
+44BH	1099	IA32_MC18_MISC	Package	
+44CH	1100	IA32_MC19_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC19 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo2, CBo5, CBo8, CBo11, CBo14, CBo17.
+44DH	1101	IA32_MC19_STATUS	Package	
+44EH	1102	IA32_MC19_ADDR	Package	
+44FH	1103	IA32_MC19_MISC	Package	
+450H	1104	IA32_MC20_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC20 reports MC errors from the Intel QPI 1 module.
+451H	1105	IA32_MC20_STATUS	Package	
+452H	1106	IA32_MC20_ADDR	Package	
+453H	1107	IA32_MC20_MISC	Package	
+454H	1108	IA32_MC21_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC21 reports MC errors from the Intel QPI 2 module.
+455H	1109	IA32_MC21_STATUS	Package	
+456H	1110	IA32_MC21_ADDR	Package	
+457H	1111	IA32_MC21_MISC	Package	
+C81H	3201	IA32_L3_QOS_CFG	Package	Cache Allocation Technology Configuration (R/W)
+		0		CAT Enable. Set 1 to enable Cache Allocation Technology.		
+		63:1		Reserved	

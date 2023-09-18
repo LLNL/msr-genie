@@ -1,0 +1,17 @@
+1ADH	429	MSR_TURBO_RATIO_LIMIT	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
+		7:0	Package	Maximum Ratio Limit for 1C Maximum turbo ratio limit of 1 core active.		
+		15:8	Package	Maximum Ratio Limit for 2C Maximum turbo ratio limit of 2 core active.		
+		23:16	Package	Maximum Ratio Limit for 3C Maximum turbo ratio limit of 3 core active.		
+		31:24	Package	Maximum Ratio Limit for 4C Maximum turbo ratio limit of 4 core active.		
+		63:32		Reserved
+60CH	1548	MSR_PKGC7_IRTL	Package	Package C7 Interrupt Response Limit (R/W) This MSR defines the budget allocated for the package to exit from a C7 to a C0 state, where interrupt request can be delivered to the core and serviced. Additional core-exit latency may be applicable depending on the actual C-state the core is in. Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states.
+		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C7 state.		
+		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. The following time unit encodings are supported: 000b: 1 ns 001b: 32 ns 010b: 1024 ns 011b: 32768 ns 100b: 1048576 ns 101b: 33554432 ns		
+		14:13		Reserved		
+		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.		
+		63:16		Reserved
+639H	1593	MSR_PP0_ENERGY_STATUS	Package	PP0 Energy Status (R/O) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
+63AH	1594	MSR_PP0_POLICY	Package	PP0 Balance Policy (R/W) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
+640H	1600	MSR_PP1_POWER_LIMIT	Package	PP1 RAPL Power Limit Control (R/W) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
+641H	1601	MSR_PP1_ENERGY_STATUS	Package	PP1 Energy Status (R/O) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
+642H	1602	MSR_PP1_POLICY	Package	PP1 Balance Policy (R/W) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
