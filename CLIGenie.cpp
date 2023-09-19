@@ -56,10 +56,13 @@ void print_help() {
 	cout << "************************************************************************************************\n";
 	cout << "Incorrect usage! use one of the following options\n";
 	cout << "Print list of supported df_dms: ./GenieCLI supported\n";
-	cout << "Print MSR list for df_dm: ./GenieCLI msr df_dm\n";
-	cout << "Print df_dm list for MSR: ./GenieCLI df_dm MSR\n";
-	cout << "Print bit-mask: ./GenieCLI bitmask df_dm MSR\n";
-	cout << "Dump all DataStore values: ./debug\n";
+	cout << "Print MSR list for df_dm: ./GenieCLI msr df_dm*\n";
+	cout << "Print df_dm list for MSR: ./GenieCLI df_dm msr*\n";
+	cout << "Print bit-mask: ./GenieCLI bitmask df_dm* msr*\n";
+	cout << "Dump all DataStore values: ./GenieCLI debug\n\n";
+	cout << "*replace with actual value of df_dm or msr being quiried, note that bit-mask requires both df_dm\n";
+	cout << "as well as the msr. If we with to search for msrs associated with the df_dm \"06_4FH\" we use the\n"; 
+	cout << "following command, ./GenieCLI msr 06_4FH\n";
 	cout << "************************************************************************************************\n";
 
 }
