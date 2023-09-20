@@ -46,3 +46,17 @@ Dump all DataStore values: ./GenieCLI debug
 *replace with actual df_dm or msr being queried. ie. to search for msrs associated with 
 df_dm = 06_4FH. we run the program with the command ./Genie msr 06_4FH. bit-mask requires both
 df_dm and msr information.
+
+
+## Template Maker
+
+templatemaker.py is a small utility that can autogenerate MSR-Safe allowlist
+templates from msr-genie scrapes. 
+
+templatemaker by default expects scrapes to be in ./Intel_MSRs/blr by default
+this can be updated by altering the filepath at the top of the file.
+
+templatemaker will display a list of architectures you can select and create an
+allowlist for.
+
+Allowlists will be placed in ./templates/ by default.
