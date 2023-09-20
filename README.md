@@ -60,3 +60,5 @@ templatemaker will display a list of architectures you can select and create an
 allowlist for.
 
 Allowlists will be placed in ./templates/ by default.
+
+TODO: command line option for location of scraped data directory
