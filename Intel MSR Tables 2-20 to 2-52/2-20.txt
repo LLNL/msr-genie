@@ -5,14 +5,14 @@
 17H	23	IA32_PLATFORM_ID	Package	Platform ID (R) See Table 2-2.
 1BH	27	IA32_APIC_BASE	Thread	See Section 11.4.4, “Local APIC Status and Location,” and Table 2-2.
 34H	52	MSR_SMI_COUNT	Thread	SMI Counter (R/O)
-		31:0		SMI Count (R/O) Count SMIs.		
+		31:0		SMI Count (R/O) Count SMIs.
 		63:32		Reserved.
 3AH	58	IA32_FEATURE_CONTROL	Thread	Control Features in Intel 64 Processor (R/W) See Table 2-2.
-		0		Lock (R/WL)	
-		1		Enable VMX Inside SMX Operation (R/WL)	
-		2		Enable VMX Outside SMX Operation (R/WL)	
-		14:8		SENTER Local Functions Enables (R/WL)	
-		15		SENTER Global Functions Enable (R/WL)	
+		0		Lock (R/WL)
+		1		Enable VMX Inside SMX Operation (R/WL)
+		2		Enable VMX Outside SMX Operation (R/WL)
+		14:8		SENTER Local Functions Enables (R/WL)
+		15		SENTER Global Functions Enable (R/WL)
 79H	121	IA32_BIOS_UPDT_TRIG	Core	BIOS Update Trigger Register (W) See Table 2-2.
 8BH	139	IA32_BIOS_SIGN_ID	Thread	BIOS Update Signature ID (R/W) See Table 2-2.
 C1H	193	IA32_PMC0	Thread	Performance Counter Register See Table 2-2.
@@ -24,21 +24,21 @@ C6H	198	IA32_PMC5	Core	Performance Counter Register (if core not shared by threa
 C7H	199	IA32_PMC6	Core	Performance Counter Register (if core not shared by threads)
 C8H	200	IA32_PMC7	Core	Performance Counter Register (if core not shared by threads)
 CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management and other model specific features enumeration. See http://biosbits.org.
-		7:0		Reserved		
-		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.		
-		27:16		Reserved		
+		7:0		Reserved
+		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.
+		27:16		Reserved
 		28	Package	Programmable Ratio Limit for Turbo Mode (R/O) When set to 1, indicates that Programmable Ratio Limit for Turbo mode is enabled. When set to 0, indicates Programmable Ratio Limit for Turbo mode is disabled.
 		29	Package	Programmable TDP Limit for Turbo Mode (R/O) When set to 1, indicates that TDP Limit for Turbo mode is programmable. When set to 0, indicates TDP Limit for Turbo mode is not programmable.
 		39:30		Reserved
 		47:40	Package	Maximum Efficiency Ratio (R/O) This is the minimum ratio (maximum efficiency) that the processor can operate, in units of 100MHz.
 		63:48		Reserved
 E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States. See http://biosbits.org.
-		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit Note: This field cannot be used to limit package C-state to C3.		
-		9:3		Reserved		
-		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.		
-		14:11		Reserved		
-		15		CFG Lock (R/WO) When set, locks bits 15:0 of this register until next reset.		
-		24:16		Reserved		
+		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit Note: This field cannot be used to limit package C-state to C3.
+		9:3		Reserved
+		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.
+		14:11		Reserved
+		15		CFG Lock (R/WO) When set, locks bits 15:0 of this register until next reset.
+		24:16		Reserved
 		25		C3 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C6/C7 requests to C3 based on uncore auto-demote information.
 		26		C1 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C3/C6/C7 requests to C1 based on uncore auto-demote information.
 		27		Enable C3 Undemotion (R/W) When set, enables undemotion from demoted C3.
@@ -75,59 +75,59 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 		15:0		Current Performance State Value
 		63:16		Reserved
 198H	408	MSR_PERF_STATUS	Package	Performance Status
-		47:32		Core Voltage (R/O) P-state core voltage can be computed by MSR_PERF_STATUS[37:32] * (float) 1/(2^13).	
+		47:32		Core Voltage (R/O) P-state core voltage can be computed by MSR_PERF_STATUS[37:32] * (float) 1/(2^13).
 199H	409	IA32_PERF_CTL	Thread	See Table 2-2.
 19AH	410	IA32_CLOCK_MODULATION	Thread	Clock Modulation (R/W) See Table 2-2. IA32_CLOCK_MODULATION MSR was originally named IA32_THERM_CONTROL MSR.
-		3:0		On demand Clock Modulation Duty Cycle (R/W) In 6.25% increment.		
-		4		On demand Clock Modulation Enable (R/W)		
+		3:0		On demand Clock Modulation Duty Cycle (R/W) In 6.25% increment.
+		4		On demand Clock Modulation Enable (R/W)
 		63:5		Reserved
 19BH	411	IA32_THERM_INTERRUPT	Core	Thermal Interrupt Control (R/W) See Table 2-2.
 19CH	412	IA32_THERM_STATUS	Core	Thermal Monitor Status (R/W) See Table 2-2.
-		0		Thermal Status (R/O) See Table 2-2.		
-		1		Thermal Status Log (R/WC0) See Table 2-2.		
-		2		PROTCHOT # or FORCEPR# Status (R/O) See Table 2-2.		
-		3		PROTCHOT # or FORCEPR# Log (R/WC0) See Table 2-2.		
-		4		Critical Temperature Status (R/O) See Table 2-2.		
-		5		Critical Temperature Status Log (R/WC0) See Table 2-2.		
-		6		Thermal Threshold #1 Status (R/O) See Table 2-2.		
-		7		Thermal Threshold #1 Log (R/WC0) See Table 2-2.		
-		8		Thermal Threshold #2 Status (R/O) See Table 2-2.		
-		9		Thermal Threshold #2 Log (R/WC0) See Table 2-2.		
+		0		Thermal Status (R/O) See Table 2-2.
+		1		Thermal Status Log (R/WC0) See Table 2-2.
+		2		PROTCHOT # or FORCEPR# Status (R/O) See Table 2-2.
+		3		PROTCHOT # or FORCEPR# Log (R/WC0) See Table 2-2.
+		4		Critical Temperature Status (R/O) See Table 2-2.
+		5		Critical Temperature Status Log (R/WC0) See Table 2-2.
+		6		Thermal Threshold #1 Status (R/O) See Table 2-2.
+		7		Thermal Threshold #1 Log (R/WC0) See Table 2-2.
+		8		Thermal Threshold #2 Status (R/O) See Table 2-2.
+		9		Thermal Threshold #2 Log (R/WC0) See Table 2-2.
 		10		Power Limitation Status (R/O) See Table 2-2.
-		11		Power Limitation Log (R/WC0) See Table 2-2.		
-		15:12		Reserved		
-		22:16		Digital Readout (R/O) See Table 2-2.		
-		26:23		Reserved		
-		30:27		Resolution in Degrees Celsius (R/O) See Table 2-2.		
-		31		Reading Valid (R/O) See Table 2-2.		
+		11		Power Limitation Log (R/WC0) See Table 2-2.
+		15:12		Reserved
+		22:16		Digital Readout (R/O) See Table 2-2.
+		26:23		Reserved
+		30:27		Resolution in Degrees Celsius (R/O) See Table 2-2.
+		31		Reading Valid (R/O) See Table 2-2.
 		63:32		Reserved
 1A0H	416	IA32_MISC_ENABLE		Enable Misc. Processor Features (R/W) Allows a variety of processor functions to be enabled and disabled.
-		0	Thread	Fast-Strings Enable See Table 2-2		
-		6:1		Reserved		
-		7	Thread	Performance Monitoring Available (R) See Table 2-2.		
-		10:8		Reserved		
-		11	Thread	Branch Trace Storage Unavailable (R/O) See Table 2-2.		
-		12	Thread	Processor Event Based Sampling Unavailable (R/O) See Table 2-2.		
-		15:13		Reserved		
-		16	Package	Enhanced Intel SpeedStep Technology Enable (R/W) See Table 2-2.		
-		18	Thread	ENABLE MONITOR FSM (R/W) See Table 2-2.		
-		21:19		Reserved		
-		22	Thread	Limit CPUID Maxval (R/W) See Table 2-2.		
-		23	Thread	xTPR Message Disable (R/W) See Table 2-2.		
-		33:24		Reserved		
-		34	Thread	XD Bit Disable (R/W) See Table 2-2.		
+		0	Thread	Fast-Strings Enable See Table 2-2
+		6:1		Reserved
+		7	Thread	Performance Monitoring Available (R) See Table 2-2.
+		10:8		Reserved
+		11	Thread	Branch Trace Storage Unavailable (R/O) See Table 2-2.
+		12	Thread	Processor Event Based Sampling Unavailable (R/O) See Table 2-2.
+		15:13		Reserved
+		16	Package	Enhanced Intel SpeedStep Technology Enable (R/W) See Table 2-2.
+		18	Thread	ENABLE MONITOR FSM (R/W) See Table 2-2.
+		21:19		Reserved
+		22	Thread	Limit CPUID Maxval (R/W) See Table 2-2.
+		23	Thread	xTPR Message Disable (R/W) See Table 2-2.
+		33:24		Reserved
+		34	Thread	XD Bit Disable (R/W) See Table 2-2.
 		37:35		Reserved
 		38	Package	Turbo Mode Disable (R/W) When set to 1 on processors that support Intel Turbo Boost Technology, the turbo mode feature is disabled and the IDA_Enable feature flag will be clear (CPUID.06H: EAX[1]=0). When set to a 0 on processors that support IDA, CPUID.06H: EAX[1] reports the processor’s support of turbo mode is enabled. Note: The power-on default value is used by BIOS to detect hardware support of turbo mode. If the power- on default value is 1, turbo mode is available in the processor. If the power-on default value is 0, turbo mode is not available.
-		63:39	Reserved	
+		63:39	Reserved
 1A2H	418	MSR_TEMPERATURE_TARGET	Unique	Temperature Target
-		15:0		Reserved		
-		23:16		Temperature Target (R) The minimum temperature at which PROCHOT# will be asserted. The value is degrees C.		
+		15:0		Reserved
+		23:16		Temperature Target (R) The minimum temperature at which PROCHOT# will be asserted. The value is degrees C.
 		63:24		Reserved
 1A4H	420	MSR_MISC_FEATURE_CONTROL		Miscellaneous Feature Control (R/W)
-		0	Core	L2 Hardware Prefetcher Disable (R/W) If 1, disables the L2 hardware prefetcher, which fetches additional lines of code or data into the L2 cache.		
-		1	Core	L2 Adjacent Cache Line Prefetcher Disable (R/W) If 1, disables the adjacent cache line prefetcher, which fetches the cache line that comprises a cache line pair (128 bytes).		
-		2	Core	DCU Hardware Prefetcher Disable (R/W) If 1, disables the L1 data cache prefetcher, which fetches the next cache line into L1 data cache.		
-		3	Core	DCU IP Prefetcher Disable (R/W) If 1, disables the L1 data cache IP prefetcher, which uses sequential load history (based on instruction pointer of previous loads) to determine whether to prefetch additional lines.		
+		0	Core	L2 Hardware Prefetcher Disable (R/W) If 1, disables the L2 hardware prefetcher, which fetches additional lines of code or data into the L2 cache.
+		1	Core	L2 Adjacent Cache Line Prefetcher Disable (R/W) If 1, disables the adjacent cache line prefetcher, which fetches the cache line that comprises a cache line pair (128 bytes).
+		2	Core	DCU Hardware Prefetcher Disable (R/W) If 1, disables the L1 data cache prefetcher, which fetches the next cache line into L1 data cache.
+		3	Core	DCU IP Prefetcher Disable (R/W) If 1, disables the L1 data cache IP prefetcher, which uses sequential load history (based on instruction pointer of previous loads) to determine whether to prefetch additional lines.
 		63:4		Reserved
 1A6H	422	MSR_OFFCORE_RSP_0	Thread	Offcore Response Event Select Register (R/W)
 1A7H	422	MSR_OFFCORE_RSP_1	Thread	Offcore Response Event Select Register (R/W)
@@ -136,30 +136,30 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 1B1H	433	IA32_PACKAGE_THERM_STATUS	Package	See Table 2-2.
 1B2H	434	IA32_PACKAGE_THERM_INTERRUPT	Package	See Table 2-2.
 1C8H	456	MSR_LBR_SELECT	Thread	Last Branch Record Filtering Select Register (R/W) See Section 18.9.2, “Filtering of Last Branch Records.”
-		0		CPL_EQ_0		
-		1		CPL_NEQ_0		
-		2		JCC		
-		3		NEAR_REL_CALL		
-		4		NEAR_IND_CALL		
-		5		NEAR_RET		
-		6		NEAR_IND_JMP		
-		7		NEAR_REL_JMP		
-		8		FAR_BRANCH		
-		63:9		Reserved	
+		0		CPL_EQ_0
+		1		CPL_NEQ_0
+		2		JCC
+		3		NEAR_REL_CALL
+		4		NEAR_IND_CALL
+		5		NEAR_RET
+		6		NEAR_IND_JMP
+		7		NEAR_REL_JMP
+		8		FAR_BRANCH
+		63:9		Reserved
 1C9H	457	MSR_LASTBRANCH_TOS	Thread	Last Branch Record Stack TOS (R/W) Contains an index (bits 0-3) that points to the MSR containing the most recent branch record. See MSR_LASTBRANCH_0_FROM_IP (at 680H).
 1D9H	473	IA32_DEBUGCTL	Thread	Debug Control (R/W) See Table 2-2.
-		0		LBR: Last Branch Record		
-		1		BTF		
-		5:2		Reserved		
-		6		TR: Branch Trace		
-		7		BTS: Log Branch Trace Message to BTS buffer		
-		8		BTINT		
-		9		BTS_OFF_OS		
-		10		BTS_OFF_USER		
-		11		FREEZE_LBR_ON_PMI		
-		12		FREEZE_PERFMON_ON_PMI		
-		13		ENABLE_UNCORE_PMI		
-		14		FREEZE_WHILE_SMM		
+		0		LBR: Last Branch Record
+		1		BTF
+		5:2		Reserved
+		6		TR: Branch Trace
+		7		BTS: Log Branch Trace Message to BTS buffer
+		8		BTINT
+		9		BTS_OFF_OS
+		10		BTS_OFF_USER
+		11		FREEZE_LBR_ON_PMI
+		12		FREEZE_PERFMON_ON_PMI
+		13		ENABLE_UNCORE_PMI
+		14		FREEZE_WHILE_SMM
 		63:15		Reserved
 1DDH	477	MSR_LER_FROM_LIP	Thread	Last Exception Record From Linear IP (R/W) Contains a pointer to the last branch instruction that the processor executed prior to the last exception that was generated or the last interrupt that was handled.
 1DEH	478	MSR_LER_TO_LIP	Thread	Last Exception Record To Linear IP (R/W) This area contains a pointer to the target of the last branch instruction that the processor executed prior to the last exception that was generated or the last interrupt that was handled.
@@ -216,21 +216,21 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 		63:13		Reserved
 38DH	909	IA32_FIXED_CTR_CTRL	Thread	Fixed-Function-Counter Control Register (R/W) See Table 2-2.
 38EH	910	IA32_PERF_GLOBAL_STATUS		See Table 2-2. See Section 20.6.2.2, “Global Counter Control Facilities.”
-		0	Thread	Ovf_PMC0		
-		1	Thread	Ovf_PMC1		
-		2	Thread	Ovf_PMC2		
-		3	Thread	Ovf_PMC3		
-		4	Core	Ovf_PMC4 (if CPUID.0AH:EAX[15:8] > 4)		
+		0	Thread	Ovf_PMC0
+		1	Thread	Ovf_PMC1
+		2	Thread	Ovf_PMC2
+		3	Thread	Ovf_PMC3
+		4	Core	Ovf_PMC4 (if CPUID.0AH:EAX[15:8] > 4)
 		5	Core	Ovf_PMC5 (if CPUID.0AH:EAX[15:8] > 5)
-		6	Core	Ovf_PMC6 (if CPUID.0AH:EAX[15:8] > 6)		
-		7	Core	Ovf_PMC7 (if CPUID.0AH:EAX[15:8] > 7)		
-		31:8		Reserved		
-		32	Thread	Ovf_FixedCtr0		
-		33	Thread	Ovf_FixedCtr1		
-		34	Thread	Ovf_FixedCtr2		
-		60:35		Reserved		
-		61	Thread	Ovf_Uncore		
-		62	Thread	Ovf_BufDSSAVE		
+		6	Core	Ovf_PMC6 (if CPUID.0AH:EAX[15:8] > 6)
+		7	Core	Ovf_PMC7 (if CPUID.0AH:EAX[15:8] > 7)
+		31:8		Reserved
+		32	Thread	Ovf_FixedCtr0
+		33	Thread	Ovf_FixedCtr1
+		34	Thread	Ovf_FixedCtr2
+		60:35		Reserved
+		61	Thread	Ovf_Uncore
+		62	Thread	Ovf_BufDSSAVE
 		63	Thread	CondChgd
 38FH	911	IA32_PERF_GLOBAL_CTRL	Thread	See Table 2-2. See Section 20.6.2.2, “Global Counter Control Facilities.”
 		0	Thread	Set 1 to enable PMC0 to count.
@@ -247,36 +247,36 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 		34	Thread	Set 1 to enable FixedCtr2 to count.
 		63:35		Reserved
 390H	912	IA32_PERF_GLOBAL_OVF_CTRL		See Table 2-2. See Section 20.6.2.2, “Global Counter Control Facilities.”
-		0	Thread	Set 1 to clear Ovf_PMC0.		
-		1	Thread	Set 1 to clear Ovf_PMC1.		
-		2	Thread	Set 1 to clear Ovf_PMC2.		
-		3	Thread	Set 1 to clear Ovf_PMC3.		
-		4	Core	Set 1 to clear Ovf_PMC4 (if CPUID.0AH:EAX[15:8] > 4).		
-		5	Core	Set 1 to clear Ovf_PMC5 (if CPUID.0AH:EAX[15:8] > 5).		
-		6	Core	Set 1 to clear Ovf_PMC6 (if CPUID.0AH:EAX[15:8] > 6).		
+		0	Thread	Set 1 to clear Ovf_PMC0.
+		1	Thread	Set 1 to clear Ovf_PMC1.
+		2	Thread	Set 1 to clear Ovf_PMC2.
+		3	Thread	Set 1 to clear Ovf_PMC3.
+		4	Core	Set 1 to clear Ovf_PMC4 (if CPUID.0AH:EAX[15:8] > 4).
+		5	Core	Set 1 to clear Ovf_PMC5 (if CPUID.0AH:EAX[15:8] > 5).
+		6	Core	Set 1 to clear Ovf_PMC6 (if CPUID.0AH:EAX[15:8] > 6).
 		7	Core	Set 1 to clear Ovf_PMC7 (if CPUID.0AH:EAX[15:8] > 7).
-		31:8		Reserved		
-		32	Thread	Set 1 to clear Ovf_FixedCtr0.		
-		33	Thread	Set 1 to clear Ovf_FixedCtr1.		
-		34	Thread	Set 1 to clear Ovf_FixedCtr2.		
-		60:35		Reserved		
-		61	Thread	Set 1 to clear Ovf_Uncore.		
-		62	Thread	Set 1 to clear Ovf_BufDSSAVE.		
+		31:8		Reserved
+		32	Thread	Set 1 to clear Ovf_FixedCtr0.
+		33	Thread	Set 1 to clear Ovf_FixedCtr1.
+		34	Thread	Set 1 to clear Ovf_FixedCtr2.
+		60:35		Reserved
+		61	Thread	Set 1 to clear Ovf_Uncore.
+		62	Thread	Set 1 to clear Ovf_BufDSSAVE.
 		63	Thread	Set 1 to clear CondChgd.
 3F1H	1009	IA32_PEBS_ENABLE (MSR_PEBS_ENABLE)	Thread	See Section 20.3.1.1.1, “Processor Event Based Sampling (PEBS).”
-		0		Enable PEBS on IA32_PMC0. (R/W)	
-		1		Enable PEBS on IA32_PMC1. (R/W)	
-		2		Enable PEBS on IA32_PMC2. (R/W)	
-		3		Enable PEBS on IA32_PMC3. (R/W)	
-		31:4		Reserved	
-		32		Enable Load Latency on IA32_PMC0. (R/W)	
-		33		Enable Load Latency on IA32_PMC1. (R/W)	
-		34		Enable Load Latency on IA32_PMC2. (R/W)	
-		35		Enable Load Latency on IA32_PMC3. (R/W)	
-		62:36		Reserved	
+		0		Enable PEBS on IA32_PMC0. (R/W)
+		1		Enable PEBS on IA32_PMC1. (R/W)
+		2		Enable PEBS on IA32_PMC2. (R/W)
+		3		Enable PEBS on IA32_PMC3. (R/W)
+		31:4		Reserved
+		32		Enable Load Latency on IA32_PMC0. (R/W)
+		33		Enable Load Latency on IA32_PMC1. (R/W)
+		34		Enable Load Latency on IA32_PMC2. (R/W)
+		35		Enable Load Latency on IA32_PMC3. (R/W)
+		62:36		Reserved
 		63		Enable Precise Store (R/W)
 3F6H	1014	MSR_PEBS_LD_LAT	Thread	See Section 20.3.1.1.2, “Load Latency Performance Monitoring Facility.”
-		15:0		Minimum threshold latency value of tagged load operation that will be counted. (R/W)	
+		15:0		Minimum threshold latency value of tagged load operation that will be counted. (R/W)
 		63:36		Reserved
 3F8H	1016	MSR_PKG_C3_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
 		63:0		Package C3 Residency Counter (R/O) Value since last reset that this package is in processor- specific C3 states. Count at the same frequency as the TSC.
@@ -289,7 +289,7 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 3FDH	1021	MSR_CORE_C6_RESIDENCY	Core	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
 		63:0		CORE C6 Residency Counter (R/O) Value since last reset that this core is in processor- specific C6 states. Count at the same frequency as the TSC.
 3FEH	1022	MSR_CORE_C7_RESIDENCY	Core	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
-		63:0		CORE C7 Residency Counter (R/O) Value since last reset that this core is in processor- specific C7 states. Count at the same frequency as the TSC.	
+		63:0		CORE C7 Residency Counter (R/O) Value since last reset that this core is in processor- specific C7 states. Count at the same frequency as the TSC.
 400H	1024	IA32_MC0_CTL	Core	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
 401H	1025	IA32_MC0_STATUS	Core	See Section 16.3.2.2, “IA32_MCi_STATUS MSRS,” and Chapter 17.
 402H	1026	IA32_MC0_ADDR	Core	See Section 16.3.2.3, “IA32_MCi_ADDR MSRs.”
@@ -340,16 +340,16 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 600H	1536	IA32_DS_AREA	Thread	DS Save Area (R/W) See Table 2-2. See Section 20.6.3.4, “Debug Store (DS) Mechanism.”
 606H	1542	MSR_RAPL_POWER_UNIT	Package	Unit Multipliers used in RAPL Interfaces (R/O) See Section 15.10.1, “RAPL Interfaces.”
 60AH	1546	MSR_PKGC3_IRTL	Package	Package C3 Interrupt Response Limit (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
-		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C3 state.		
-		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. The following time unit encodings are supported: 000b: 1 ns 001b: 32 ns 010b: 1024 ns 011b: 32768 ns 100b: 1048576 ns 101b: 33554432 ns		
-		14:13		Reserved		
-		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.		
+		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C3 state.
+		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. The following time unit encodings are supported: 000b: 1 ns 001b: 32 ns 010b: 1024 ns 011b: 32768 ns 100b: 1048576 ns 101b: 33554432 ns
+		14:13		Reserved
+		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.
 		63:16		Reserved
 60BH	1547	MSR_PKGC6_IRTL	Package	Package C6 Interrupt Response Limit (R/W) This MSR defines the budget allocated for the package to exit from a C6 to a C0 state, where an interrupt request can be delivered to the core and serviced. Additional core-exit latency may be applicable depending on the actual C-state the core is in. Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states.
-		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C6 state.		
-		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. The following time unit encodings are supported: 000b: 1 ns 001b: 32 ns 010b: 1024 ns 011b: 32768 ns 100b: 1048576 ns 101b: 33554432 ns		
-		14:13		Reserved		
-		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.		
+		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C6 state.
+		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. The following time unit encodings are supported: 000b: 1 ns 001b: 32 ns 010b: 1024 ns 011b: 32768 ns 100b: 1048576 ns 101b: 33554432 ns
+		14:13		Reserved
+		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.
 		63:16		Reserved
 60DH	1549	MSR_PKG_C2_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
 		63:0		Package C2 Residency Counter (R/O) Value since last reset that this package is in processor- specific C2 states. Count at the same frequency as the TSC.

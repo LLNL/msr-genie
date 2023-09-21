@@ -6,11 +6,11 @@
 A7H	167	MSR_BIOS_DEBUG	Thread	BIOS DEBUG (R/O) See Table 2-45.
 BCH	188	IA32_MISC_PACKAGE_CTLS	Package	Power Filtering Control (R/W) IA32_ARCH_CAPABILITIES[bit 10] enumerates support for this MSR. See Table 2-2.
 CFH	207	IA32_CORE_CAPABILITIES	Core	IA32 Core Capabilities Register (R/W) If CPUID.(EAX=07H, ECX=0):EDX[30] = 1. This MSR provides an architectural enumeration function for model-specific behavior.
-		0		Reserved: returns zero.		
-		1		Reserved: returns zero.		
-		2		INTEGRITY_CAPABILITIES When set to 1, the processor supports MSR_INTEGRITY_CAPABILITIES.		
-		3		RSM_IN_CPL0_ONLY Indicates that RSM will only be allowed in CPL0 and will #GP for all non-CPL0 privilege levels.		
-		4		UC_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 28 of MSR_MEMORY_CTRL (MSR address 33H).		
+		0		Reserved: returns zero.
+		1		Reserved: returns zero.
+		2		INTEGRITY_CAPABILITIES When set to 1, the processor supports MSR_INTEGRITY_CAPABILITIES.
+		3		RSM_IN_CPL0_ONLY Indicates that RSM will only be allowed in CPL0 and will #GP for all non-CPL0 privilege levels.
+		4		UC_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 28 of MSR_MEMORY_CTRL (MSR address 33H).
 		5		SPLIT_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 29 of MSR_MEMORY_CTRL.
 		6		Reserved: returns zero.
 		7		UC_STORE_THROTTLING_SUPPORTED Indicates that the snoop filter quality of service MSRs are supported on this core. This is based on the existence of a non-inclusive cache and the L2/MLC QoS feature supported.
@@ -26,25 +26,25 @@ EEH	238	MSR_RAR_ACTION_VECTOR_BASE	Thread	Pointer to RAR Action Vector (R/W)
 		MAXPHYADDR-1:6		VECTOR_PHYSICAL_ADDRESS Pointer to the physical address of the 64B aligned RAR action vector.
 		5:0		Reserved.
 EFH	239	MSR_RAR_PAYLOAD_TABLE_BASE	Thread	Pointer to Base of RAR Payload Table (R/W)
-		63:MAXPHYADDR		Reserved.		
-		MAXPHYADDR-1:12		TABLE_PHYSICAL_ADDRESS Pointer to the base physical address of the 4K aligned RAR payload table.		
+		63:MAXPHYADDR		Reserved.
+		MAXPHYADDR-1:12		TABLE_PHYSICAL_ADDRESS Pointer to the base physical address of the 4K aligned RAR payload table.
 		11:0		Reserved.
 F0H	240	MSR_RAR_INFO	Thread	Read Only RAR Information (RO)
-		63:38		Always zero.		
-		37:32		Table Max Index Maximum supported payload table index.		
+		63:38		Always zero.
+		37:32		Table Max Index Maximum supported payload table index.
 		31:0		Supported payload type bitmap. A value of 1 in bit position [i] indicates that payload type [i] is supported.
 105H	261	MSR_CORE_BIST	Core	Core BIST (R/W) Controls Array BIST activation and status checking as part of FUSA.
-		31:0		BIST_ARRAY Bitmap indicating which arrays to run BIST on (WRITE). Bitmap indicating which arrays were not processed, i.e., completion mask (READ).	
-		39:32		BANK Array bank of the [least significant set bit] array indicated in EAX to start BIST(WRITE). Array bank interrupted or failed (READ).	
-		47:40		DWORD Array dword of the [least significant set bit] array indicated in EAX to start BIST (WRITE). Array dword interrupted or failed (READ).	
-		62:48		Reserved	
+		31:0		BIST_ARRAY Bitmap indicating which arrays to run BIST on (WRITE). Bitmap indicating which arrays were not processed, i.e., completion mask (READ).
+		39:32		BANK Array bank of the [least significant set bit] array indicated in EAX to start BIST(WRITE). Array bank interrupted or failed (READ).
+		47:40		DWORD Array dword of the [least significant set bit] array indicated in EAX to start BIST (WRITE). Array dword interrupted or failed (READ).
+		62:48		Reserved
 		63		CTRL_RESULT Indicates whether WRMSR should signal Machine- Check upon BIST-error (WRITE). BIST result PASS(0)/FAIL(1) of the (least significant set bit) array indicated in EAX (READ).
 10AH	266	IA32_ARCH_CAPABILITIES		Enumeration of Architectural Features (R/O) See Table 2-2.
 1A4H	420	MSR_PREFETCH_CONTROL		Prefetch Disable Bits (R/W)
-		0		L2_HARDWARE_PREFETCHER_DISABLE If 1, disables the L2 hardware prefetcher, which fetches additional lines of code or data into the L2 cache.		
-		1		L2_ADJACENT_CACHE_LINE_PREFETCHER_DISABLE If 1, disables the adjacent cache line prefetcher, which fetches the cache line that comprises a cache line pair (128 bytes).		
-		2		DCU_HARDWARE_PREFETCHER_DISABLE If 1, disables the L1 data cache prefetcher, which fetches the next cache line into L1 data cache.		
-		3		DCU_IP_PREFETCHER_DISABLE If 1, disables the L1 data cache IP prefetcher, which uses sequential load history (based on instruction pointer of previous loads) to determine whether to prefetch additional lines.		
+		0		L2_HARDWARE_PREFETCHER_DISABLE If 1, disables the L2 hardware prefetcher, which fetches additional lines of code or data into the L2 cache.
+		1		L2_ADJACENT_CACHE_LINE_PREFETCHER_DISABLE If 1, disables the adjacent cache line prefetcher, which fetches the cache line that comprises a cache line pair (128 bytes).
+		2		DCU_HARDWARE_PREFETCHER_DISABLE If 1, disables the L1 data cache prefetcher, which fetches the next cache line into L1 data cache.
+		3		DCU_IP_PREFETCHER_DISABLE If 1, disables the L1 data cache IP prefetcher, which uses sequential load history (based on instruction pointer of previous loads) to determine whether to prefetch additional lines.
 		4		Reserved.
 		5		AMP_PREFETCH_DISABLE If 1, disables the L2 Adaptive Multipath Probability (AMP) prefetcher.
 		63:6		Reserved.
@@ -55,10 +55,10 @@ F0H	240	MSR_RAR_INFO	Thread	Read Only RAR Information (RO)
 2C2H	706	MSR_COPY_SCAN_HASHES	Die	COPY_SCAN_HASHES (W)
 		63:0		SCAN_HASH_ADDR Contains the linear address of the SCAN Test HASH Binary loaded into memory.
 2C3H	707	MSR_SCAN_HASHES_STATUS		SCAN_HASHES_STATUS (R/O)
-		15:0	Die	CHUNK_SIZE Chunk size of the test in KB.		
-		23:16	Die	NUM_CHUNKS Total number of chunks.		
-		31:24		Reserved: all zeros.		
-		39:32	Thread	ERROR_CODE The error-code refers to the LP that runs WRMSR(2C2H). 0x0: No error reported. 0x1: Attempt to copy scan-hashes when copy already in progress. 0x2: Secure Memory not set up correctly. 0x3: Scan-image header Image_info.ProgramID doesn't match RDMSR(2D9H)[31:24], or scan-image header Processor-Signature doesn't match F/M/S, or scan-image header Processor-Flags doesn't match PlatformID. 0x4: Reserved 0x5: Integrity check failed. 0x6: Re-install of scan test image attempted when current scan test image is in use by other LPs.		
+		15:0	Die	CHUNK_SIZE Chunk size of the test in KB.
+		23:16	Die	NUM_CHUNKS Total number of chunks.
+		31:24		Reserved: all zeros.
+		39:32	Thread	ERROR_CODE The error-code refers to the LP that runs WRMSR(2C2H). 0x0: No error reported. 0x1: Attempt to copy scan-hashes when copy already in progress. 0x2: Secure Memory not set up correctly. 0x3: Scan-image header Image_info.ProgramID doesn't match RDMSR(2D9H)[31:24], or scan-image header Processor-Signature doesn't match F/M/S, or scan-image header Processor-Flags doesn't match PlatformID. 0x4: Reserved 0x5: Integrity check failed. 0x6: Re-install of scan test image attempted when current scan test image is in use by other LPs.
 		50:40		Reserved: set to all zeros.
 		62:51	Die	MAX_CORE_LIMIT Maximum Number of cores that can run Intel® In-field Scan simultaneously minus 1. 0 means 1 core at a time.
 		63	Die	Valid Valid bit is set when COPY_SCAN_HASHES has completed successfully.
@@ -72,21 +72,21 @@ F0H	240	MSR_RAR_INFO	Thread	Read Only RAR Information (RO)
 		39:32	Thread	ERROR_CODE The error code refers to the LP that runs WRMSR(2C4H). 0x0: No error reported. 0x1: Attempt to authenticate a CHUNK which is already marked as authentic or is currently being installed by another core. 0x2: CHUNK authentication error. HASH of chunk did not match expected value.
 		63:40		Reserved: set to all zeros.
 2C6H	710	MSR_ACTIVATE_SCAN	Thread	ACTIVATE_SCAN (W)
-		7:0		CHUNK_START_INDEX Indicates chunk index to start from.		
-		15:8		CHUNK_STOP_INDEX Indicates what chunk index to stop at (inclusive).		
-		31:16		Reserved: all zeros.		
-		62:32		THREAD_WAIT_DELAY TSC based delay to allow threads to rendezvous.	
-		63		SIGNAL_MCE If 1, then on scan-error log MC in MC4_STATUS and signal MCE if machine check signaling enabled in MC4_CTL[0]. If 0, then no logging/no signaling.	
+		7:0		CHUNK_START_INDEX Indicates chunk index to start from.
+		15:8		CHUNK_STOP_INDEX Indicates what chunk index to stop at (inclusive).
+		31:16		Reserved: all zeros.
+		62:32		THREAD_WAIT_DELAY TSC based delay to allow threads to rendezvous.
+		63		SIGNAL_MCE If 1, then on scan-error log MC in MC4_STATUS and signal MCE if machine check signaling enabled in MC4_CTL[0]. If 0, then no logging/no signaling.
 2C7H	711	MSR_SCAN_STATUS		SCAN_STATUS (R/O)
-		7:0	Core	CHUNK_NUM SCAN Chunk that was reached.		
-		15:8	Core	CHUNK_STOP_INDEX Indicates what chunk index to stop at (inclusive). Maps to same field in WRMSR(ACTIVATE_SCAN).		
-		31:16		Reserved: return all zeros.		
-		39:32	Thread	ERROR_CODE 0x0: No error. 0x1: SCAN operation did not start. Other thread did not join in time. 0x2: SCAN operation did not start. Interrupt occurred prior to threads rendezvous. 0x3: SCAN operation did not start. Power Management conditions are inadequate to run Intel In- field Scan. 0x4: SCAN operation did not start. Non-valid chunks in the range CHUNK_STOP_INDEX : CHUNK_START_INDEX. 0x5: SCAN operation did not start. Mismatch in arguments between threads T0/T1. 0x6: SCAN operation did not start. Core not capable of performing SCAN currently. 0x8: SCAN operation did not start. Exceeded number of Logical Processors (LP) allowed to run Intel In-field Scan concurrently. MAX_CORE_LIMIT exceeded. 0x9: Interrupt occurred. Scan operation aborted prematurely, not all chunks requested have been executed.		
-		61:40		Reserved: return all zeros.		
-		62	Core	SCAN_CONTROL_ERROR Scan-System-Controller malfunction.		
+		7:0	Core	CHUNK_NUM SCAN Chunk that was reached.
+		15:8	Core	CHUNK_STOP_INDEX Indicates what chunk index to stop at (inclusive). Maps to same field in WRMSR(ACTIVATE_SCAN).
+		31:16		Reserved: return all zeros.
+		39:32	Thread	ERROR_CODE 0x0: No error. 0x1: SCAN operation did not start. Other thread did not join in time. 0x2: SCAN operation did not start. Interrupt occurred prior to threads rendezvous. 0x3: SCAN operation did not start. Power Management conditions are inadequate to run Intel In- field Scan. 0x4: SCAN operation did not start. Non-valid chunks in the range CHUNK_STOP_INDEX : CHUNK_START_INDEX. 0x5: SCAN operation did not start. Mismatch in arguments between threads T0/T1. 0x6: SCAN operation did not start. Core not capable of performing SCAN currently. 0x8: SCAN operation did not start. Exceeded number of Logical Processors (LP) allowed to run Intel In-field Scan concurrently. MAX_CORE_LIMIT exceeded. 0x9: Interrupt occurred. Scan operation aborted prematurely, not all chunks requested have been executed.
+		61:40		Reserved: return all zeros.
+		62	Core	SCAN_CONTROL_ERROR Scan-System-Controller malfunction.
 		63	Core	SCAN_SIGNATURE_ERROR Core failed SCAN-SIGNATURE checking for this chunk.
 2C8H	712	MSR_SCAN_MODULE_ID	Module	SCAN_MODULE_ID (R/O)
-		31:0		RevID of the currently installed scan test image. Maps to Revision field in external header (offset 4).		
+		31:0		RevID of the currently installed scan test image. Maps to Revision field in external header (offset 4).
 		63:32		Reserved: return all zeros.
 2C9H	713	MSR_LAST_SAF_WP	Core	LAST_SAF_WP (R/O)
 		31:0		LAST_WP Provides information about the core when the last WRMSR(ACTIVATE_SCAN) was executed. Available only if enumerated in MSR_INTEGRITY_CAPABILITIES[10:9].
@@ -98,9 +98,9 @@ F0H	240	MSR_RAR_INFO	Thread	Read Only RAR Information (RO)
 		23:5		Reserved: return all zeros.
 		31:24		ID of the scan programs supported for this part. WRMSR(2C2H) verifies this value against the corresponding value in the scan-image header, i.e., Image_info.
 410H	1040	IA32_MC4_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC4 reports MC errors from the PCU module. If SIGNAL_MCE is set, a Scan Status is logged in MC4_STATUS and MC4_MISC.
-411H	1041	IA32_MC4_STATUS	Package	
-412H	1042	IA32_MC4_ADDR	Package	
-413H	1043	IA32_MC4_MISC	Package	
+411H	1041	IA32_MC4_STATUS	Package
+412H	1042	IA32_MC4_ADDR	Package
+413H	1043	IA32_MC4_MISC	Package
 492H	1170	IA32_VMX_PROCBASED_CTLS3		Capability Reporting Register of Tertiary Processor- Based VM-Execution Controls (R/O) See Table 2-2.
 493H	1171	IA32_VMX_EXIT_CTLS2		Capability Reporting Register of Secondary VM-Exit Controls (R/O) See Table 2-2.
 540H	1344	MSR_THREAD_UARCH_CTL	Thread	Thread Microarchitectural Control (R/W) See Table 2-47.

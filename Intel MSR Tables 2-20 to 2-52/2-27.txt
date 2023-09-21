@@ -16,45 +16,45 @@
 		24		MCG_SER_P
 		63:25		Reserved
 17AH	378	IA32_MCG_STATUS	Thread	Global Machine Check Status (R/WO)
-		0		RIPV		
-		1		EIPV		
-		2		MCIP		
-		3		LMCE Signaled		
+		0		RIPV
+		1		EIPV
+		2		MCIP
+		3		LMCE Signaled
 		63:4		Reserved
 1AEH	430	MSR_TURBO_RATIO_LIMIT1	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
-		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.	
-		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10core active.	
-		23:16	Package	Maximum Ratio Limit for 11C Maximum turbo ratio limit of 11 core active.	
-		31:24	Package	Maximum Ratio Limit for 12C Maximum turbo ratio limit of 12 core active.	
-		39:32	Package	Maximum Ratio Limit for 13C Maximum turbo ratio limit of 13 core active.	
-		47:40	Package	Maximum Ratio Limit for 14C Maximum turbo ratio limit of 14 core active.	
-		55:48	Package	Maximum Ratio Limit for 15C Maximum turbo ratio limit of 15 core active.	
-		62:56		Reserved	
+		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.
+		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10core active.
+		23:16	Package	Maximum Ratio Limit for 11C Maximum turbo ratio limit of 11 core active.
+		31:24	Package	Maximum Ratio Limit for 12C Maximum turbo ratio limit of 12 core active.
+		39:32	Package	Maximum Ratio Limit for 13C Maximum turbo ratio limit of 13 core active.
+		47:40	Package	Maximum Ratio Limit for 14C Maximum turbo ratio limit of 14 core active.
+		55:48	Package	Maximum Ratio Limit for 15C Maximum turbo ratio limit of 15 core active.
+		62:56		Reserved
 		63	Package	Semaphore for Turbo Ratio Limit Configuration If 1, the processor uses override configuration1 specified in MSR_TURBO_RATIO_LIMIT and MSR_TURBO_RATIO_LIMIT1. If 0, the processor uses factory-set configuration (Default).
 29DH	669	IA32_MC29_CTL2	Package	See Table 2-2.
 29EH	670	IA32_MC30_CTL2	Package	See Table 2-2.
 29FH	671	IA32_MC31_CTL2	Package	See Table 2-2.
 3F1H	1009	IA32_PEBS_ENABLE (MSR_PEBS_ENABLE)	Thread	See Section 20.3.1.1.1, “Processor Event Based Sampling (PEBS).”
-		n:0		Enable PEBS on IA32_PMCx. (R/W)	
-		31:n+1		Reserved	
-		32+m:32		Enable Load Latency on IA32_PMCx. (R/W)	
+		n:0		Enable PEBS on IA32_PMCx. (R/W)
+		31:n+1		Reserved
+		32+m:32		Enable Load Latency on IA32_PMCx. (R/W)
 		63:33+m		Reserved
 41BH	1051	IA32_MC6_MISC	Package	Misc MAC Information of Integrated I/O (R/O) See Section 16.3.2.4.
-		5:0		Recoverable Address LSB		
-		8:6		Address Mode		
-		15:9		Reserved		
+		5:0		Recoverable Address LSB
+		8:6		Address Mode
+		15:9		Reserved
 		31:16		PCI Express Requestor ID
 		39:32		PCI Express Segment Number
-		63:32		Reserved (Likely a typo from documentation, 40:63?)	
+		63:32		Reserved (Likely a typo from documentation, 40:63?)
 474H	1140	IA32_MC29_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC29 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-475H	1141	IA32_MC29_STATUS	Package	
-476H	1142	IA32_MC29_ADDR	Package	
-477H	1143	IA32_MC29_MISC	Package	
+475H	1141	IA32_MC29_STATUS	Package
+476H	1142	IA32_MC29_ADDR	Package
+477H	1143	IA32_MC29_MISC	Package
 478H	1144	IA32_MC30_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC30 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-479H	1145	IA32_MC30_STATUS	Package	
-47AH	1146	IA32_MC30_ADDR	Package	
-47BH	1147	IA32_MC30_MISC	Package	
+479H	1145	IA32_MC30_STATUS	Package
+47AH	1146	IA32_MC30_ADDR	Package
+47BH	1147	IA32_MC30_MISC	Package
 47CH	1148	IA32_MC31_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC31 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-47DH	1149	IA32_MC31_STATUS	Package	
-47EH	1150	IA32_MC31_ADDR	Package	
+47DH	1149	IA32_MC31_STATUS	Package
+47EH	1150	IA32_MC31_ADDR	Package
 47FH	1147	IA32_MC31_MISC	Package

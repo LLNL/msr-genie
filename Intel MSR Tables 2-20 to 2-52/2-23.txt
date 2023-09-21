@@ -1,13 +1,13 @@
 17FH	383	MSR_ERROR_CONTROL	Package	MC Bank Error Configuration (R/W)
-		0		Reserved	
-		1		MemError Log Enable (R/W) When set, enables IMC status bank to log additional info in bits 36:32.	
+		0		Reserved
+		1		MemError Log Enable (R/W) When set, enables IMC status bank to log additional info in bits 36:32.
 		63:2		Reserved
 1ADH	429	MSR_TURBO_RATIO_LIMIT	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0, R/W if MSR_PLATFORM_INFO.[28] = 1
-		7:0	Package	Maximum Ratio Limit for 1C Maximum turbo ratio limit of 1 core active.		
-		15:8	Package	Maximum Ratio Limit for 2C Maximum turbo ratio limit of 2 cores active.		
-		23:16	Package	Maximum Ratio Limit for 3C Maximum turbo ratio limit of 3 cores active.		
-		31:24	Package	Maximum Ratio Limit for 4C Maximum turbo ratio limit of 4 cores active.		
-		39:32	Package	Maximum Ratio Limit for 5C Maximum turbo ratio limit of 5 cores active.	
+		7:0	Package	Maximum Ratio Limit for 1C Maximum turbo ratio limit of 1 core active.
+		15:8	Package	Maximum Ratio Limit for 2C Maximum turbo ratio limit of 2 cores active.
+		23:16	Package	Maximum Ratio Limit for 3C Maximum turbo ratio limit of 3 cores active.
+		31:24	Package	Maximum Ratio Limit for 4C Maximum turbo ratio limit of 4 cores active.
+		39:32	Package	Maximum Ratio Limit for 5C Maximum turbo ratio limit of 5 cores active.
 		47:40	Package	Maximum Ratio Limit for 6C Maximum turbo ratio limit of 6 cores active.
 		55:48	Package	Maximum Ratio Limit for 7C Maximum turbo ratio limit of 7 cores active.
 		63:56	Package	Maximum Ratio Limit for 8C Maximum turbo ratio limit of 8 cores active.

@@ -9,10 +9,10 @@ BCH	188	IA32_MISC_PACKAGE_CTLS	Package	Power Filtering Control (R/W) IA32_ARCH_C
 C7H	199	IA32_PMC6	Core	General Performance Counter 6 (R/W) See Table 2-2.
 C8H	200	IA32_PMC7	Core	General Performance Counter 7 (R/W) See Table 2-2.
 CFH	207	IA32_CORE_CAPABILITIES	Package	IA32 Core Capabilities Register (R/O) If CPUID.(EAX=07H, ECX=0):EDX[30] = 1. This MSR provides an architectural enumeration function for model-specific behavior.
-		0		STLB_QOS_SUPPORTED When set to 1, the STLB QoS feature is supported and the STLB QoS MSRs (1A8FH -1A97H) are accessible. When set to 0, access to these MSRs will #GP.		
-		1		Reserved		
-		2		FUSA_SUPPORTED		
-		3		RSM_IN_CPL0_ONLY When set to 1, the RSM instruction is only allowed in CPL0 (#GP triggered in any CPL != 0). When set to 0, then any CPL may execute the RSM instruction.		
+		0		STLB_QOS_SUPPORTED When set to 1, the STLB QoS feature is supported and the STLB QoS MSRs (1A8FH -1A97H) are accessible. When set to 0, access to these MSRs will #GP.
+		1		Reserved
+		2		FUSA_SUPPORTED
+		3		RSM_IN_CPL0_ONLY When set to 1, the RSM instruction is only allowed in CPL0 (#GP triggered in any CPL != 0). When set to 0, then any CPL may execute the RSM instruction.
 		4		UC_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 28 of MSR_MEMORY_CTRL (MSR address 33H).
 		5		SPLIT_LOCK_DISABLE_SUPPORTED When read as 1, software can set bit 29 of MSR_MEMORY_CTRL.
 		6		SNOOP_FILTER_QOS_SUPPORTED When set to 1, the Snoop Filter Qos Mask MSRs are supported. When set to 0, access to these MSRs will #GP.
@@ -24,11 +24,11 @@ E1H	225	IA32_UMWAIT_CONTROL		UMWAIT Control (R/W) See Table 2-2.
 18DH	397	IA32_PERFEVTSEL7	Core	See Table 2-20.
 195H	405	IA32_OVERCLOCKING_STATUS	Package	Overclocking Status (R/O) IA32_ARCH_CAPABILITIES[bit 23] enumerates support for this MSR. See Table 2-2.
 1ADH	429	MSR_PRIMARY_TURBO_RATIO_LIMIT	Package	Primary Maximum Turbo Ratio Limit (R/W) Software can configure these limits when MSR_PLATFORM_INFO[28] = 1. Specifies Maximum Ratio Limit for each group. Maximum ratio for groups with more cores must decrease monotonically.
-		7:0		MAX_TURBO_GROUP_0: Maximum turbo ratio limit with 1 core active.		
-		15:8		MAX_TURBO_GROUP_1: Maximum turbo ratio limit with 2 cores active.		
-		23:16		MAX_TURBO_GROUP_2: Maximum turbo ratio limit with 3 cores active.		
-		31:24		MAX_TURBO_GROUP_3: Maximum turbo ratio limit with 4 cores active.		
-		39:32		MAX_TURBO_GROUP_4: Maximum turbo ratio limit with 5 cores active.		
+		7:0		MAX_TURBO_GROUP_0: Maximum turbo ratio limit with 1 core active.
+		15:8		MAX_TURBO_GROUP_1: Maximum turbo ratio limit with 2 cores active.
+		23:16		MAX_TURBO_GROUP_2: Maximum turbo ratio limit with 3 cores active.
+		31:24		MAX_TURBO_GROUP_3: Maximum turbo ratio limit with 4 cores active.
+		39:32		MAX_TURBO_GROUP_4: Maximum turbo ratio limit with 5 cores active.
 		47:40		MAX_TURBO_GROUP_5: Maximum turbo ratio limit with 6 cores active.
 		55:48		MAX_TURBO_GROUP_6: Maximum turbo ratio limit with 7 cores active.
 		63:56		MAX_TURBO_GROUP_7: Maximum turbo ratio limit with 8 cores active.

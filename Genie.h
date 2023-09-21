@@ -365,7 +365,7 @@ class GenieDataStore
 
 				for (auto &entry: bitfield_vector)
 				{
-				 		//skip entry if description is reserved 
+				 	//skip entry if description is reserved 
 					if (entry[2] == "Reserved"
 						or entry[2] == "Reserved.") continue;
 
@@ -421,8 +421,6 @@ class FileLoader
 			std::ifstream table(tablefile);
 			std::string msr_data;
 
-			//std::cout << tablefile << "\n";
-
 			//keep track of previous hex address for bit_field rows(bit field rows have no address information)
 			std::string previous = "";
 
@@ -436,11 +434,11 @@ class FileLoader
 				{
 					tokens.push_back(token);
 				}
-
-				//table data may lack description entry, pad vector with a 5th element with no value (supplied data tested to have minimum vector size 4, maximum of 6(no value in last element and not used))
-				if (tokens.size() < 5)
+				
+				//if documentation does not provide a description. Append description to output
+				if (tokens.size() < 5) 
 				{
-					tokens.emplace_back("");
+					tokens.push_back("None provided in documentation");
 				}
 
 				//bit_field entry detected, insert entry into previous MSR vector
@@ -458,7 +456,7 @@ class FileLoader
 				}
 				else
 				{
-				 		//new MSR entry detected, add new MSR to table
+				 	//new MSR entry detected, add new MSR to table
 					std::vector<std::string > temp(6);
 					temp[0] = "INTEL";
 					temp[1] = tokens[0];	//hex address
@@ -506,7 +504,7 @@ class GenieDataManager
 		return data.getDFDMsForMSR(MSR_hex, manufacturer);
 	}
 
-	//return vector of array of size 4, hex address, name, domain, description, table name
+	//return vector of array of size 5, hex address, name, domain, description, table name
 	std::vector<std::array<std::string, 5>> getMSRsForDFDM(std::string dfdm, std::string manufacturer = "INTEL")
 	{
 		return data.getMSRsForDFDM(dfdm, manufacturer);

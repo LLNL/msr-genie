@@ -1,17 +1,17 @@
 4EH	78	IA32_PPIN_CTL (MSR_PPIN_CTL)	Package	Protected Processor Inventory Number Enable Control (R/W)
-		0		LockOut (R/WO) See Table 2-2.	
+		0		LockOut (R/WO) See Table 2-2.
 4EH	78	IA32_PPIN_CTL (MSR_PPIN_CTL)	Package	Protected Processor Inventory Number Enable Control (R/W)
 		0		LockOut (R/WO) See Table 2-2.
-		1		Enable_PPIN (R/W) See Table 2-2.	
-		63:2		Reserved	
+		1		Enable_PPIN (R/W) See Table 2-2.
+		63:2		Reserved
 4FH	79	IA32_PPIN (MSR_PPIN)	Package	Protected Processor Inventory Number (R/O)
-		63:0		Protected Processor Inventory Number (R/O) See Table 2-2.	
+		63:0		Protected Processor Inventory Number (R/O) See Table 2-2.
 CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management and other model specific features enumeration. See http://biosbits.org.
-		7:0		Reserved		
-		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.		
-		22:16		Reserved		
-		23	Package	PPIN_CAP (R/O) When set to 1, indicates that Protected Processor Inventory Number (PPIN) capability can be enabled for a privileged system inventory agent to read PPIN from MSR_PPIN. When set to 0, PPIN capability is not supported. An attempt to access MSR_PPIN_CTL or MSR_PPIN will cause #GP.		
-		27:24		Reserved		
+		7:0		Reserved
+		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.
+		22:16		Reserved
+		23	Package	PPIN_CAP (R/O) When set to 1, indicates that Protected Processor Inventory Number (PPIN) capability can be enabled for a privileged system inventory agent to read PPIN from MSR_PPIN. When set to 0, PPIN capability is not supported. An attempt to access MSR_PPIN_CTL or MSR_PPIN will cause #GP.
+		27:24		Reserved
 		28	Package	Programmable Ratio Limit for Turbo Mode (R/O) When set to 1, indicates that Programmable Ratio Limit for Turbo mode is enabled. When set to 0, indicates Programmable Ratio Limit for Turbo mode is disabled.
 		29	Package	Programmable TDP Limit for Turbo Mode (R/O) When set to 1, indicates that TDP Limit for Turbo mode is programmable. When set to 0, indicates TDP Limit for Turbo mode is not programmable.
 		30	Package	Programmable TJ OFFSET (R/O) When set to 1, indicates that MSR_TEMPERATURE_TARGET.[27:24] is valid and writable to specify a temperature offset.
@@ -19,23 +19,23 @@ CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management
 		47:40	Package	Maximum Efficiency Ratio (R/O) This is the minimum ratio (maximum efficiency) that the processor can operate, in units of 100MHz.
 		63:48		Reserved
 E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states. See http://biosbits.org.
-		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C- state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit. Note: This field cannot be used to limit package C-state to C3.		
-		9:3		Reserved		
-		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.		
-		14:11		Reserved		
+		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C- state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit. Note: This field cannot be used to limit package C-state to C3.
+		9:3		Reserved
+		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.
+		14:11		Reserved
 		15		CFG Lock (R/WO) When set, locks bits 15:0 of this register until next reset.
 		63:16		Reserved
 179H	377	IA32_MCG_CAP	Thread	Global Machine Check Capability (R/O)
-		7:0		Count		
-		8		MCG_CTL_P		
-		9		MCG_EXT_P		
-		10		MCP_CMCI_P		
-		11		MCG_TES_P		
-		15:12		Reserved		
-		23:16		MCG_EXT_CNT		
-		24		MCG_SER_P		
-		25		Reserved		
-		26		MCG_ELOG_P		
+		7:0		Count
+		8		MCG_CTL_P
+		9		MCG_EXT_P
+		10		MCP_CMCI_P
+		11		MCG_TES_P
+		15:12		Reserved
+		23:16		MCG_EXT_CNT
+		24		MCG_SER_P
+		25		Reserved
+		26		MCG_ELOG_P
 		63:27		Reserved
 17FH	383	MSR_ERROR_CONTROL	Package	MC Bank Error Configuration (R/W)
 		0		Reserved
@@ -47,11 +47,11 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 		27:24		TCC Activation Offset (R/W) Specifies a temperature offset in degrees C from the temperature target (bits 23:16). PROCHOT# will assert at the offset target temperature. Write is permitted only if MSR_PLATFORM_INFO.[30] is set.
 		63:28		Reserved
 1AEH	430	MSR_TURBO_RATIO_LIMIT1	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
-		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.		
-		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10 core active.		
+		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.
+		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10 core active.
 		23:16	Package	Maximum Ratio Limit for 11C Maximum turbo ratio limit of 11 core active.
 		31:24	Package	Maximum Ratio Limit for 12C Maximum turbo ratio limit of 12 core active.
-		63:32		Reserved	
+		63:32		Reserved
 285H	645	IA32_MC5_CTL2	Package	See Table 2-2.
 286H	646	IA32_MC6_CTL2	Package	See Table 2-2.
 287H	647	IA32_MC7_CTL2	Package	See Table 2-2.
@@ -77,101 +77,101 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 29BH	667	IA32_MC27_CTL2	Package	See Table 2-2.
 29CH	668	IA32_MC28_CTL2	Package	See Table 2-2.
 414H	1044	IA32_MC5_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC5 reports MC errors from the Intel QPI module.
-415H	1045	IA32_MC5_STATUS	Package	
-416H	1046	IA32_MC5_ADDR	Package	
-417H	1047	IA32_MC5_MISC	Package	
+415H	1045	IA32_MC5_STATUS	Package
+416H	1046	IA32_MC5_ADDR	Package
+417H	1047	IA32_MC5_MISC	Package
 418H	1048	IA32_MC6_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC6 reports MC errors from the integrated I/O module.
-419H	1049	IA32_MC6_STATUS	Package	
-41AH	1050	IA32_MC6_ADDR	Package	
-41BH	1051	IA32_MC6_MISC	Package	
+419H	1049	IA32_MC6_STATUS	Package
+41AH	1050	IA32_MC6_ADDR	Package
+41BH	1051	IA32_MC6_MISC	Package
 41CH	1052	IA32_MC7_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC7 and MC 8 report MC errors from the two home agents.
-41DH	1053	IA32_MC7_STATUS	Package	
-41EH	1054	IA32_MC7_ADDR	Package	
-41FH	1055	IA32_MC7_MISC	Package	
+41DH	1053	IA32_MC7_STATUS	Package
+41EH	1054	IA32_MC7_ADDR	Package
+41FH	1055	IA32_MC7_MISC	Package
 420H	1056	IA32_MC8_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC7 and MC 8 report MC errors from the two home agents.
-421H	1057	IA32_MC8_STATUS	Package	
-422H	1058	IA32_MC8_ADDR	Package	
-423H	1059	IA32_MC8_MISC	Package	
+421H	1057	IA32_MC8_STATUS	Package
+422H	1058	IA32_MC8_ADDR	Package
+423H	1059	IA32_MC8_MISC	Package
 424H	1060	IA32_MC9_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-425H	1061	IA32_MC9_STATUS	Package	
-426H	1062	IA32_MC9_ADDR	Package	
-427H	1063	IA32_MC9_MISC	Package	
+425H	1061	IA32_MC9_STATUS	Package
+426H	1062	IA32_MC9_ADDR	Package
+427H	1063	IA32_MC9_MISC	Package
 428H	1064	IA32_MC10_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-429H	1065	IA32_MC10_STATUS	Package	
-42AH	1066	IA32_MC10_ADDR	Package	
-42BH	1067	IA32_MC10_MISC	Package	
+429H	1065	IA32_MC10_STATUS	Package
+42AH	1066	IA32_MC10_ADDR	Package
+42BH	1067	IA32_MC10_MISC	Package
 42CH	1068	IA32_MC11_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
 42DH	1069	IA32_MC11_STATUS	Package	Bank MC11 reports MC errors from a specific channel of the integrated memory controller.
-42EH	1070	IA32_MC11_ADDR	Package	
-42FH	1071	IA32_MC11_MISC	Package	
+42EH	1070	IA32_MC11_ADDR	Package
+42FH	1071	IA32_MC11_MISC	Package
 430H	1072	IA32_MC12_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-431H	1073	IA32_MC12_STATUS	Package	
-432H	1074	IA32_MC12_ADDR	Package	
-433H	1075	IA32_MC12_MISC	Package	
+431H	1073	IA32_MC12_STATUS	Package
+432H	1074	IA32_MC12_ADDR	Package
+433H	1075	IA32_MC12_MISC	Package
 434H	1076	IA32_MC13_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-435H	1077	IA32_MC13_STATUS	Package	
-436H	1078	IA32_MC13_ADDR	Package	
-437H	1079	IA32_MC13_MISC	Package	
+435H	1077	IA32_MC13_STATUS	Package
+436H	1078	IA32_MC13_ADDR	Package
+437H	1079	IA32_MC13_MISC	Package
 438H	1080	IA32_MC14_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-439H	1081	IA32_MC14_STATUS	Package	
-43AH	1082	IA32_MC14_ADDR	Package	
-43BH	1083	IA32_MC14_MISC	Package	
+439H	1081	IA32_MC14_STATUS	Package
+43AH	1082	IA32_MC14_ADDR	Package
+43BH	1083	IA32_MC14_MISC	Package
 43CH	1084	IA32_MC15_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-43DH	1085	IA32_MC15_STATUS	Package	
-43EH	1086	IA32_MC15_ADDR	Package	
-43FH	1087	IA32_MC15_MISC	Package	
+43DH	1085	IA32_MC15_STATUS	Package
+43EH	1086	IA32_MC15_ADDR	Package
+43FH	1087	IA32_MC15_MISC	Package
 440H	1088	IA32_MC16_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-441H	1089	IA32_MC16_STATUS	Package	
-442H	1090	IA32_MC16_ADDR	Package	
-443H	1091	IA32_MC16_MISC	Package	
+441H	1089	IA32_MC16_STATUS	Package
+442H	1090	IA32_MC16_ADDR	Package
+443H	1091	IA32_MC16_MISC	Package
 444H	1092	IA32_MC17_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC17 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-445H	1093	IA32_MC17_STATUS	Package	
-446H	1094	IA32_MC17_ADDR	Package	
-447H	1095	IA32_MC17_MISC	Package	
+445H	1093	IA32_MC17_STATUS	Package
+446H	1094	IA32_MC17_ADDR	Package
+447H	1095	IA32_MC17_MISC	Package
 448H	1096	IA32_MC18_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC18 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-449H	1097	IA32_MC18_STATUS	Package	
-44AH	1098	IA32_MC18_ADDR	Package	
-44BH	1099	IA32_MC18_MISC	Package	
+449H	1097	IA32_MC18_STATUS	Package
+44AH	1098	IA32_MC18_ADDR	Package
+44BH	1099	IA32_MC18_MISC	Package
 44CH	1100	IA32_MC19_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC19 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-44DH	1101	IA32_MC19_STATUS	Package	
-44EH	1102	IA32_MC19_ADDR	Package	
-44FH	1103	IA32_MC19_MISC	Package	
+44DH	1101	IA32_MC19_STATUS	Package
+44EH	1102	IA32_MC19_ADDR	Package
+44FH	1103	IA32_MC19_MISC	Package
 450H	1104	IA32_MC20_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs.”
 451H	1105	IA32_MC20_STATUS	Package	Bank MC20 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-452H	1106	IA32_MC20_ADDR	Package	
-453H	1107	IA32_MC20_MISC	Package	
+452H	1106	IA32_MC20_ADDR	Package
+453H	1107	IA32_MC20_MISC	Package
 454H	1108	IA32_MC21_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC21 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-455H	1109	IA32_MC21_STATUS	Package	
-456H	1110	IA32_MC21_ADDR	Package	
-457H	1111	IA32_MC21_MISC	Package	
+455H	1109	IA32_MC21_STATUS	Package
+456H	1110	IA32_MC21_ADDR	Package
+457H	1111	IA32_MC21_MISC	Package
 458H	1112	IA32_MC22_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC22 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-459H	1113	IA32_MC22_STATUS	Package	
-45AH	1114	IA32_MC22_ADDR	Package	
-45BH	1115	IA32_MC22_MISC	Package	
+459H	1113	IA32_MC22_STATUS	Package
+45AH	1114	IA32_MC22_ADDR	Package
+45BH	1115	IA32_MC22_MISC	Package
 45CH	1116	IA32_MC23_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC23 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-45DH	1117	IA32_MC23_STATUS	Package	
-45EH	1118	IA32_MC23_ADDR	Package	
-45FH	1119	IA32_MC23_MISC	Package	
+45DH	1117	IA32_MC23_STATUS	Package
+45EH	1118	IA32_MC23_ADDR	Package
+45FH	1119	IA32_MC23_MISC	Package
 460H	1120	IA32_MC24_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC24 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-461H	1121	IA32_MC24_STATUS	Package	
-462H	1122	IA32_MC24_ADDR	Package	
-463H	1123	IA32_MC24_MISC	Package	
+461H	1121	IA32_MC24_STATUS	Package
+462H	1122	IA32_MC24_ADDR	Package
+463H	1123	IA32_MC24_MISC	Package
 464H	1124	IA32_MC25_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC25 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-465H	1125	IA32_MC25_STATUS	Package	
-466H	1126	IA32_MC25_ADDR	Package	
-467H	1127	IA32_MC2MISC	Package	
+465H	1125	IA32_MC25_STATUS	Package
+466H	1126	IA32_MC25_ADDR	Package
+467H	1127	IA32_MC2MISC	Package
 468H	1128	IA32_MC26_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC26 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-469H	1129	IA32_MC26_STATUS	Package	
-46AH	1130	IA32_MC26_ADDR	Package	
-46BH	1131	IA32_MC26_MISC	Package	
+469H	1129	IA32_MC26_STATUS	Package
+46AH	1130	IA32_MC26_ADDR	Package
+46BH	1131	IA32_MC26_MISC	Package
 46CH	1132	IA32_MC27_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC27 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-46DH	1133	IA32_MC27_STATUS	Package	
-46EH	1134	IA32_MC27_ADDR	Package	
-46FH	1135	IA32_MC27_MISC	Package	
+46DH	1133	IA32_MC27_STATUS	Package
+46EH	1134	IA32_MC27_ADDR	Package
+46FH	1135	IA32_MC27_MISC	Package
 470H	1136	IA32_MC28_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC28 reports MC errors from a specific CBo (core broadcast) and its corresponding slice of L3.
-471H	1137	IA32_MC28_STATUS	Package	
-472H	1138	IA32_MC28_ADDR	Package	
-473H	1139	IA32_MC28_MISC	Package	
+471H	1137	IA32_MC28_STATUS	Package
+472H	1138	IA32_MC28_ADDR	Package
+473H	1139	IA32_MC28_MISC	Package
 613H	1555	MSR_PKG_PERF_STATUS	Package	Package RAPL Perf Status (R/O)
 618H	1560	MSR_DRAM_POWER_LIMIT	Package	DRAM RAPL Power Limit Control (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
 619H	1561	MSR_DRAM_ENERGY_STATUS	Package	DRAM Energy Status (R/O) See Section 15.10.5, “DRAM RAPL Domain.”

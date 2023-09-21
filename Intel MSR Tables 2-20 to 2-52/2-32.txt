@@ -3,41 +3,41 @@
 		31:16		Core_COUNT (R/O) The number of processor cores that are currently enabled (by either factory configuration or BIOS configuration) in the physical package.
 		63:32		Reserved
 53H	83	MSR_THREAD_ID_INFO	Thread	A Hardware Assigned ID for the Logical Processor (R/O)
-		7:0		Logical_Processor_ID (R/O) An implementation-specific numerical value physically assigned to each logical processor. This ID is not related to Initial APIC ID or x2APIC ID, it is unique within a physical package.		
-		63:8		Reserved		
+		7:0		Logical_Processor_ID (R/O) An implementation-specific numerical value physically assigned to each logical processor. This ID is not related to Initial APIC ID or x2APIC ID, it is unique within a physical package.
+		63:8		Reserved
 E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-states. See http://biosbits.org.
-		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-state support) 001b: C2 010b: C6 (non-retention) 011b: C6 (retention) 111b: No Package C state limits. All C states supported by the processor are available.	
+		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C-state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-state support) 001b: C2 010b: C6 (non-retention) 011b: C6 (retention) 111b: No Package C state limits. All C states supported by the processor are available.
 		9:3		Reserved
-		10		I/O MWAIT Redirection Enable (R/W)	
-		14:11		Reserved	
-		15		CFG Lock (R/WO)	
-		24:16		Reserved	
-		25		C3 State Auto Demotion Enable (R/W)	
-		26		C1 State Auto Demotion Enable (R/W)	
-		27		Enable C3 Undemotion (R/W)	
-		28		Enable C1 Undemotion (R/W)	
-		29		Package C State Demotion Enable (R/W)	
-		30		Package C State UnDemotion Enable (R/W)	
-		63:31		Reserved	
+		10		I/O MWAIT Redirection Enable (R/W)
+		14:11		Reserved
+		15		CFG Lock (R/WO)
+		24:16		Reserved
+		25		C3 State Auto Demotion Enable (R/W)
+		26		C1 State Auto Demotion Enable (R/W)
+		27		Enable C3 Undemotion (R/W)
+		28		Enable C1 Undemotion (R/W)
+		29		Package C State Demotion Enable (R/W)
+		30		Package C State UnDemotion Enable (R/W)
+		63:31		Reserved
 179H	377	IA32_MCG_CAP	Thread	Global Machine Check Capability (R/O)
-		7:0		Count	
-		8		MCG_CTL_P	
-		9		MCG_EXT_P	
-		10		MCP_CMCI_P	
-		11		MCG_TES_P	
-		15:12		Reserved	
-		23:16		MCG_EXT_CNT	
-		24		MCG_SER_P	
-		25		MCG_EM_P	
-		26		MCG_ELOG_P	
+		7:0		Count
+		8		MCG_CTL_P
+		9		MCG_EXT_P
+		10		MCP_CMCI_P
+		11		MCG_TES_P
+		15:12		Reserved
+		23:16		MCG_EXT_CNT
+		24		MCG_SER_P
+		25		MCG_EM_P
+		26		MCG_ELOG_P
 		63:27		Reserved
 17DH	381	MSR_SMM_MCA_CAP	Thread	Enhanced SMM Capabilities (SMM-RO) Reports SMM capability Enhancement. Accessible only while in SMM.
-		57:0		Reserved	
-		58		SMM_Code_Access_Chk (SMM-RO) If set to 1, indicates that the SMM code access restriction is supported and a host-space interface available to SMM handler.	
-		59		Long_Flow_Indication (SMM-RO) If set to 1, indicates that the SMM long flow indicator is supported and a host-space interface available to SMM handler.	
+		57:0		Reserved
+		58		SMM_Code_Access_Chk (SMM-RO) If set to 1, indicates that the SMM code access restriction is supported and a host-space interface available to SMM handler.
+		59		Long_Flow_Indication (SMM-RO) If set to 1, indicates that the SMM long flow indicator is supported and a host-space interface available to SMM handler.
 		63:60		Reserved
 17FH	383	MSR_ERROR_CONTROL	Package	MC Bank Error Configuration (R/W)
-		0		Reserved		
+		0		Reserved
 		1		MemError Log Enable (R/W) When set, enables IMC status bank to log additional info in bits 36:32.
 		63:2		Reserved
 1ADH	429	MSR_TURBO_RATIO_LIMIT	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
@@ -48,15 +48,15 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 		39:32	Package	Maximum Ratio Limit for 5C Maximum turbo ratio limit of 5 core active.
 		47:40	Package	Maximum Ratio Limit for 6C Maximum turbo ratio limit of 6 core active.
 		55:48	Package	Maximum Ratio Limit for 7C Maximum turbo ratio limit of 7 core active.
-		63:56	Package	Maximum Ratio Limit for 8C Maximum turbo ratio limit of 8 core active.	
+		63:56	Package	Maximum Ratio Limit for 8C Maximum turbo ratio limit of 8 core active.
 1AEH	430	MSR_TURBO_RATIO_LIMIT1	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
-		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.		
-		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10 core active.		
-		23:16	Package	Maximum Ratio Limit for 11C Maximum turbo ratio limit of 11 core active.		
-		31:24	Package	Maximum Ratio Limit for 12C Maximum turbo ratio limit of 12 core active.		
-		39:32	Package	Maximum Ratio Limit for 13C Maximum turbo ratio limit of 13 core active.		
-		47:40	Package	Maximum Ratio Limit for 14C Maximum turbo ratio limit of 14 core active.		
-		55:48	Package	Maximum Ratio Limit for 15C Maximum turbo ratio limit of 15 core active.	
+		7:0	Package	Maximum Ratio Limit for 9C Maximum turbo ratio limit of 9 core active.
+		15:8	Package	Maximum Ratio Limit for 10C Maximum turbo ratio limit of 10 core active.
+		23:16	Package	Maximum Ratio Limit for 11C Maximum turbo ratio limit of 11 core active.
+		31:24	Package	Maximum Ratio Limit for 12C Maximum turbo ratio limit of 12 core active.
+		39:32	Package	Maximum Ratio Limit for 13C Maximum turbo ratio limit of 13 core active.
+		47:40	Package	Maximum Ratio Limit for 14C Maximum turbo ratio limit of 14 core active.
+		55:48	Package	Maximum Ratio Limit for 15C Maximum turbo ratio limit of 15 core active.
 		63:56	Package	Maximum Ratio Limit for16C Maximum turbo ratio limit of 16 core active.
 1AFH	431	MSR_TURBO_RATIO_LIMIT2	Package	Maximum Ratio Limit of Turbo Mode R/O if MSR_PLATFORM_INFO.[28] = 0. R/W if MSR_PLATFORM_INFO.[28] = 1.
 		7:0	Package	Maximum Ratio Limit for 17C Maximum turbo ratio limit of 17 core active.
@@ -64,73 +64,73 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 		62:16	Package	Reserved
 		63	Package	Semaphore for Turbo Ratio Limit Configuration If 1, the processor uses override configuration1 specified in MSR_TURBO_RATIO_LIMIT, MSR_TURBO_RATIO_LIMIT1, and MSR_TURBO_RATIO_LIMIT2. If 0, the processor uses factory-set configuration (Default).
 414H	1044	IA32_MC5_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC5 reports MC errors from the Intel QPI 0 module.
-415H	1045	IA32_MC5_STATUS	Package	
-416H	1046	IA32_MC5_ADDR	Package	
-417H	1047	IA32_MC5_MISC	Package	
+415H	1045	IA32_MC5_STATUS	Package
+416H	1046	IA32_MC5_ADDR	Package
+417H	1047	IA32_MC5_MISC	Package
 418H	1048	IA32_MC6_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC6 reports MC errors from the integrated I/O module.
-419H	1049	IA32_MC6_STATUS	Package	
-41AH	1050	IA32_MC6_ADDR	Package	
-41BH	1051	IA32_MC6_MISC	Package	
+419H	1049	IA32_MC6_STATUS	Package
+41AH	1050	IA32_MC6_ADDR	Package
+41BH	1051	IA32_MC6_MISC	Package
 41CH	1052	IA32_MC7_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC7 reports MC errors from the home agent HA 0.
-41DH	1053	IA32_MC7_STATUS	Package	
-41EH	1054	IA32_MC7_ADDR	Package	
-41FH	1055	IA32_MC7_MISC	Package	
+41DH	1053	IA32_MC7_STATUS	Package
+41EH	1054	IA32_MC7_ADDR	Package
+41FH	1055	IA32_MC7_MISC	Package
 420H	1056	IA32_MC8_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC8 reports MC errors from the home agent HA 1.
-421H	1057	IA32_MC8_STATUS	Package	
-422H	1058	IA32_MC8_ADDR	Package	
-423H	1059	IA32_MC8_MISC	Package	
+421H	1057	IA32_MC8_STATUS	Package
+422H	1058	IA32_MC8_ADDR	Package
+423H	1059	IA32_MC8_MISC	Package
 424H	1060	IA32_MC9_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-425H	1061	IA32_MC9_STATUS	Package	
-426H	1062	IA32_MC9_ADDR	Package	
-427H	1063	IA32_MC9_MISC	Package	
+425H	1061	IA32_MC9_STATUS	Package
+426H	1062	IA32_MC9_ADDR	Package
+427H	1063	IA32_MC9_MISC	Package
 428H	1064	IA32_MC10_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-429H	1065	IA32_MC10_STATUS	Package	
-42AH	1066	IA32_MC10_ADDR	Package	
-42BH	1067	IA32_MC10_MISC	Package	
+429H	1065	IA32_MC10_STATUS	Package
+42AH	1066	IA32_MC10_ADDR	Package
+42BH	1067	IA32_MC10_MISC	Package
 42CH	1068	IA32_MC11_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-42DH	1069	IA32_MC11_STATUS	Package	
-42EH	1070	IA32_MC11_ADDR	Package	
-42FH	1071	IA32_MC11_MISC	Package	
+42DH	1069	IA32_MC11_STATUS	Package
+42EH	1070	IA32_MC11_ADDR	Package
+42FH	1071	IA32_MC11_MISC	Package
 430H	1072	IA32_MC12_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-431H	1073	IA32_MC12_STATUS	Package	
-432H	1074	IA32_MC12_ADDR	Package	
-433H	1075	IA32_MC12_MISC	Package	
+431H	1073	IA32_MC12_STATUS	Package
+432H	1074	IA32_MC12_ADDR	Package
+433H	1075	IA32_MC12_MISC	Package
 434H	1076	IA32_MC13_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-435H	1077	IA32_MC13_STATUS	Package	
-436H	1078	IA32_MC13_ADDR	Package	
-437H	1079	IA32_MC13_MISC	Package	
+435H	1077	IA32_MC13_STATUS	Package
+436H	1078	IA32_MC13_ADDR	Package
+437H	1079	IA32_MC13_MISC	Package
 438H	1080	IA32_MC14_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-439H	1081	IA32_MC14_STATUS	Package	
-43AH	1082	IA32_MC14_ADDR	Package	
-43BH	1083	IA32_MC14_MISC	Package	
+439H	1081	IA32_MC14_STATUS	Package
+43AH	1082	IA32_MC14_ADDR	Package
+43BH	1083	IA32_MC14_MISC	Package
 43CH	1084	IA32_MC15_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-43DH	1085	IA32_MC15_STATUS	Package	
-43EH	1086	IA32_MC15_ADDR	Package	
-43FH	1087	IA32_MC15_MISC	Package	
+43DH	1085	IA32_MC15_STATUS	Package
+43EH	1086	IA32_MC15_ADDR	Package
+43FH	1087	IA32_MC15_MISC	Package
 440H	1088	IA32_MC16_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Banks MC9 through MC 16 report MC errors from each channel of the integrated memory controllers.
-441H	1089	IA32_MC16_STATUS	Package	
-442H	1090	IA32_MC16_ADDR	Package	
-443H	1091	IA32_MC16_MISC	Package	
+441H	1089	IA32_MC16_STATUS	Package
+442H	1090	IA32_MC16_ADDR	Package
+443H	1091	IA32_MC16_MISC	Package
 444H	1092	IA32_MC17_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC17 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo0, CBo3, CBo6, CBo9, CBo12, CBo15.
-445H	1093	IA32_MC17_STATUS	Package	
-446H	1094	IA32_MC17_ADDR	Package	
-447H	1095	IA32_MC17_MISC	Package	
+445H	1093	IA32_MC17_STATUS	Package
+446H	1094	IA32_MC17_ADDR	Package
+447H	1095	IA32_MC17_MISC	Package
 448H	1096	IA32_MC18_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC18 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo1, CBo4, CBo7, CBo10, CBo13, CBo16.
-449H	1097	IA32_MC18_STATUS	Package	
-44AH	1098	IA32_MC18_ADDR	Package	
-44BH	1099	IA32_MC18_MISC	Package	
+449H	1097	IA32_MC18_STATUS	Package
+44AH	1098	IA32_MC18_ADDR	Package
+44BH	1099	IA32_MC18_MISC	Package
 44CH	1100	IA32_MC19_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC19 reports MC errors from the following pair of CBo/L3 Slices (if the pair is present): CBo2, CBo5, CBo8, CBo11, CBo14, CBo17.
-44DH	1101	IA32_MC19_STATUS	Package	
-44EH	1102	IA32_MC19_ADDR	Package	
-44FH	1103	IA32_MC19_MISC	Package	
+44DH	1101	IA32_MC19_STATUS	Package
+44EH	1102	IA32_MC19_ADDR	Package
+44FH	1103	IA32_MC19_MISC	Package
 450H	1104	IA32_MC20_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC20 reports MC errors from the Intel QPI 1 module.
-451H	1105	IA32_MC20_STATUS	Package	
-452H	1106	IA32_MC20_ADDR	Package	
-453H	1107	IA32_MC20_MISC	Package	
+451H	1105	IA32_MC20_STATUS	Package
+452H	1106	IA32_MC20_ADDR	Package
+453H	1107	IA32_MC20_MISC	Package
 454H	1108	IA32_MC21_CTL	Package	See Section 16.3.2.1, “IA32_MCi_CTL MSRs,” through Section 16.3.2.4, “IA32_MCi_MISC MSRs.” Bank MC21 reports MC errors from the Intel QPI 2 module.
-455H	1109	IA32_MC21_STATUS	Package	
-456H	1110	IA32_MC21_ADDR	Package	
-457H	1111	IA32_MC21_MISC	Package	
+455H	1109	IA32_MC21_STATUS	Package
+456H	1110	IA32_MC21_ADDR	Package
+457H	1111	IA32_MC21_MISC	Package
 606H	1542	MSR_RAPL_POWER_UNIT	Package	Unit Multipliers Used in RAPL Interfaces (R/O)
 		3:0	Package	Power Units See Section 15.10.1, “RAPL Interfaces.”
 		7:4	Package	Reserved
@@ -146,8 +146,8 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 61CH	1564	MSR_DRAM_POWER_INFO	Package	DRAM RAPL Parameters (R/W) See Section 15.10.5, “DRAM RAPL Domain.”
 61EH	1566	MSR_PCIE_PLL_RATIO	Package	Configuration of PCIE PLL Relative to BCLK(R/W)
 		1:0	Package	PCIE Ratio (R/W) 00b: Use 5:5 mapping for100MHz operation (default). 01b: Use 5:4 mapping for125MHz operation. 10b: Use 5:3 mapping for166MHz operation. 11b: Use 5:2 mapping for250MHz operation.
-		2	Package	LPLL Select (R/W) If 1, use configured setting of PCIE Ratio.		
-		3	Package	LONG RESET (R/W) If 1, wait an additional time-out before re-locking Gen2/Gen3 PLLs.		
+		2	Package	LPLL Select (R/W) If 1, use configured setting of PCIE Ratio.
+		3	Package	LONG RESET (R/W) If 1, wait an additional time-out before re-locking Gen2/Gen3 PLLs.
 		63:4		Reserved
 620H	1568	MSR UNCORE_RATIO_LIMIT	Package	Uncore Ratio Limit (R/W) Out of reset, the min_ratio and max_ratio fields represent the widest possible range of uncore frequencies. Writing to these fields allows software to control the minimum and the maximum frequency that hardware will select.
 		63:15		Reserved
@@ -156,34 +156,34 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 		6:0		MAX_RATIO This field is used to limit the max ratio of the LLC/Ring.
 639H	1593	MSR_PP0_ENERGY_STATUS	Package	Reserved (R/O) Reads return 0.
 690H	1680	MSR_CORE_PERF_LIMIT_REASONS	Package	Indicator of Frequency Clipping in Processor Cores (R/W) (Frequency refers to processor core frequency.)
-		0		PROCHOT Status (R0) When set, processor core frequency is reduced below the operating system request due to assertion of external PROCHOT.		
-		1		Thermal Status (R0) When set, frequency is reduced below the operating system request due to a thermal event.		
-		2		Power Budget Management Status (R0) When set, frequency is reduced below the operating system request due to PBM limit		
-		3		Platform Configuration Services Status (R0) When set, frequency is reduced below the operating system request due to PCS limit		
+		0		PROCHOT Status (R0) When set, processor core frequency is reduced below the operating system request due to assertion of external PROCHOT.
+		1		Thermal Status (R0) When set, frequency is reduced below the operating system request due to a thermal event.
+		2		Power Budget Management Status (R0) When set, frequency is reduced below the operating system request due to PBM limit
+		3		Platform Configuration Services Status (R0) When set, frequency is reduced below the operating system request due to PCS limit
 		4		Reserved
 		5		Autonomous Utilization-Based Frequency Control Status (R0) When set, frequency is reduced below the operating system request because the processor has detected that utilization is low.
-		6		VR Therm Alert Status (R0) When set, frequency is reduced below the operating system request due to a thermal alert from the Voltage Regulator.		
-		7		Reserved		
-		8		Electrical Design Point Status (R0) When set, frequency is reduced below the operating system request due to electrical design point constraints (e.g., maximum electrical current consumption).		
-		9		Reserved		
-		10		Multi-Core Turbo Status (R0) When set, frequency is reduced below the operating system request due to Multi-Core Turbo limits.		
-		12:11		Reserved		
-		13		Core Frequency P1 Status (R0) When set, frequency is reduced below max non-turbo P1.		
-		14		Core Max N-Core Turbo Frequency Limiting Status (R0) When set, frequency is reduced below max n-core turbo frequency.		
-		15		Core Frequency Limiting Status (R0) When set, frequency is reduced below the operating system request.		
-		16		PROCHOT Log When set, indicates that the PROCHOT Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
-		17		Thermal Log When set, indicates that the Thermal Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		6		VR Therm Alert Status (R0) When set, frequency is reduced below the operating system request due to a thermal alert from the Voltage Regulator.
+		7		Reserved
+		8		Electrical Design Point Status (R0) When set, frequency is reduced below the operating system request due to electrical design point constraints (e.g., maximum electrical current consumption).
+		9		Reserved
+		10		Multi-Core Turbo Status (R0) When set, frequency is reduced below the operating system request due to Multi-Core Turbo limits.
+		12:11		Reserved
+		13		Core Frequency P1 Status (R0) When set, frequency is reduced below max non-turbo P1.
+		14		Core Max N-Core Turbo Frequency Limiting Status (R0) When set, frequency is reduced below max n-core turbo frequency.
+		15		Core Frequency Limiting Status (R0) When set, frequency is reduced below the operating system request.
+		16		PROCHOT Log When set, indicates that the PROCHOT Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		17		Thermal Log When set, indicates that the Thermal Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
 		18		Power Budget Management Log When set, indicates that the PBM Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
 		19		Platform Configuration Services Log When set, indicates that the PCS Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
-		20		Reserved		
-		21		Autonomous Utilization-Based Frequency Control Log When set, indicates that the AUBFC Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
-		22		VR Therm Alert Log When set, indicates that the VR Therm Alert Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
-		23		Reserved		
-		24		Electrical Design Point Log When set, indicates that the EDP Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
-		25		Reserved		
-		26		Multi-Core Turbo Log When set, indicates that the Multi-Core Turbo Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
-		28:27		Reserved		
-		29		Core Frequency P1 Log When set, indicates that the Core Frequency P1 Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.		
+		20		Reserved
+		21		Autonomous Utilization-Based Frequency Control Log When set, indicates that the AUBFC Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		22		VR Therm Alert Log When set, indicates that the VR Therm Alert Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		23		Reserved
+		24		Electrical Design Point Log When set, indicates that the EDP Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		25		Reserved
+		26		Multi-Core Turbo Log When set, indicates that the Multi-Core Turbo Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
+		28:27		Reserved
+		29		Core Frequency P1 Log When set, indicates that the Core Frequency P1 Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
 		30		Core Max N-Core Turbo Frequency Limiting Log When set, indicates that the Core Max n-core Turbo Frequency Limiting Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
 		31		Core Frequency Limiting Log When set, indicates that the Core Frequency Limiting Status bit has asserted since the log bit was last cleared. This log bit will remain set until cleared by software writing 0.
 		63:32		Reserved
@@ -197,5 +197,5 @@ C8EH	3214	IA32_QM_CTR	THREAD	Monitoring Counter Register (R/O) If CPUID.(EAX=07H
 		62		Unavailable: If 1, indicates data for this RMID is not available or not monitored for this resource or RMID.
 		63		Error: If 1, indicates an unsupported RMID or event type was written to IA32_PQR_QM_EVTSEL.
 C8FH	3215	IA32_PQR_ASSOC	THREAD	Resource Association Register (R/W)
-		9:0		RMID		
-		63: 10		Reserved	
+		9:0		RMID
+		63: 10		Reserved

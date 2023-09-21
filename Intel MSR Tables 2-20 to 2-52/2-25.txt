@@ -1,57 +1,57 @@
 CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management and other model specific features enumeration. See http://biosbits.org.
-		7:0		Reserved		
-		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.		
-		27:16		Reserved		
-		28	Package	Programmable Ratio Limit for Turbo Mode (R/O) When set to 1, indicates that Programmable Ratio Limit for Turbo mode is enabled. When set to 0, indicates Programmable Ratio Limit for Turbo mode is disabled.	
+		7:0		Reserved
+		15:8	Package	Maximum Non-Turbo Ratio (R/O) This is the ratio of the frequency that invariant TSC runs at. Frequency = ratio * 100 MHz.
+		27:16		Reserved
+		28	Package	Programmable Ratio Limit for Turbo Mode (R/O) When set to 1, indicates that Programmable Ratio Limit for Turbo mode is enabled. When set to 0, indicates Programmable Ratio Limit for Turbo mode is disabled.
 		29	Package	Programmable TDP Limit for Turbo Mode (R/O) When set to 1, indicates that TDP Limit for Turbo mode is programmable. When set to 0, indicates that TDP Limit for Turbo mode is not programmable.
-		31:30		Reserved		
-		32	Package	Low Power Mode Support (LPM) (R/O) When set to 1, indicates that LPM is supported. When set to 0, indicates LPM is not supported.		
-		34:33	Package	Number of ConfigTDP Levels (R/O) 00: Only Base TDP level available. 01: One additional TDP level available. 02: Two additional TDP level available. 03: Reserved		
-		39:35		Reserved		
-		47:40	Package	Maximum Efficiency Ratio (R/O) This is the minimum ratio (maximum efficiency) that the processor can operate, in units of 100MHz.		
-		55:48	Package	Minimum Operating Ratio (R/O) Contains the minimum supported operating ratio in units of 100 MHz.		
+		31:30		Reserved
+		32	Package	Low Power Mode Support (LPM) (R/O) When set to 1, indicates that LPM is supported. When set to 0, indicates LPM is not supported.
+		34:33	Package	Number of ConfigTDP Levels (R/O) 00: Only Base TDP level available. 01: One additional TDP level available. 02: Two additional TDP level available. 03: Reserved
+		39:35		Reserved
+		47:40	Package	Maximum Efficiency Ratio (R/O) This is the minimum ratio (maximum efficiency) that the processor can operate, in units of 100MHz.
+		55:48	Package	Minimum Operating Ratio (R/O) Contains the minimum supported operating ratio in units of 100 MHz.
 		63:56		Reserved
 E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States. See http://biosbits.org.
-		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C- state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit. Note: This field cannot be used to limit package C- state to C3.		
+		2:0		Package C-State Limit (R/W) Specifies the lowest processor-specific C-state code name (consuming the least power) for the package. The default is set as factory-configured package C- state limit. The following C-state code name encodings are supported: 000b: C0/C1 (no package C-sate support) 001b: C2 010b: C6 no retention 011b: C6 retention 100b: C7 101b: C7s 111: No package C-state limit. Note: This field cannot be used to limit package C- state to C3.
 		9:3		Reserved
-		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.		
-		14:11		Reserved		
-		15		CFG Lock (R/WO) When set, locks bits 15:0 of this register until next reset.		
-		24:16		Reserved		
-		25		C3 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C6/C7 requests to C3 based on uncore auto-demote information.		
-		26		C1 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C3/C6/C7 requests to C1 based on uncore auto- demote information.		
-		27		Enable C3 Undemotion (R/W) When set, enables undemotion from demoted C3.		
-		28		Enable C1 Undemotion (R/W) When set, enables undemotion from demoted C1.		
+		10		I/O MWAIT Redirection Enable (R/W) When set, will map IO_read instructions sent to IO register specified by MSR_PMG_IO_CAPTURE_BASE to MWAIT instructions.
+		14:11		Reserved
+		15		CFG Lock (R/WO) When set, locks bits 15:0 of this register until next reset.
+		24:16		Reserved
+		25		C3 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C6/C7 requests to C3 based on uncore auto-demote information.
+		26		C1 State Auto Demotion Enable (R/W) When set, the processor will conditionally demote C3/C6/C7 requests to C1 based on uncore auto- demote information.
+		27		Enable C3 Undemotion (R/W) When set, enables undemotion from demoted C3.
+		28		Enable C1 Undemotion (R/W) When set, enables undemotion from demoted C1.
 		63:29		Reserved
 639H	1593	MSR_PP0_ENERGY_STATUS	Package	PP0 Energy Status (R/O) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
 648H	1608	MSR_CONFIG_TDP_NOMINAL	Package	Base TDP Ratio (R/O)
-		7:0		Config_TDP_Base Base TDP level ratio to be used for this specific processor (in units of 100 MHz).	
+		7:0		Config_TDP_Base Base TDP level ratio to be used for this specific processor (in units of 100 MHz).
 		63:8		Reserved
 649H	1609	MSR_CONFIG_TDP_LEVEL1	Package	ConfigTDP Level 1 ratio and power level (R/O)
-		14:0		PKG_TDP_LVL1 Power setting for ConfigTDP Level 1.		
-		15		Reserved		
-		23:16		Config_TDP_LVL1_Ratio ConfigTDP level 1 ratio to be used for this specific processor.		
-		31:24		Reserved		
+		14:0		PKG_TDP_LVL1 Power setting for ConfigTDP Level 1.
+		15		Reserved
+		23:16		Config_TDP_LVL1_Ratio ConfigTDP level 1 ratio to be used for this specific processor.
+		31:24		Reserved
 		46:32		PKG_MAX_PWR_LVL1 Max Power setting allowed for ConfigTDP Level 1.
 		47		Reserved
-		62:48		PKG_MIN_PWR_LVL1 MIN Power setting allowed for ConfigTDP Level 1.	
+		62:48		PKG_MIN_PWR_LVL1 MIN Power setting allowed for ConfigTDP Level 1.
 		63		Reserved
 64AH	1610	MSR_CONFIG_TDP_LEVEL2	Package	ConfigTDP Level 2 ratio and power level (R/O)
-		14:0		PKG_TDP_LVL2 Power setting for ConfigTDP Level 2.	
-		15		Reserved	
-		23:16		Config_TDP_LVL2_Ratio ConfigTDP level 2 ratio to be used for this specific processor.	
-		31:24		Reserved	
-		46:32		PKG_MAX_PWR_LVL2 Max Power setting allowed for ConfigTDP Level 2.	
-		47		Reserved	
-		62:48		PKG_MIN_PWR_LVL2 MIN Power setting allowed for ConfigTDP Level 2.	
+		14:0		PKG_TDP_LVL2 Power setting for ConfigTDP Level 2.
+		15		Reserved
+		23:16		Config_TDP_LVL2_Ratio ConfigTDP level 2 ratio to be used for this specific processor.
+		31:24		Reserved
+		46:32		PKG_MAX_PWR_LVL2 Max Power setting allowed for ConfigTDP Level 2.
+		47		Reserved
+		62:48		PKG_MIN_PWR_LVL2 MIN Power setting allowed for ConfigTDP Level 2.
 		63		Reserved
 64BH	1611	MSR_CONFIG_TDP_CONTROL	Package	ConfigTDP Control (R/W)
-		1:0		TDP_LEVEL (RW/L) System BIOS can program this field.	
-		30:2		Reserved.	
-		31		Config_TDP_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.	
+		1:0		TDP_LEVEL (RW/L) System BIOS can program this field.
+		30:2		Reserved.
+		31		Config_TDP_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.
 		63:32		Reserved
 64CH	1612	MSR_TURBO_ACTIVATION_RATIO	Package	ConfigTDP Control (R/W)
-		7:0		MAX_NON_TURBO_RATIO (RW/L) System BIOS can program this field.		
-		30:8		Reserved		
-		31		TURBO_ACTIVATION_RATIO_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.		
+		7:0		MAX_NON_TURBO_RATIO (RW/L) System BIOS can program this field.
+		30:8		Reserved
+		31		TURBO_ACTIVATION_RATIO_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.
 		63:32		Reserved

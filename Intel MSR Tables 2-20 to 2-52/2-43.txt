@@ -3,10 +3,10 @@
 		20		Enable overflow propagation.
 		21		Reserved
 		22		Enable counting.
-		63:23	Reserved	
+		63:23	Reserved
 395H	917	MSR_UNC_PERF_FIXED_CTR	Package	Uncore Fixed Counter
 		47:0		Current count.
-		63:48		Reserved	
+		63:48		Reserved
 396H	918	MSR_UNC_CBO_CONFIG	Package	Uncore C-Box Configuration Information (R/O)
 		3:0		Report the number of C-Box units with performance counters, including processor cores and processor graphics.
 		63:4		Reserved
@@ -58,8 +58,8 @@ E01H	3585	MSR_UNC_PERF_GLOBAL_CTRL	Package	Uncore PMU Global Control
 		31		Enable Freezing counter when overflow.
 		63:32		Reserved
 E02H	3586	MSR_UNC_PERF_GLOBAL_STATUS	Package	Uncore PMU Main Status
-		0		Fixed counter overflowed.		
-		1		An ARB counter overflowed.		
-		2		Reserved		
-		3		A CBox counter overflowed (on any slice).		
+		0		Fixed counter overflowed.
+		1		An ARB counter overflowed.
+		2		Reserved
+		3		A CBox counter overflowed (on any slice).
 		63:4		Reserved

@@ -1,5 +1,5 @@
 396H	918	MSR_UNC_CBO_CONFIG	Package	Uncore C-Box Configuration Information (R/O)
-		3:0		Specifies the number of C-Box units with programmable counters (including processor cores and processor graphics).		
+		3:0		Specifies the number of C-Box units with programmable counters (including processor cores and processor graphics).
 		63:4		Reserved
 2000H	8192	MSR_UNC_CBO_0_PERFEVTSEL0	Package	Uncore C-Box 0, Counter 0 Event Select MSR
 2001H	8193	MSR_UNC_CBO_0_PERFEVTSEL1	Package	Uncore C-Box 0, Counter 1 Event Select MSR
@@ -54,28 +54,28 @@
 2FDCH	12252	MSR_UNC_ARB_1_PERF_STATUS	Package	Uncore Arb Unit 1, Performance Status
 2FDDH	12253	MSR_UNC_ARB_1_PERF_CTRL	Package	Uncore Arb Unit 1, Performance Control
 2FDEH	12254	MSR_UNC_PERF_FIXED_CTRL	Package	Uncore Fixed Counter Control (R/W)
-		19:0		Reserved	
-		20		Enable overflow propagation.	
-		21		Reserved	
-		22		Enable counting.	
+		19:0		Reserved
+		20		Enable overflow propagation.
+		21		Reserved
+		22		Enable counting.
 		63:23		Reserved
 2FDFH	12255	MSR_UNC_PERF_FIXED_CTR	Package	Uncore Fixed Counter
-		43:0		Current count.	
+		43:0		Current count.
 		63:44		Reserved
 2FF0H	12272	MSR_UNC_PERF_GLOBAL_CTRL	Package	Uncore PMU Global Control
-		0		Slice 0 select.	
-		1		Slice 1 select.	
-		2		Slice 2 select.	
-		3		Slice 3 select.	
-		4		Slice 4 select.	
-		18:5		Reserved	
-		29		Enable all uncore counters.	
-		30		Enable wake on PMI.	
-		31		Enable Freezing counter when overflow.	
-		63:32		Reserved	
+		0		Slice 0 select.
+		1		Slice 1 select.
+		2		Slice 2 select.
+		3		Slice 3 select.
+		4		Slice 4 select.
+		18:5		Reserved
+		29		Enable all uncore counters.
+		30		Enable wake on PMI.
+		31		Enable Freezing counter when overflow.
+		63:32		Reserved
 2FF2H	12274	MSR_UNC_PERF_GLOBAL_STATUS	Package	Uncore PMU Main Status
-		0		Fixed counter overflowed.		
-		1		An ARB counter overflowed.		
+		0		Fixed counter overflowed.
+		1		An ARB counter overflowed.
 		2		Reserved
 		3		A CBox counter overflowed (on any slice).
 		63:4		Reserved

@@ -1,39 +1,39 @@
 3AH	58	IA32_FEATURE_CONTROL	Thread	Control Features in Intel 64 Processor (R/W) See Table 2-2.
-		0		Lock (R/WL)		
-		1		Enable VMX Inside SMX Operation (R/WL)		
-		2		Enable VMX Outside SMX Operation (R/WL)		
-		14:8		SENTER Local Functions Enables (R/WL)		
+		0		Lock (R/WL)
+		1		Enable VMX Inside SMX Operation (R/WL)
+		2		Enable VMX Outside SMX Operation (R/WL)
+		14:8		SENTER Local Functions Enables (R/WL)
 		15		SENTER Global Functions Enable (R/WL)
 		17		SGX Launch Control Enable (R/WL) This bit must be set to enable runtime reconfiguration of SGX Launch Control via IA32_SGXLEPUBKEYHASHn MSR. Available only if CPUID.(EAX=07H, ECX=0H): ECX[30] = 1.
 		18		SGX Global Functions Enable (R/WL)
 		63:21		Reserved
 350H	848	MSR_BR_DETECT_CTRL		Branch Monitoring Global Control (R/W)
-		0		EnMonitoring Global enable for branch monitoring.		
-		1		EnExcept Enable branch monitoring event signaling on threshold trip. The branch monitoring event handler is signaled via the existing PMI signaling mechanism as programmed from the corresponding local APIC LVT entry.		
-		2		EnLBRFrz Enable LBR freeze on threshold trip. This will cause the LBR frozen bit 58 to be set in IA32_PERF_GLOBAL_STATUS when a triggering condition occurs and this bit is enabled.		
-		3		DisableInGuest When set to ‘1’, branch monitoring, event triggering and LBR freeze actions are disabled when operating at VMX non-root operation.		
-		7:4		Reserved		
-		17:8		WindowSize Window size defined by WindowCntSel. Values 0 – 1023 are supported. Once the Window counter reaches the WindowSize count both the Window Counter and all Branch Monitoring Counters are cleared.		
-		23:18		Reserved		
+		0		EnMonitoring Global enable for branch monitoring.
+		1		EnExcept Enable branch monitoring event signaling on threshold trip. The branch monitoring event handler is signaled via the existing PMI signaling mechanism as programmed from the corresponding local APIC LVT entry.
+		2		EnLBRFrz Enable LBR freeze on threshold trip. This will cause the LBR frozen bit 58 to be set in IA32_PERF_GLOBAL_STATUS when a triggering condition occurs and this bit is enabled.
+		3		DisableInGuest When set to ‘1’, branch monitoring, event triggering and LBR freeze actions are disabled when operating at VMX non-root operation.
+		7:4		Reserved
+		17:8		WindowSize Window size defined by WindowCntSel. Values 0 – 1023 are supported. Once the Window counter reaches the WindowSize count both the Window Counter and all Branch Monitoring Counters are cleared.
+		23:18		Reserved
 		25:24		WindowCntSel Window event count select: ‘00 = Instructions retired. ‘01 = Branch instructions retired ‘10 = Return instructions retired. ‘11 = Indirect branch instructions retired.
 		26		CntAndMode When set to ‘1’, the overall branch monitoring event triggering condition is true only if all enabled counters’ threshold conditions are true. When ‘0’, the threshold tripping condition is true if any enabled counters’ threshold is true.
 		63:27		Reserved
 351H	849	MSR_BR_DETECT_STATUS		Branch Monitoring Global Status (R/W)
-		0		Branch Monitoring Event Signaled When set to '1', Branch Monitoring event signaling is blocked until this bit is cleared by software.		
-		1		LBRsValid This status bit is set to ‘1’ if the LBR state is considered valid for sampling by branch monitoring software.		
-		7:2		Reserved		
-		8		CntrHit0 Branch monitoring counter #0 threshold hit. This status bit is sticky and once set requires clearing by software. Counter operation continues independent of the state of the bit.		
-		9		CntrHit1 Branch monitoring counter #1 threshold hit. This status bit is sticky and once set requires clearing by software. Counter operation continues independent of the state of the bit.		
-		15:10		Reserved Reserved for additional branch monitoring counters threshold hit status.		
-		25:16		CountWindow The current value of the window counter. The count value is frozen on a valid branch monitoring triggering condition. This is a 10-bit unsigned value.		
-		31:26		Reserved Reserved for future extension of CountWindow.		
+		0		Branch Monitoring Event Signaled When set to '1', Branch Monitoring event signaling is blocked until this bit is cleared by software.
+		1		LBRsValid This status bit is set to ‘1’ if the LBR state is considered valid for sampling by branch monitoring software.
+		7:2		Reserved
+		8		CntrHit0 Branch monitoring counter #0 threshold hit. This status bit is sticky and once set requires clearing by software. Counter operation continues independent of the state of the bit.
+		9		CntrHit1 Branch monitoring counter #1 threshold hit. This status bit is sticky and once set requires clearing by software. Counter operation continues independent of the state of the bit.
+		15:10		Reserved Reserved for additional branch monitoring counters threshold hit status.
+		25:16		CountWindow The current value of the window counter. The count value is frozen on a valid branch monitoring triggering condition. This is a 10-bit unsigned value.
+		31:26		Reserved Reserved for future extension of CountWindow.
 		39:32		Count0 The current value of counter 0 updated after each occurrence of the event being counted. The count value is frozen on a valid branch monitoring triggering condition (in which case CntrHit0 will also be set). This is an 8-bit signed value (2’s complement). Heuristic events which only increment will saturate and freeze at maximum value 0xFF (256). RET-CALL event counter saturate at maximum value 0x7F (+127) and minimum value 0x80 (-128).
-		47:40		Count1 The current value of counter 1 updated after each occurrence of the event being counted. The count value is frozen on a valid branch monitoring triggering condition (in which case CntrHit1 will also be set). This is an 8-bit signed value (2’s complement). Heuristic events which only increment will saturate and freeze at maximum value 0xFF (256). RET-CALL event counter saturate at maximum value 0x7F (+127) and minimum value 0x80 (-128).	
+		47:40		Count1 The current value of counter 1 updated after each occurrence of the event being counted. The count value is frozen on a valid branch monitoring triggering condition (in which case CntrHit1 will also be set). This is an 8-bit signed value (2’s complement). Heuristic events which only increment will saturate and freeze at maximum value 0xFF (256). RET-CALL event counter saturate at maximum value 0x7F (+127) and minimum value 0x80 (-128).
 		63:48		Reserved
 354H - 355H	852 - 853	MSR_BR_DETECT_COUNTER_CONFIG_i		Branch Monitoring Detect Counter Configuration (R/W)
-		0		CntrEn Enable counter.		
-		7:1		CntrEvSel Event select (other values #GP) ‘0000000 = RETs. ‘0000001 = RET-CALL bias. ‘0000010 = RET mispredicts. ‘0000011 = Branch (all) mispredicts. ‘0000100 = Indirect branch mispredicts. ‘0000101 = Far branch instructions.		
-		14:8		CntrThreshold Threshold (an unsigned value of 0 to 127 supported). The value 0 of counter threshold will result in event signaled after every instruction. #GP if threshold is < 2.	
+		0		CntrEn Enable counter.
+		7:1		CntrEvSel Event select (other values #GP) ‘0000000 = RETs. ‘0000001 = RET-CALL bias. ‘0000010 = RET mispredicts. ‘0000011 = Branch (all) mispredicts. ‘0000100 = Indirect branch mispredicts. ‘0000101 = Far branch instructions.
+		14:8		CntrThreshold Threshold (an unsigned value of 0 to 127 supported). The value 0 of counter threshold will result in event signaled after every instruction. #GP if threshold is < 2.
 		15		MispredEventCnt Mispredict events counting behavior: ‘0 = Mispredict events are counted in a window. ‘1 = Mispredict events are counted based on a consecutive occurrence. CntrThreshold is treated as # of consecutive mispredicts. This control bit only applies to events specified by CntrEvSel that involve a prediction (0000010, 0000011, 0000100). Setting this bit for other events is ignored.
 		63:16		Reserved
 3F8H	1016	MSR_PKG_C3_RESIDENCY	Package	Package C3 Residency Counter (R/O)
@@ -46,4 +46,4 @@
 660H	1632	MSR_CORE_C1_RESIDENCY	Core	Core C1 Residency Counter (R/O)
 		63:0		Value since last reset for the Core C1 residency. Counter rate is the Max Non-Turbo frequency (same as TSC). This counter counts in case both of the core's threads are in an idle state and at least one of the core's thread residency is in a C1 state or in one of its sub states. The counter is updated only after a core C state exit. Note: Always reads 0 if core C1 is unsupported. A value of zero indicates that this processor does not support core C1 or never entered core C1 level state.
 662H	1634	MSR_CORE_C3_RESIDENCY	Core	Core C3 Residency Counter (R/O)
-		63:0		Will always return 0.	
+		63:0		Will always return 0.

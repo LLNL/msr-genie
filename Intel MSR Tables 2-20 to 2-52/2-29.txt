@@ -22,39 +22,39 @@ CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management
 189H	393	IA32_PERFEVTSEL3	Thread	Performance Event Select for Counter 3 (R/W) Supports all fields described inTable 2-2 and the fields below.
 		32		IN_TX: See Section 20.3.6.5.1 When IN_TX (bit 32) is set, AnyThread (bit 21) should be cleared to prevent incorrect results.
 1C8H	456	MSR_LBR_SELECT	Thread	Last Branch Record Filtering Select Register (R/W)
-		0		CPL_EQ_0		
-		1		CPL_NEQ_0		
-		2		JCC		
-		3		NEAR_REL_CALL		
-		4		NEAR_IND_CALL		
-		5		NEAR_RET		
-		6		NEAR_IND_JMP		
-		7		NEAR_REL_JMP		
-		8		FAR_BRANCH		
-		9		EN_CALL_STACK	
+		0		CPL_EQ_0
+		1		CPL_NEQ_0
+		2		JCC
+		3		NEAR_REL_CALL
+		4		NEAR_IND_CALL
+		5		NEAR_RET
+		6		NEAR_IND_JMP
+		7		NEAR_REL_JMP
+		8		FAR_BRANCH
+		9		EN_CALL_STACK
 		63:9		Reserved
 1D9H	473	IA32_DEBUGCTL	Thread	Debug Control (R/W) See Table 2-2.
-		0		LBR: Last Branch Record	
-		1		BTF	
-		5:2		Reserved	
-		6		TR: Branch Trace	
-		7		BTS: Log Branch Trace Message to BTS Buffer	
-		8		BTINT	
-		9		BTS_OFF_OS	
-		10		BTS_OFF_USER	
-		11		FREEZE_LBR_ON_PMI	
-		12		FREEZE_PERFMON_ON_PMI	
-		13		ENABLE_UNCORE_PMI	
-		14		FREEZE_WHILE_SMM	
-		15		RTM_DEBUG	
+		0		LBR: Last Branch Record
+		1		BTF
+		5:2		Reserved
+		6		TR: Branch Trace
+		7		BTS: Log Branch Trace Message to BTS Buffer
+		8		BTINT
+		9		BTS_OFF_OS
+		10		BTS_OFF_USER
+		11		FREEZE_LBR_ON_PMI
+		12		FREEZE_PERFMON_ON_PMI
+		13		ENABLE_UNCORE_PMI
+		14		FREEZE_WHILE_SMM
+		15		RTM_DEBUG
 		63:15		Reserved
 491H	1169	IA32_VMX_VMFUNC	Thread	Capability Reporting Register of VM-Function Controls (R/O) See Table 2-2.
 60BH	1548	MSR_PKGC_IRTL1	Package	Package C6/C7 Interrupt Response Limit 1 (R/W) This MSR defines the interrupt response time limit used by the processor to manage a transition to a package C6 or C7 state. The latency programmed in this register is for the shorter-latency sub C-states used by an MWAIT hint to a C6 or C7 state. Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
-		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C6 or C7 state.		
-		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. See Table 2-20 for supported time unit encodings.		
-		14:13		Reserved	
+		9:0		Interrupt Response Time Limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C6 or C7 state.
+		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. See Table 2-20 for supported time unit encodings.
+		14:13		Reserved
 		15		Valid (R/W) Indicates whether the values in bits 12:0 are valid and can be used by the processor for package C-sate management.
-		63:16		Reserved	
+		63:16		Reserved
 60CH	1548	MSR_PKGC_IRTL2	Package	Package C6/C7 Interrupt Response Limit 2 (R/W) This MSR defines the interrupt response time limit used by the processor to manage a transition to a package C6 or C7 state. The latency programmed in this register is for the longer-latency sub C-states used by an MWAIT hint to a C6 or C7 state. Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
 		9:0		Interrupt response time limit (R/W) Specifies the limit that should be used to decide if the package should be put into a package C6 or C7 state.
 		12:10		Time Unit (R/W) Specifies the encoding value of time unit of the interrupt response time limit. See Table 2-20 for supported time unit encodings.
@@ -68,7 +68,7 @@ CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management
 		7:0		Config_TDP_Base Base TDP level ratio to be used for this specific processor (in units of 100 MHz).
 		63:8		Reserved
 649H	1609	MSR_CONFIG_TDP_LEVEL1	Package	ConfigTDP Level 1 Ratio and Power Level (R/O)
-		14:0		PKG_TDP_LVL1 Power setting for ConfigTDP Level 1.	
+		14:0		PKG_TDP_LVL1 Power setting for ConfigTDP Level 1.
 		15		Reserved
 		23:16		Config_TDP_LVL1_Ratio ConfigTDP level 1 ratio to be used for this specific processor.
 		31:24		Reserved
@@ -82,15 +82,15 @@ CEH	206	MSR_PLATFORM_INFO	Package	Platform Information Contains power management
 		31:24		Reserved
 		46:32		PKG_MAX_PWR_LVL2 Max Power setting allowed for ConfigTDP Level 2.
 		62:47		PKG_MIN_PWR_LVL2 MIN Power setting allowed for ConfigTDP Level 2.
-		63		Reserved	
+		63		Reserved
 64BH	1611	MSR_CONFIG_TDP_CONTROL	Package	ConfigTDP Control (R/W)
 		1:0		TDP_LEVEL (RW/L) System BIOS can program this field.
 		30:2		Reserved
 		31		Config_TDP_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.
 		63:32		Reserved
 64CH	1612	MSR_TURBO_ACTIVATION_RATIO	Package	ConfigTDP Control (R/W)
-		7:0		MAX_NON_TURBO_RATIO (RW/L) System BIOS can program this field.		
-		30:8		Reserved		
+		7:0		MAX_NON_TURBO_RATIO (RW/L) System BIOS can program this field.
+		30:8		Reserved
 		31		TURBO_ACTIVATION_RATIO_Lock (RW/L) When this bit is set, the content of this register is locked until a reset.
 		63:32		Reserved
 C80H	3200	IA32_DEBUG_INTERFACE	Package	Silicon Debug Feature Control (R/W) See Table 2-2.
