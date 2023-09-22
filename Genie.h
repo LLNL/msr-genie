@@ -385,6 +385,8 @@ class GenieDataStore
 					std::ostringstream converter;
 					converter << "0x" << std::uppercase << std::setfill('0') << std::setw(16) << std::hex << sum;
 					ret[1] = converter.str();
+				} else if (sum == 0) {
+					ret[1] = "0xFFFFFFFFFFFFFFFF";
 				}
 
 				break;
