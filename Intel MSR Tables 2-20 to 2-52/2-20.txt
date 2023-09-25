@@ -118,7 +118,7 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 		34	Thread	XD Bit Disable (R/W) See Table 2-2.
 		37:35		Reserved
 		38	Package	Turbo Mode Disable (R/W) When set to 1 on processors that support Intel Turbo Boost Technology, the turbo mode feature is disabled and the IDA_Enable feature flag will be clear (CPUID.06H: EAX[1]=0). When set to a 0 on processors that support IDA, CPUID.06H: EAX[1] reports the processor’s support of turbo mode is enabled. Note: The power-on default value is used by BIOS to detect hardware support of turbo mode. If the power- on default value is 1, turbo mode is available in the processor. If the power-on default value is 0, turbo mode is not available.
-		63:39	Reserved
+		63:39		Reserved
 1A2H	418	MSR_TEMPERATURE_TARGET	Unique	Temperature Target
 		15:0		Reserved
 		23:16		Temperature Target (R) The minimum temperature at which PROCHOT# will be asserted. The value is degrees C.

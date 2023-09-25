@@ -3,7 +3,7 @@
 		20		Enable overflow propagation.
 		21		Reserved
 		22		Enable counting.
-		63:23	Reserved
+		63:23		Reserved
 395H	917	MSR_UNC_PERF_FIXED_CTR	Package	Uncore Fixed Counter
 		47:0		Current count.
 		63:48		Reserved
