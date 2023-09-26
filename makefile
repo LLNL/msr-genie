@@ -5,3 +5,4 @@ all:
 clean:
 	$(RM) GenieCLI
 	$(RM) GenieInterface
+

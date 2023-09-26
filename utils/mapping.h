@@ -101,7 +101,6 @@ namespace utils {
 			return getMapping(tables);
 		} 
 
-
 		//mask returns 0 for non numerical range
 		uint64_t MASK(std::string range_string) {
 			std::vector<int> range;
