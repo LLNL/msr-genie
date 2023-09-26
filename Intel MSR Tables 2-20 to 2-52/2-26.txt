@@ -1,7 +1,5 @@
 4EH	78	IA32_PPIN_CTL (MSR_PPIN_CTL)	Package	Protected Processor Inventory Number Enable Control (R/W)
 		0		LockOut (R/WO) See Table 2-2.
-4EH	78	IA32_PPIN_CTL (MSR_PPIN_CTL)	Package	Protected Processor Inventory Number Enable Control (R/W)
-		0		LockOut (R/WO) See Table 2-2.
 		1		Enable_PPIN (R/W) See Table 2-2.
 		63:2		Reserved
 4FH	79	IA32_PPIN (MSR_PPIN)	Package	Protected Processor Inventory Number (R/O)

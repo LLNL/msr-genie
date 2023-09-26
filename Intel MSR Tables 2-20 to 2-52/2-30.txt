@@ -53,20 +53,6 @@ E2H	226	MSR_PKG_CST_CONFIG_CONTROL	Core	C-State Configuration Control (R/W) Note
 3B1H	947	MSR_UNC_ARB_PERFCTR1	Package	Uncore Arb Unit, Performance Counter 1
 3B2H	944	MSR_UNC_ARB_PERFEVTSEL0	Package	Uncore Arb Unit, Counter 0 Event Select MSR
 3B3H	945	MSR_UNC_ARB_PERFEVTSEL1	Package	Uncore Arb Unit, Counter 1 Event Select MSR
-391H	913	MSR_UNC_PERF_GLOBAL_CTRL	Package	Uncore PMU Global Control
-		0		Core 0 select.
-		1		Core 1 select.
-		2		Core 2 select.
-		3		Core 3 select.
-		18:4		Reserved
-		29		Enable all uncore counters.
-		30		Enable wake on PMI.
-		31		Enable Freezing counter when overflow.
-		63:32		Reserved
-395H	917	MSR_UNC_PERF_FIXED_CTR	Package	Uncore Fixed Counter
-		47:0		Current count.
-		63:48		Reserved
-3B3H	945	MSR_UNC_ARB_PERFEVTSEL1	Package	Uncore Arb Unit, Counter 1 Event Select MSR
 4E0H	1248	MSR_SMM_FEATURE_CONTROL	Package	Enhanced SMM Feature Control (SMM-RW) Reports SMM capability Enhancement. Accessible only while in SMM.
 		0		Lock (SMM-RWO) When set to ‘1’ locks this register from further changes.
 		1		Reserved

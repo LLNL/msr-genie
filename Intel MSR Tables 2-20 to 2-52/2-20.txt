@@ -71,11 +71,11 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 18BH	395	IA32_PERFEVTSEL5	Core	See Table 2-2. If CPUID.0AH:EAX[15:8] > 5.
 18CH	396	IA32_PERFEVTSEL6	Core	See Table 2-2. If CPUID.0AH:EAX[15:8] > 6.
 18DH	397	IA32_PERFEVTSEL7	Core	See Table 2-2. If CPUID.0AH:EAX[15:8] > 7.
-198H	408	IA32_PERF_STATUS	Package	See Table 2-2.
+198H	408	IA32_PERF_STATUS & MSR_PERF_STATUS	Package	See Table 2-2. (This MSR entry is the result of a merger of duplicate entries in table 2-20 of the Intel SDM Vol.4. Please see errata for details)
 		15:0		Current Performance State Value
-		63:16		Reserved
-198H	408	MSR_PERF_STATUS	Package	Performance Status
+		31:16		Reserved
 		47:32		Core Voltage (R/O) P-state core voltage can be computed by MSR_PERF_STATUS[37:32] * (float) 1/(2^13).
+		63:48		Reserved
 199H	409	IA32_PERF_CTL	Thread	See Table 2-2.
 19AH	410	IA32_CLOCK_MODULATION	Thread	Clock Modulation (R/W) See Table 2-2. IA32_CLOCK_MODULATION MSR was originally named IA32_THERM_CONTROL MSR.
 		3:0		On demand Clock Modulation Duty Cycle (R/W) In 6.25% increment.

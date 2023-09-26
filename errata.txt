@@ -1,0 +1,22 @@
+Intel MSR data sourced from Intel SDM Vol.4 335592-079US March 2023i
+
+198H:
+
+	This MSR appears twice in table 2-20 (Also, 2-3, 2-4 and others). In table 2-20 it 
+	appears both as MSR_PERF_STATUS and IA32_PERF_STATUS, respectively. The former
+	lists bit 15:0 as containing the "Current Performance State Value" with the remainder 
+	of the bits reserved. The latter only lists bits 47:32 as "Core Voltage (R/O)", but
+	the notes states that computing the core voltage requires bit 37:32. Until we recieve 
+	further clarification, we will treat the two entries as the same register with useful
+	bitfields 15:0 and 47:32.
+
+4EH:
+
+	This MSR appears twice in table 2-26, it appears to be updated to include definitions 
+	for bits 1 and bits 63:2. We will use the updated definition.
+
+391H, 395H, 3B3H:
+
+	All three (3) MSRs appear twice in table 2-30. All duplicate entries are identical,
+	we have removed the duplicate entries since no additional or conflicting data is 
+	provided.
