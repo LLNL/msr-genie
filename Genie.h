@@ -30,8 +30,7 @@ class MSR
 		struct MSRBitFields
 		{
 			std::string values;
-			std::string
-			function;
+			std::string function;
 			std::string description;
 			MSRBitFields(std::vector<std::string > &input): values(input[0]),
 				function(input[1]), description(input[2]) {}
@@ -39,7 +38,6 @@ class MSR
 			void updateValues(std::vector<std::string > &input)
 			{
 				values = input[0];
-
 				function = input[1];
 				description = input[2];
 			}
@@ -348,7 +346,7 @@ class GenieDataStore
 				auto msr = table[msr_hex];
 				auto bitfield_vector = msr->getBitfields();	// return a vector of array of strings of size 3 (range, function, description);
 
-				uint64_t sum = 0;
+				uint64_t total = 0xFFFFFFFFFFFFFFFF;
 
 				//format hex address
 				std::string removeH = msr_hex;
@@ -358,36 +356,31 @@ class GenieDataStore
 				int msr_address_decimal;
 				hex_to_decimal << std::hex << removeH;
 				hex_to_decimal >> msr_address_decimal;
-				decimal_to_hex << "0x" << std::uppercase << std::setfill('0') << std::setw(16) << std::hex << msr_address_decimal;
+				decimal_to_hex << "0x" << std::uppercase << std::setfill('0') << std::setw(8) << std::hex << msr_address_decimal;
 
 				ret[0] = decimal_to_hex.str();
 				ret[2] = tablename;
-
+				
 				for (auto &entry: bitfield_vector)
 				{
 				 	//skip entry if description is reserved 
 					if (entry[2] == "Reserved"
-						or entry[2] == "Reserved.") continue;
-
-					if (entry[0].size() > 2)
+						or entry[2] == "Reserved.") 
 					{
-						uint64_t range_mask = utils::MASK(entry[0]);
-						sum += range_mask;
-					}
-					else
-					{
-						sum += 1 << stoi(entry[0]);
-					}
-				}
+						if (entry[0].size() > 2)
+						{
+							uint64_t range_mask = utils::MASK(entry[0]);
+							total -= range_mask;
+						} else {
+							total -= 1 << stoi(entry[0]);
+						}
 
-				if (sum > 0)
-				{
-					std::ostringstream converter;
-					converter << "0x" << std::uppercase << std::setfill('0') << std::setw(16) << std::hex << sum;
-					ret[1] = converter.str();
-				} else if (sum == 0) {
-					ret[1] = "0xFFFFFFFFFFFFFFFF";
+					} else {continue;} 
 				}
+				
+				std::ostringstream converter;
+				converter << "0x" << std::uppercase << std::setfill('0') << std::setw(16) << std::hex << total;
+				ret[1] = converter.str();
 
 				break;
 			}
