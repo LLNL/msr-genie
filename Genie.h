@@ -363,9 +363,9 @@ class GenieDataStore
 				
 				for (auto &entry: bitfield_vector)
 				{
-				 	//skip entry if description is reserved 
-					if (entry[2] == "Reserved"
-						or entry[2] == "Reserved.") 
+					std::string entry_des_substr = entry[2].substr(0,8);
+
+					if (entry_des_substr == "Reserved") 
 					{
 						if (entry[0].size() > 2)
 						{
@@ -375,7 +375,10 @@ class GenieDataStore
 							total -= 1 << stoi(entry[0]);
 						}
 
-					} else {continue;} 
+					} else {
+
+						continue;
+					} 
 				}
 				
 				std::ostringstream converter;
