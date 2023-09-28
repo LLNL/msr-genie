@@ -299,7 +299,7 @@ class GenieDataStore
 				ret.push_back(temp);
 			}
 		}
-
+		sort(ret.begin(), ret.end());
 		return ret;
 	}
 
@@ -414,7 +414,7 @@ class FileLoader
 		//load tables 20 through 52 and parse each line
 		for (int i = 20; i <= 52; ++i)
 		{
-			std::string tablefile = "Intel MSR Tables 2-20 to 2-52/2-" + std::to_string(i) + ".txt";
+			std::string tablefile = "Intel_MSR_Tables/2-" + std::to_string(i) + ".txt";
 			std::string tablename = "2-" + std::to_string(i);
 			std::ifstream table(tablefile);
 			std::string msr_data;
