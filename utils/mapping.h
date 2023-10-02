@@ -7,8 +7,9 @@
 
 namespace utils {
 
-		std::vector<std::string> df_dm = {"06_2AH    2-20 2-21 2-22",
-				"06_2DH	    2-20 2-23 2-24",
+		std::vector<std::string> df_dm = {
+				"06_2AH		2-20 2-21 2-22",
+				"06_2DH		2-20 2-23 2-24",
 				"06_3AH	    2-20 2-21 2-22 2-25",
 				"06_3CH	    2-20 2-21 2-22 2-29 2-30",
 				"06_3DH	    2-20 2-21 2-22 2-25 2-29 2-30 2-34 2-35",
@@ -72,6 +73,39 @@ namespace utils {
 				"2-50	06_55H",
 				"2-51	06_6AH",
 				"2-52	06_8FH"};
+
+		std::vector<std::string> df_dm_list{
+				"06_2AH",
+				"06_2DH",
+				"06_3AH",
+				"06_3CH",
+				"06_3DH",
+				"06_3EH",
+				"06_3FH",
+				"06_45H",
+				"06_46H",
+				"06_47H",
+				"06_4EH",
+				"06_4FH",
+				"06_55H",
+				"06_56H",
+				"06_5EH",
+				"06_66H",
+				"06_6AH",
+				"06_6CH",
+				"06_7DH",
+				"06_7EH",
+				"06_8CH",
+				"06_8DH",
+				"06_8EH",
+				"06_8FH",
+				"06_97H",
+				"06_9AH",
+				"06_9EH",
+				"06_A5H",
+				"06_A6H",
+				"06_BFH"
+		};
 
 
 		typedef std::unordered_map<std::string, std::vector<std::string> > mappingContainer;

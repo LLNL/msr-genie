@@ -277,7 +277,7 @@ class GenieDataStore
 		}
 	}
 
-	std::vector<std::array<std::string, 5>> getMSRsForDFDM(std::string dfdm, std::string manufacturer)
+	std::vector<std::array<std::string, 5>> getMSRsForDFDM(std::string dfdm, std::string manufacturer = "Intel")
 	{
 		//get list of MSRs from highest numbered table to lowest number
 		//skip MSRs which have been seen in a higher numbered table by 
@@ -304,13 +304,13 @@ class GenieDataStore
 	}
 
 	//return all MSRs associated with MSR hex address
-	std::vector<std::string > getDFDMsForMSR(std::string MSR_hex, std::string manufacturer)
+	std::vector<std::string > getDFDMsForMSR(std::string MSR_hex, std::string manufacturer = "Intel")
 	{
 		//use set to remove duplicates
 		std::unordered_set<std::string > ret;
 
 		std::unordered_map<std::string, msr_table_hash> &tables = MSR_info[manufacturer];
-
+		
 		for (const auto &table: tables)
 		{
 			if (table.second.find(MSR_hex) != table.second.end())
@@ -345,22 +345,24 @@ class GenieDataStore
 			{
 				auto msr = table[msr_hex];
 				auto bitfield_vector = msr->getBitfields();	// return a vector of array of strings of size 3 (range, function, description);
-
+				
+				//subtract away reserved bitfields from this
 				uint64_t total = 0xFFFFFFFFFFFFFFFF;
+				
+				int padding_required = 8 - msr_hex.size() + 1;
+				std::string padded_msr_hex = "0x";
+				while(padding_required > 0)
+				{
+					padded_msr_hex += "0";
+					padding_required--;
+				}
+				padded_msr_hex += msr_hex;
+				padded_msr_hex.pop_back();
 
-				//format hex address
-				std::string removeH = msr_hex;
-				removeH.pop_back();
-				std::stringstream hex_to_decimal;
-				std::stringstream decimal_to_hex;
-				int msr_address_decimal;
-				hex_to_decimal << std::hex << removeH;
-				hex_to_decimal >> msr_address_decimal;
-				decimal_to_hex << "0x" << std::uppercase << std::setfill('0') << std::setw(8) << std::hex << msr_address_decimal;
-
-				ret[0] = decimal_to_hex.str();
+				ret[0] = padded_msr_hex;
 				ret[2] = tablename;
 				
+				//look through each bitfield entry, if first 8 characters of description matches "Reserved", subtract it from total
 				for (auto &entry: bitfield_vector)
 				{
 					std::string entry_des_substr = entry[2].substr(0,8);
@@ -391,6 +393,7 @@ class GenieDataStore
 
 		return ret;
 	}
+
 };
 
 class FileLoader
@@ -518,5 +521,40 @@ class GenieDataManager
 	{
 		data.supported_df_dms();
 	}
+	
+	//create allowlist for all df_dms for msr_safe
+	void createIntelAllowlist()
+	{
+		std::string docname = "volume 4 of the Intel 64 and IA-32 Architectures\n## Software Development Manual (335592-079US March 2023)";
+		std::string mask_value = "0x0000000000000000";
+
+		for(auto df_dm : utils::df_dm_list){
+			std::ofstream output;
+			std::string df_dm_no_h = df_dm;
+			df_dm_no_h.pop_back();
+
+			std::string filepath = "safelist/al_" + df_dm_no_h + ".txt";
+			output.open(filepath);
+				
+			output << "## This file contains the model-specific registers available in processor " << df_dm << "\n" \
+				<< "## based on a close reading of " << docname << "\n" \
+				<< "## Uncommenting allows a reading a particular MSR.\n" \
+				<< "## Modifying the write mask allows writing to those particular bits.\n" \
+				<< "## Be sure to cat the modified list into /dev/cpu/msr_allowlist.\n" \
+				<< "## See the README file for more details.\n##\n" \
+				<< "## MSR        # Write Mask       # Comment"; 
+				
+			auto msrs = this->getMSRsForDFDM(df_dm);
+			
+			for(auto & row : msrs) {
+				auto mask = getMask(df_dm, row[0]);
+				if(mask[1] == "") continue;
+					output << "\n#  " << mask[0] << " " << mask_value << " # " << row[1] << " (Table " << mask[2] << ")";
+			}
+
+			output.close();
+		}
+	}
+
 };
 

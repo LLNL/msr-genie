@@ -59,7 +59,8 @@ void print_help() {
 	cout << "Print MSR list for df_dm: ./GenieCLI msr df_dm*\n";
 	cout << "Print df_dm list for MSR: ./GenieCLI df_dm msr*\n";
 	cout << "Print bit-mask: ./GenieCLI bitmask df_dm* msr*\n";
-	cout << "Dump all DataStore values: ./GenieCLI debug\n\n";
+	cout << "Dump all DataStore values: ./GenieCLI debug\n";
+	cout << "Create allowlist for MSR-Safe: ./GenieCLI allowlist\n\n";
 	cout << "*replace with actual value of df_dm or msr being quiried, note that bit-mask requires both df_dm\n";
 	cout << "as well as the msr. If we with to search for msrs associated with the df_dm \"06_4FH\" we use the\n"; 
 	cout << "following command, ./GenieCLI msr 06_4FH\n";
@@ -84,7 +85,7 @@ void print_df_dm(vector<string> &df_dms, string msr){
 }
 
 void print_bitmask(array<string, 3> &bitmask_ret) {
-	cout << "MSR address: " << setw(18) << bitmask_ret[0] << setw(18) << "\tMASK: " << bitmask_ret[1] << "\t Table: " << bitmask_ret[2] << "\n";
+	cout << "MSR address: " << setw(10) << bitmask_ret[0] << setw(18) << "\tMASK: " << bitmask_ret[1] << "\t Table: " << bitmask_ret[2] << "\n";
 }
 
 
@@ -127,7 +128,7 @@ int main(int argc, char *argv[])
 			print_help();
 			return -1;
 		}
-
+		
 		auto ret = manager.getMask(argv[2], argv[3]);
 		print_bitmask(ret);
 
@@ -141,6 +142,10 @@ int main(int argc, char *argv[])
 	
 		manager.debug();
 
+	} else if (strcmp(argv[1], "allowlist") == 0) {
+		
+		manager.createIntelAllowlist();
+		
 	} else {
 		
 		print_help();

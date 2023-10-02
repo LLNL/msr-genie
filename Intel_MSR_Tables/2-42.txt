@@ -30,7 +30,13 @@
 		39:32		Count0 The current value of counter 0 updated after each occurrence of the event being counted. The count value is frozen on a valid branch monitoring triggering condition (in which case CntrHit0 will also be set). This is an 8-bit signed value (2’s complement). Heuristic events which only increment will saturate and freeze at maximum value 0xFF (256). RET-CALL event counter saturate at maximum value 0x7F (+127) and minimum value 0x80 (-128).
 		47:40		Count1 The current value of counter 1 updated after each occurrence of the event being counted. The count value is frozen on a valid branch monitoring triggering condition (in which case CntrHit1 will also be set). This is an 8-bit signed value (2’s complement). Heuristic events which only increment will saturate and freeze at maximum value 0xFF (256). RET-CALL event counter saturate at maximum value 0x7F (+127) and minimum value 0x80 (-128).
 		63:48		Reserved
-354H - 355H	852 - 853	MSR_BR_DETECT_COUNTER_CONFIG_i		Branch Monitoring Detect Counter Configuration (R/W)
+354H	852	MSR_BR_DETECT_COUNTER_CONFIG_0		Branch Monitoring Detect Counter Configuration (R/W)
+		0		CntrEn Enable counter.
+		7:1		CntrEvSel Event select (other values #GP) ‘0000000 = RETs. ‘0000001 = RET-CALL bias. ‘0000010 = RET mispredicts. ‘0000011 = Branch (all) mispredicts. ‘0000100 = Indirect branch mispredicts. ‘0000101 = Far branch instructions.
+		14:8		CntrThreshold Threshold (an unsigned value of 0 to 127 supported). The value 0 of counter threshold will result in event signaled after every instruction. #GP if threshold is < 2.
+		15		MispredEventCnt Mispredict events counting behavior: ‘0 = Mispredict events are counted in a window. ‘1 = Mispredict events are counted based on a consecutive occurrence. CntrThreshold is treated as # of consecutive mispredicts. This control bit only applies to events specified by CntrEvSel that involve a prediction (0000010, 0000011, 0000100). Setting this bit for other events is ignored.
+		63:16		Reserved
+355H	853	MSR_BR_DETECT_COUNTER_CONFIG_1		Branch Monitoring Detect Counter Configuration (R/W)
 		0		CntrEn Enable counter.
 		7:1		CntrEvSel Event select (other values #GP) ‘0000000 = RETs. ‘0000001 = RET-CALL bias. ‘0000010 = RET mispredicts. ‘0000011 = Branch (all) mispredicts. ‘0000100 = Indirect branch mispredicts. ‘0000101 = Far branch instructions.
 		14:8		CntrThreshold Threshold (an unsigned value of 0 to 127 supported). The value 0 of counter threshold will result in event signaled after every instruction. #GP if threshold is < 2.
