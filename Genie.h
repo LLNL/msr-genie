@@ -299,7 +299,18 @@ class GenieDataStore
 				ret.push_back(temp);
 			}
 		}
-		sort(ret.begin(), ret.end());
+		auto sorter = [](const std::array<std::string, 5> &first, const std::array<std::string, 5> &second){
+        	auto firststr = first[0];
+        	auto secondstr = second[0];
+        	if(firststr.size() == secondstr.size())
+        	{
+            	return firststr < secondstr;
+        	} else if(firststr.size() < secondstr.size()) {
+            	return true;
+        	}
+        	return false;
+    	};
+		sort(ret.begin(), ret.end(), sorter);
 		return ret;
 	}
 
