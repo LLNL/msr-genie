@@ -49,11 +49,104 @@ E1H	225	IA32_UMWAIT_CONTROL		UMWAIT Control (R/W) See Table 2-2.
 6E1H	1761	IA32_PKRS		Specifies the PK permissions associated with each protection domain for supervisor pages (R/W) See Table 2-2.
 776H	1910	IA32_HWP_CTL		See Table 2-2.
 981H	2433	IA32_TME_CAPABILITY		Memory Encryption Capability MSR See Table 2-2.
-1200H-121FH	4608 - 4639	IA32_LBR_x_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1200H	4608	IA32_LBR_0_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1201H	4609	IA32_LBR_1_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1202H	4610	IA32_LBR_2_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1203H	4611	IA32_LBR_3_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1204H	4612	IA32_LBR_4_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1205H	4613	IA32_LBR_5_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1206H	4614	IA32_LBR_6_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1207H	4615	IA32_LBR_7_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1208H	4616	IA32_LBR_8_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1209H	4617	IA32_LBR_9_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120AH	4618	IA32_LBR_10_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120BH	4619	IA32_LBR_11_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120CH	4620	IA32_LBR_10_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120DH	4621	IA32_LBR_13_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120EH	4622	IA32_LBR_14_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+120FH	4623	IA32_LBR_15_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1210H	4624	IA32_LBR_16_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1211H	4625	IA32_LBR_17_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1212H	4626	IA32_LBR_18_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1213H	4627	IA32_LBR_19_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1214H	4628	IA32_LBR_20_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1215H	4629	IA32_LBR_21_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1216H	4630	IA32_LBR_22_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1217H	4631	IA32_LBR_23_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1218H	4632	IA32_LBR_24_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+1219H	4633	IA32_LBR_25_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121AH	4634	IA32_LBR_26_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121BH	4635	IA32_LBR_27_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121CH	4636	IA32_LBR_28_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121DH	4637	IA32_LBR_29_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121EH	4638	IA32_LBR_30_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
+121FH	4639	IA32_LBR_31_INFO		Last Branch Record Entry X Info Register (R/W) See Table 2-2.
 14CEH	5326	IA32_LBR_CTL		Last Branch Record Enabling and Configuration Register (R/W) See Table 2-2.
 14CFH	5327	IA32_LBR_DEPTH		Last Branch Record Maximum Stack Depth Register (R/W) See Table 2-2.
-1500H-151FH	5376 - 5407	IA32_LBR_x_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
-1600H-161FH	5632 - 5663	IA32_LBR_x_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1500H	5376	IA32_LBR_0_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1501H	5377	IA32_LBR_1_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1502H	5378	IA32_LBR_2_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1503H	5379	IA32_LBR_3_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1504H	5380	IA32_LBR_4_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1505H	5381	IA32_LBR_5_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1506H	5382	IA32_LBR_6_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1507H	5383	IA32_LBR_7_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1508H	5384	IA32_LBR_8_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1509H	5385	IA32_LBR_9_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150AH	5386	IA32_LBR_10_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150BH	5387	IA32_LBR_11_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150CH	5388	IA32_LBR_12_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150DH	5389	IA32_LBR_13_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150EH	5390	IA32_LBR_14_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+150FH	5391	IA32_LBR_15_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1510H	5392	IA32_LBR_16_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1511H	5393	IA32_LBR_17_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1512H	5394	IA32_LBR_18_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1513H	5395	IA32_LBR_19_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1514H	5396	IA32_LBR_20_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1515H	5397	IA32_LBR_21_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1516H	5398	IA32_LBR_22_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1517H	5399	IA32_LBR_23_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1518H	5400	IA32_LBR_24_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1519H	5401	IA32_LBR_25_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151AH	5402	IA32_LBR_26_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151BH	5403	IA32_LBR_27_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151CH	5404	IA32_LBR_28_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151DH	5405	IA32_LBR_29_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151EH	5406	IA32_LBR_30_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+151FH	5407	IA32_LBR_31_FROM_IP		Last Branch Record Entry X Source IP Register (R/W) See Table 2-2.
+1600H	5632	IA32_LBR_0_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1601H	5633	IA32_LBR_1_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1602H	5634	IA32_LBR_2_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1603H	5635	IA32_LBR_3_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1604H	5636	IA32_LBR_4_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1605H	5637	IA32_LBR_5_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1606H	5638	IA32_LBR_6_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1607H	5639	IA32_LBR_7_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1608H	5640	IA32_LBR_8_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1609H	5641	IA32_LBR_9_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160AH	5642	IA32_LBR_10_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160BH	5643	IA32_LBR_11_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160CH	5644	IA32_LBR_12_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160DH	5645	IA32_LBR_13_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160EH	5646	IA32_LBR_14_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+160FH	5647	IA32_LBR_15_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1610H	5648	IA32_LBR_16_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1611H	5649	IA32_LBR_17_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1612H	5650	IA32_LBR_18_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1613H	5651	IA32_LBR_19_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1614H	5652	IA32_LBR_20_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1615H	5653	IA32_LBR_21_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1616H	5654	IA32_LBR_22_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1617H	5655	IA32_LBR_23_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1618H	5656	IA32_LBR_24_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+1619H	5657	IA32_LBR_25_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161AH	5658	IA32_LBR_26_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161BH	5659	IA32_LBR_27_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161CH	5660	IA32_LBR_28_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161DH	5661	IA32_LBR_29_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161EH	5662	IA32_LBR_30_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
+161FH	5663	IA32_LBR_31_TO_IP		Last Branch Record Entry X Destination IP Register (R/W) See Table 2-2.
 17D2H	6098	IA32_THREAD_FEEDBACK_CHAR		Thread Feedback Characteristics (R/O) See Table 2-2.
 17D4H	6100	IA32_HW_FEEDBACK_THREAD_CONFIG		Hardware Feedback Thread Configuration (R/W) See Table 2-2.
 17DAH	6106	IA32_HRESET_ENABLE		History Reset Enable (R/W) See Table 2-2.
