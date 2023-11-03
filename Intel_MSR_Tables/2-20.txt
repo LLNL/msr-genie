@@ -110,6 +110,7 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 		12	Thread	Processor Event Based Sampling Unavailable (R/O) See Table 2-2.
 		15:13		Reserved
 		16	Package	Enhanced Intel SpeedStep Technology Enable (R/W) See Table 2-2.
+		17		Reserved
 		18	Thread	ENABLE MONITOR FSM (R/W) See Table 2-2.
 		21:19		Reserved
 		22	Thread	Limit CPUID Maxval (R/W) See Table 2-2.
@@ -354,6 +355,17 @@ FEH	254	IA32_MTRRCAP	Thread	See Table 2-2.
 60DH	1549	MSR_PKG_C2_RESIDENCY	Package	Note: C-state values are processor specific C-state code names, unrelated to MWAIT extension C-state parameters or ACPI C-States.
 		63:0		Package C2 Residency Counter (R/O) Value since last reset that this package is in processor- specific C2 states. Count at the same frequency as the TSC.
 610H	1552	MSR_PKG_POWER_LIMIT	Package	PKG RAPL Power Limit Control (R/W) See Section 15.10.3, “Package RAPL Domain.”
+		14:0		Package Power Limit #1: Sets the average power usage limit of the package domain corresponding to time window # 1. The unit of this field is specified by the “Power Units” field of MSR_RAPL_POWER_UNIT
+		15		Enable Power Limit #1: 0 = disabled; 1 = enabled.
+		16		Package Clamping Limitation #1: Allow going below OS-requested P/T state setting during time window specified by bits 23:17.
+		23:17		Time Window for Power Limit #1: Indicates the time window for power limit #1 Time limit = 2^Y * (1.0 + Z/4.0) * Time_Unit Here “Y” is the unsigned integer value represented. by bits 21:17, “Z” is an unsigned integer represented by bits 23:22. “Time_Unit” is specified by the “Time Units” field of MSR_RAPL_POWER_UNIT.
+		31:24		Reserved
+		46:32		Package Power Limit #2: Sets the average power usage limit of the package domain corresponding to time window # 2. The unit of this field is specified by the “Power Units” field of MSR_RAPL_POWER_UNIT.
+		47		Enable Power Limit #2: 0 = disabled; 1 = enabled.
+		48		Package Clamping Limitation #2: Allow going below OS-requested P/T state setting during time window specified by bits 23:17.
+		55:49		Time Window for Power Limit #2 (bits 55:49): Indicates the time window for power limit #2 Time limit = 2^Y * (1.0 + Z/4.0) * Time_Unit Here “Y” is the unsigned integer value represented. by bits 53:49, “Z” is an unsigned integer represented by bits 55:54. “Time_Unit” is specified by the “Time Units” field of MSR_RAPL_POWER_UNIT. This field may have a hard-coded value in hardware and ignores values written by software.
+		62:56		Reserved
+		63		Lock: If set, all write attempts to this MSR are ignored until next RESET.
 611H	1553	MSR_PKG_ENERGY_STATUS	Package	PKG Energy Status (R/O) See Section 15.10.3, “Package RAPL Domain.”
 614H	1556	MSR_PKG_POWER_INFO	Package	PKG RAPL Parameters (R/W) See Section 15.10.3, “Package RAPL Domain.”
 638H	1592	MSR_PP0_POWER_LIMIT	Package	PP0 RAPL Power Limit Control (R/W) See Section 15.10.4, “PP0/PP1 RAPL Domains.”
