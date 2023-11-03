@@ -45,9 +45,6 @@ beyond a compatible C++ compiler.
 MSR-Safe allow list templates can be generated using the ./GenieCLI allowlist command. 
 By default, it expects a directory called "safelist" within the msr-genie directory.
 
-
-TODO: command line option for location of scraped data directory
-
 ## License
 
 MSR-Genie is distributed under the terms of the MIT license.
