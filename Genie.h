@@ -34,9 +34,9 @@ private:
 
     struct MSRBitFields
     {
-        std::string values;
-        std::string function;
-        std::string description;
+        std::string values = "";
+        std::string function = "";
+        std::string description = "";
         MSRBitFields(std::vector<std::string > &input): values(input[0]),
             function(input[1]), description(input[2]) {}
 
@@ -48,9 +48,9 @@ private:
         }
     };
 
-    std::string name;
-    std::string domain;
-    std::string description;
+    std::string name = "";
+    std::string domain = "";
+    std::string description = "";
     std::vector<std::string > associated_df_dm;
     std::vector<MSRBitFields> bit_fields;
 
@@ -83,9 +83,19 @@ private:
 public:
 
     MSR(std::vector<std::string > &input,
-        std::vector<std::string > &df_dm_list): name(input[2]), domain(input[3]),
-        description(input[4])
+        std::vector<std::string > &df_dm_list)
     {
+		if (input[0] == "INTEL")
+		{
+			name = input[2];
+			domain = input[3];
+			description = input[4];
+		}
+		else if (input[0] == "AMD")
+		{
+			name = input[3];
+		}
+
         associated_df_dm = df_dm_list;
     };
 
@@ -125,6 +135,59 @@ public:
 
         return ret;
     }
+
+	std::string getAttr(std::string attr)
+	{
+		if (attr == "name")
+		{
+			return name;
+		}
+		else if (attr == "domain")
+		{
+			return domain;
+		}
+		else if (attr == "description")
+		{
+			return description;
+		}
+		else
+		{
+			return "attr error";
+		}
+
+	}
+
+	void insertNote(std::string &note)
+	{
+		description = note;
+	}
+
+	void insertDomain(std::string &note)
+	{
+		if (domain == "")
+		{
+			domain = note;
+		}
+		else {
+			domain.push_back('\n');
+			domain.append(note);
+		}
+	}
+
+	void insertValidValues(std::vector<std::string> &valid_values)
+	{
+		for(auto &bitfield : bit_fields)
+		{
+			if (bitfield.values == valid_values[2])
+			{
+				//using function string in place of valid_values since AMD doesn't have a function entry
+				bitfield.function = valid_values[3];
+				break;
+			}
+
+		}
+	}
+
 };
 
 class GenieDataStore
@@ -143,6 +206,10 @@ private:
 
     //table memory address to table name lookup
     std::unordered_map<msr_table_hash *, std::string > table_lookup;
+
+	//AMD datastructures - manual model number/architecture -> Pointer to MSR
+	//AMD manuals do not share Intel's table formatting, using separate hashmaps.
+	std::unordered_map<std::string, msr_table_hash> amd_hash; 
 
     //debug
     void printTableNames()
@@ -194,6 +261,44 @@ private:
         }
     }
 
+	//debug AMD
+	void printAMD()
+	{
+		for (const auto &arch : amd_hash)
+		{
+			for (const auto &msr : arch.second)
+			{
+				std::cout << arch.first << " -- " << msr.first << " -- " << msr.second->getAttr("name");
+				if (msr.second->getAttr("description") != "")
+				{
+					std::cout << "\n" <<  msr.second->getAttr("description");
+				} 
+				if (msr.second->getAttr("domain") != "")
+				{
+					std::cout << "\n"  << msr.second->getAttr("domain") << std::endl;
+				}
+				const auto bitfields = msr.second->getBitfields();
+				if (bitfields.size() != 0)
+				{
+					for(const auto &bit_field : bitfields)
+					{
+						std::cout << "\tBit Range: " << std::setw(6) << bit_field[0] << "\tDescription: " << bit_field[2];
+						if (bit_field[1] != "")
+						{
+							std::cout << "\nValidValues:" << "\n" << bit_field[1] << "\n";	
+						}
+						else 
+						{
+							std::cout << "\n";
+						}
+					}
+				}
+
+				std::cout << "\t ************************************************* \n";
+			}
+		}
+	}
+
 public:
 
     GenieDataStore() {}
@@ -210,6 +315,14 @@ public:
                 }
             }
         }
+
+		for (auto &manual : amd_hash)
+		{
+			for(auto &msr : manual.second)
+			{
+				delete msr.second;
+			}
+		}
     }
 
     void insertMSR(std::vector<std::string > &msr_info,
@@ -220,19 +333,44 @@ public:
             //access hash of MSRs by manufacturer and table and hex address
             MSR_info[msr_info[0]][msr_info[5]][msr_info[1]] = new MSR(msr_info, df_dm_list);
         }
+
+		else if (msr_info[0] == "AMD")
+		{
+			amd_hash[msr_info[1]][msr_info[2]] = new MSR(msr_info, df_dm_list);
+		}
     }
 
     void insertBitField(std::vector<std::string > &bit_field_info)
     {
-        std::vector<std::string > temp(3);
-        temp[0] = bit_field_info[2];
-        temp[1] = bit_field_info[3];
-        temp[2] = bit_field_info[4];
+		if (bit_field_info[0] == "INTEL")
+		{
+        	std::vector<std::string > temp(3);
+        	temp[0] = bit_field_info[2];
+        	temp[1] = bit_field_info[3];
+        	temp[2] = bit_field_info[4];
 
-        //manufacturer/table-name/Hex address --> pointer to MSR: insert bitfield into MSR
-        MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(
+        	//manufacturer/table-name/Hex address --> pointer to MSR: insert bitfield into MSR
+        	MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(
             temp);
+		}
+
+		//AMD info passed in as  [AMD, cpu_architecture, msr, bitfield_description], function is not part of a AMD bitfield entry
+		else if (bit_field_info[0] == "AMD")
+		{
+			std::vector<std::string> temp(3);
+			temp[0] = bit_field_info[3]; //bitfield name
+			temp[2] = bit_field_info[4]; //bitfield description
+			temp[1] = ""; //msr function
+
+			amd_hash[bit_field_info[1]][bit_field_info[2]]->insertBitfield(temp);
+		}
     }
+
+	//insert bitfield valid values for amd
+	void insertValidValues(std::vector<std::string > &valid_values)
+	{
+		amd_hash[valid_values[0]][valid_values[1]]->insertValidValues(valid_values);
+	}
 
     //for each df_dm associated with the table being processed, insert a pointer to the
     void insertTablePointer(std::string tablename, std::string manufacturer,
@@ -246,12 +384,25 @@ public:
         table_lookup[ &MSR_info[manufacturer][tablename]] = tablename;
     }
 
+	void insertDataAMD(std::string type, const std::string &arch, std::string &msr, std::string &notes)
+	{
+		if (type == "###")
+		{
+			amd_hash[arch][msr]->insertDomain(notes);		
+		}
+		else if (type == "##")
+		{
+			amd_hash[arch][msr]->insertNote(notes);
+		}
+	}
+
     //debug
     void debug()
     {
         printTableNames();
         printTablePointerAddresses();
         printMSRandBitfields();
+		printAMD();
     }
 
     //print list of supported df_dms
@@ -498,14 +649,129 @@ private:
                     temp[3] = tokens[3];    //function
                     temp[4] = tokens[4];    //description
                     temp[5] = tablename;    //current table being processed
-                    data.insertMSR(temp, tables_to_dfdm[tablename]);
-                    previous = tokens[0];   //update hex address to current;
+					data.insertMSR(temp, tables_to_dfdm[tablename]);
+					previous = tokens[0];   //update hex address to current;
                 }
             }
 
             data.insertTablePointer(tablename, "INTEL", tables_to_dfdm[tablename]);
         }
+
     }
+
+	void AMDLoader(GenieDataStore &data)
+	{
+		const std::string file = "AMD/19h-01h-B1.txt";
+		const std::string architecture = "zen3";
+		std::string line;
+		std::ifstream manual(file);
+		bool valid_entry = false;
+		std::string previous_msr = "";
+		std::string previous_bitfield = "";
+
+		std::vector<std::string> valid_values;
+
+		while(std::getline(manual, line))
+		{
+			//base condition: empty line, skip
+			if (line == "")
+			{
+				continue;
+			}
+			
+			//check for valid values tag
+			else if (line == "ValidValues:")
+			{
+				valid_entry = true;
+				continue;
+			}
+			//check for end of valid values tag
+			else if (line == "ValidValuesEnd")
+			{
+				//combine valid values into one string block
+				std::string valid_val_str = "";
+				for(const auto &str: valid_values)
+				{
+					valid_val_str += str;
+					valid_val_str += "\n";
+				}
+				valid_val_str.pop_back();
+				std::vector<std::string> entry{architecture, previous_msr, previous_bitfield, valid_val_str};
+				data.insertValidValues(entry);
+
+				valid_entry = false;
+				valid_values.clear();
+				continue;
+			}
+
+			//check for ValidValues entries
+			else if (valid_entry)
+			{
+				valid_values.push_back(line);
+				continue;
+			}
+
+			//look for tags 
+			std::string tag = line.substr(0,3);
+			if(tag == "###")
+			{
+				std::string tag_removed = line.substr(3, line.size()-3);
+				data.insertDataAMD("###", architecture, previous_msr, tag_removed);
+			}
+			else if(tag.substr(0,2) == "##") 
+			{
+				std::string tag_removed = line.substr(2, line.size()-2);
+				data.insertDataAMD("##", architecture, previous_msr, tag_removed);
+			}
+			else if(tag.substr(0,1) == "#") 
+			{
+				std::vector<std::string> line_tokens;
+				int begin = 1;
+				bool flag_space = false;
+				bool flag_bracket = false;
+
+				for(unsigned long  i = 0; i < line.size(); ++i)
+				{
+					if(!flag_space && line[i] == ' ')
+					{
+						flag_space = true;
+						line_tokens.push_back(line.substr(begin, i-1));
+						begin = i+1;
+					}
+					else if (!flag_bracket && line[i] == '(')
+					{
+						flag_bracket = true;
+						line_tokens.push_back(line.substr(begin, i-begin-1));
+						line_tokens.push_back(line.substr(i));
+						break;
+					}
+				}
+				previous_msr = line_tokens[0];
+				std::vector<std::string> entry{"AMD", architecture, line_tokens[0], line_tokens[1]};
+				std::vector<std::string> empty;
+				data.insertMSR(entry, empty);
+
+			}
+			else if(tag.substr(0,1) == "\t")
+			{
+				std::istringstream linestream(line);
+				std::string token;
+				std::vector<std::string> tokens;
+				tokens.insert(tokens.end(),{"AMD", architecture, previous_msr});
+
+				while(std::getline(linestream, token, '\t'))
+				{
+					if(token != "")
+					{
+						tokens.push_back(token);
+					}
+				}
+				previous_bitfield = tokens[3];
+				data.insertBitField(tokens);
+
+			}
+		}
+	}
 
 public:
 
@@ -514,6 +780,7 @@ public:
     void Initialize(GenieDataStore &data)
     {
         IntelTableLoader(data);
+		AMDLoader(data);
     }
 
 };
@@ -608,4 +875,6 @@ public:
             output.close();
         }
     }
+
+
 };
