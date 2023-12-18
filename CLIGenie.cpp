@@ -8,6 +8,7 @@
 #include <vector>
 #include <unordered_set>
 #include <array>
+#include <cstring>
 
 using namespace std;
 
