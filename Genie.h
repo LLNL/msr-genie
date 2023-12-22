@@ -15,6 +15,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <iomanip>
+#include <cassert>
 #include "utils/mapping.h"
 
 //Interface
@@ -27,7 +28,6 @@
 //------getDFDMsForMSR function takes 2 arguments (string MSR hex address, manufacturer) argument 2 is optional, default is INTEL. Return vector of df_dms
 //------getMask function takes 3 arguments (df_dm, msr address, manufacturer) argument 3 is optional, default is INTEL. return vector of pairs, pair.first is the mask value, pair.second is
 //a string array of size 3 for the bit range, function and description of the bitfield
-
 class MSR
 {
 private:
@@ -785,6 +785,101 @@ public:
 
 };
 
+class MSRScanner
+{
+
+private:
+
+	std::vector<std::pair<std::string, std::string> > validMSRs;	
+
+	void testIntelMSRs(std::string model, GenieDataStore &data)
+	{
+		std::stringstream to_hex;
+		to_hex << std::hex << stoi(model);
+		std::string hexed = to_hex.str();
+		for(auto &c : hexed) {c = std::toupper(c);}
+		std::string assembled_dfdm = "06_" + hexed + "H";
+
+		auto ret = data.getMSRsForDFDM(assembled_dfdm, "INTEL");
+		
+		std::string rdmsr_cmd = "";
+
+		for (const auto &msr : ret)
+		{
+			rdmsr_cmd = "sudo rdmsr 0x" + msr[0];
+			rdmsr_cmd.pop_back(); //remove H from Intel MSR name
+			FILE *rdmsr_ret = popen(rdmsr_cmd.c_str(), "r");
+			char rdmsr_ret_line[128] = {0x0};
+			std::vector<std::string> msr_tokens;
+
+			while (fgets(rdmsr_ret_line, sizeof(rdmsr_ret_line), rdmsr_ret) != NULL)
+			{
+				std::string temp(rdmsr_ret_line);
+				std::stringstream tempstream(temp);
+				std::string token;
+				while (getline(tempstream, temp, ' '))
+				{
+					msr_tokens.push_back(temp);
+				}
+			}
+			if (msr_tokens.size() == 1)
+			{
+				validMSRs.push_back(std::make_pair(msr[0], msr_tokens[0]) );
+			}
+		}
+
+	}
+
+public:
+
+	MSRScanner() {};
+	
+	void scanForMSRs(GenieDataStore &data)
+	{
+		//the following code block reads /proc/cpuinfo for cpu vendor and model info 
+		FILE *cmd = popen("grep -E 'family|vendor_id|model[[:space:]]*:' /proc/cpuinfo | sort | uniq", "r");
+		char result[32]={0x0};
+		std::vector<std::string> tokens;
+
+		while(fgets(result, sizeof(result), cmd) != NULL)
+		{
+			std::string str(result);
+			str.pop_back(); // remove trailing new line
+			std::stringstream strs(str);
+			std::string temp;
+			while(std::getline(strs, temp, ' '))
+			{
+				tokens.push_back(temp);
+			}
+		}
+		pclose(cmd);
+		
+		//assume parsed tokens in the form below, else, something unexpected occured during parsing /proc/cpuinfo
+		//cpu
+		//family :
+		//[value]
+		//model	:
+		//[value]
+		//vendor_id	:
+		//[value]
+		assert(tokens.size() == 7);
+
+		if (tokens[6] == "GenuineIntel")
+		{
+			testIntelMSRs(tokens[4], data);
+		}
+
+		for (const auto &p : validMSRs)
+		{
+			std::cout << "MSR: " << p.first << "\tValue: " << p.second << "\n"; 
+		}
+
+	}
+
+};
+
+
+
 class GenieDataManager
 {
 private:
@@ -836,6 +931,12 @@ public:
     {
         data.supported_df_dms();
     }
+
+	void scanMSRs()
+	{
+		MSRScanner scanner;
+		scanner.scanForMSRs(data);
+	}
 
     //create allowlist for all df_dms for msr_safe
     void createIntelAllowlist()

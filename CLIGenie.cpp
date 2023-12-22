@@ -168,6 +168,10 @@ int main(int argc, char *argv[])
     {
         manager.createIntelAllowlist();
     }
+	else if (strcmp(argv[1], "msrscan") == 0)
+	{
+		manager.scanMSRs();
+	}
     else
     {
         print_help();
