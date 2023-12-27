@@ -513,9 +513,27 @@ public:
             }
         }
 
-        std::vector<std::string > retvec(ret.begin(), ret.end());
+        std::vector<std::string> retvec(ret.begin(), ret.end());
         return retvec;
     }
+
+	//get AMD MSRs
+	std::vector<std::array<std::string, 4> >getMSRsForAMD(std::string arch)
+	{
+		std::vector<std::array<std::string, 4> > ret;
+		
+		for (const auto &msr : amd_hash[arch])
+		{
+			std::array<std::string, 4> temp;
+			temp[0] = msr.first;
+			temp[1] = msr.second->getAttr("name");
+			temp[2] = msr.second->getAttr("description");
+			temp[3] = msr.second->getAttr("domain");
+			ret.push_back(temp);
+		}
+		
+		return ret;
+	}
 
     //get mask given df_dm and MSR hex
     std::array<std::string, 3> getMask(std::string df_dm, std::string msr_hex,
@@ -827,8 +845,37 @@ private:
 				validMSRs.push_back(std::make_pair(msr[0], msr_tokens[0]) );
 			}
 		}
-
 	}
+
+	void testAMDMSRs(std::string arch, GenieDataStore &data)
+	{
+		const auto msrs = data.getMSRsForAMD(arch);
+
+		for (const auto &msr : msrs)
+		{
+			std::string msr_hex = msr[0].substr(3, msr[0].size()-3);
+			std::string rdmsr_cmd = "sudo rdmsr 0x" + msr_hex;
+			FILE *rdmsr_ret = popen(rdmsr_cmd.c_str(), "r");
+			char rdmsr_ret_line[128] = {0x0};
+			std::vector<std::string> msr_tokens;
+
+			while (fgets(rdmsr_ret_line, sizeof(rdmsr_ret_line), rdmsr_ret) != NULL )
+			{
+				std::string temp (rdmsr_ret_line);
+				std::stringstream tempstream(temp);
+				std::string token;
+				while (getline(tempstream, temp, ' '))
+				{
+					msr_tokens.push_back(temp);	
+				}
+			}
+			if(msr_tokens.size() == 1)
+			{
+				validMSRs.push_back(std::make_pair(msr[0], msr_tokens[0]) );
+			}
+		}
+	}
+
 
 public:
 
@@ -869,16 +916,19 @@ public:
 			testIntelMSRs(tokens[4], data);
 		}
 
+		else if (tokens[6] == "AuthenticAMD")
+		{
+			testAMDMSRs("zen3", data);
+		}
+
 		for (const auto &p : validMSRs)
 		{
-			std::cout << "MSR: " << p.first << "\tValue: " << p.second << "\n"; 
+			std::cout << "MSR: " << std::setw(12) << p.first << "\tValue: " << p.second << "\n"; 
 		}
 
 	}
 
 };
-
-
 
 class GenieDataManager
 {
@@ -926,6 +976,11 @@ public:
     {
         return data.getMask(df_dm, msr_hex, manufacturer);
     }
+
+	std::vector<std::array<std::string, 4> > getMSRsForAMD(std::string arch)
+	{
+		return data.getMSRsForAMD(arch);
+	}
 
     void print_supported_df_dms()
     {

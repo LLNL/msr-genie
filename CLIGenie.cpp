@@ -46,6 +46,11 @@ unordered_set<string> df_dm_list
     "06_BFH"
 };
 
+unordered_set<string> amd_arch_list
+{
+	"zen3",	
+};
+
 void print_help()
 {
     cout << "********************************************Notice**********************************************\n";
@@ -104,6 +109,24 @@ void print_bitmask(array<string, 3> &bitmask_ret)
              18) << "\tMASK: " << bitmask_ret[1] << "\t Table: " << bitmask_ret[2] << "\n";
 }
 
+void print_amd_msrs(vector<array<string, 4> >&msrs)
+{
+	for (const auto &msr : msrs)
+	{
+		cout << msr[0] << " -- "  << msr[1];
+		if (msr[2] != "")
+		{
+			cout << "\n" << msr[2];
+		}
+		if (msr[3] != "")
+		{
+			cout << "\n" << msr[3];
+		}
+
+		cout << "\n****************************************************\n\n";
+	}
+}
+
 int main(int argc, char *argv[])
 {
     GenieDataManager manager;
@@ -131,6 +154,27 @@ int main(int argc, char *argv[])
             return -1;
         }
     }
+
+	else if (strcmp(argv[1], "amd_msr") == 0)
+	{
+		if (argc != 3)
+		{
+			print_help();
+			return -1;
+		}
+		
+		if (amd_arch_list.find(argv[2]) != amd_arch_list.end())
+		{
+			auto msr_ret = manager.getMSRsForAMD(argv[2]);
+			print_amd_msrs(msr_ret);
+		}
+		else 	
+		{
+			cout << "the amd architecture you entered is not supported!\n";
+			return -1;
+		}
+	}
+
     else if (strcmp(argv[1], "df_dm") == 0)
     {
         if (argc != 3)
