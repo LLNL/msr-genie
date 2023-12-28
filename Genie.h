@@ -808,7 +808,7 @@ class MSRScanner
 
 private:
 
-	std::vector<std::pair<std::string, std::string> > validMSRs;	
+	std::vector<std::array<std::string, 4> > validMSRs;	
 
 	void testIntelMSRs(std::string model, GenieDataStore &data)
 	{
@@ -842,7 +842,13 @@ private:
 			}
 			if (msr_tokens.size() == 1)
 			{
-				validMSRs.push_back(std::make_pair(msr[0], msr_tokens[0]) );
+				//hex address - name - description - value
+				std::array<std::string, 4> temp;
+				temp[0] = msr[0];
+				temp[1] = msr[1];
+				temp[2] = msr[3];
+				temp[3] = msr_tokens[0];
+				validMSRs.emplace_back(temp);
 			}
 		}
 	}
@@ -871,7 +877,12 @@ private:
 			}
 			if(msr_tokens.size() == 1)
 			{
-				validMSRs.push_back(std::make_pair(msr[0], msr_tokens[0]) );
+				std::array<std::string, 4> temp;
+				temp[0] = msr[0];
+				temp[1] = msr[1];
+				temp[2] = "";
+				temp[3] = msr_tokens[0];
+				validMSRs.emplace_back(temp);
 			}
 		}
 	}
@@ -921,9 +932,9 @@ public:
 			testAMDMSRs("zen3", data);
 		}
 
-		for (const auto &p : validMSRs)
+		for (const auto &msr : validMSRs)
 		{
-			std::cout << "MSR: " << std::setw(12) << p.first << "\tValue: " << p.second << "\n"; 
+			std::cout << "MSR: " << std::setw(12) << msr[0] << "\tName: " << std::setw(12) << msr[1] << "\tValue: " << msr[3] << "\n"; 
 		}
 
 	}
