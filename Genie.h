@@ -1043,5 +1043,34 @@ public:
         }
     }
 
+	void createAMDAllowList()
+	{
+		std::string docname =
+			"Processor Programming Reference (PPR) for AMD Family 19h Model 01h, Revision B1 Processors (May 28 2021)";
+
+        std::string mask_value = "0x0000000000000000";
+		std::ofstream output;
+
+		std::string filepath = "safelist/al_amd_zen3.txt";
+		output.open(filepath);
+
+		output << "## This file contains the model-specific registers available in AMD processors of Architecture Zen3\n"
+			   << "## based on a close reading of " << docname << "\n" \
+			   << "## Uncommenting allows reading a particular MSR.\n" \
+			   << "## Modifying the write mask allows writing to those particular bits.\n" \
+			   << "## Be sure to cat the modified list into /dev/cpu/msr_allowlist.\n" \
+               << "## See the README file for more details.\n##\n" \
+               << "## MSR        # Write Mask       # Comment";
+
+		auto msrs = this->getMSRsForAMD("zen3");
+
+		for(const auto &msr : msrs)
+		{
+			output << "\n# " << msr[0] << " " << mask_value << "# " << msr[1];
+		}
+
+		output.close();
+	}
+
 
 };

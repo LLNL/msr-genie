@@ -212,7 +212,9 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "allowlist") == 0)
     {
+		system("mkdir safelist");
         manager.createIntelAllowlist();
+		manager.createAMDAllowList();
     }
 	else if (strcmp(argv[1], "msrscan") == 0)
 	{
