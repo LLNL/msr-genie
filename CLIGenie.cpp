@@ -212,7 +212,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "allowlist") == 0)
     {
-		system("mkdir safelist");
+		system("mkdir -p safelist");
         manager.createIntelAllowlist();
 		manager.createAMDAllowList();
     }

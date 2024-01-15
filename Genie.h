@@ -1066,7 +1066,8 @@ public:
 
 		for(const auto &msr : msrs)
 		{
-			output << "\n# " << msr[0] << " " << mask_value << "# " << msr[1];
+			std::string remove_bracket = msr[1].substr(1, msr[1].size()-2);
+			output << "\n# " << msr[0] << " " << mask_value << " # " << remove_bracket;
 		}
 
 		output.close();
