@@ -141,15 +141,127 @@ offset of the branch instruction.
 	63:61	Reserved.
 	60:0	LastIntToIP. Read,Error-on-write,Volatile. Reset: 0000_0000_0000_0000h. Holds the target RIP of the last branch that occurred before the exception or interrupt.
 
-#MSR0000_020[0...E] [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+#MSR0000_0200 [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
 ##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n0; MSR0000_0200"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_0202 [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n1; MSR0000_0202"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_0204 [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n2; MSR0000_0204"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_0206 [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n3; MSR0000_0206"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_0208 [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n4; MSR0000_0208"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_020A [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n5; MSR0000_020A"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_020C [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n6; MSR0000_020C"
+	63:48	Reserved.
+	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
+	11:3	Reserved.
+	2:0	MemType: memory type. Read-write. Reset: XXXb. Address range from 00000h to 0FFFFh.
+ValidValues:
+0h	UC or uncacheable.
+1h	WC or write combining.
+3h-2h	Reserved.
+4h	WT or write through.
+5h	WP or write protect.
+6h	WB or write back.
+7h	Reserved.
+ValidValuesEnd
+
+#MSR0000_020E [Variable-Size MTRRs Base] (Core::X86::Msr::MtrrVarBase)
+##Each MTRR (Core::X86::Msr::MtrrVarBase, Core::X86::Msr::MtrrFix_64K through Core::X86::Msr::MtrrFix_4K_7, or Core::X86::Msr::MTRRdefType) specifies a physical address range and a corresponding memory type (MemType) associated with that range. Setting the memory type to an unsupported value results in a #GP. The variable-size MTRRs come in pairs of base and mask registers (MSR0000_0200 and MSR0000_0201 are the first pair, etc.). Variables MTRRs are enabled through Core::X86::Msr::MTRRdefType[MtrrDefTypeEn]. A core access--with address CPUAddr--is determined to be within the address range of a variable-size MTRR if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. For example, if the variable MTRR spans 256 KB and starts at the 1-MB address the PhyBase would be set to 0_0010_0000h and the PhyMask to F_FFFC_0000h (with zeros filling in for bits[11:0]). This results in a range from 0_0010_0000h to 0_0013_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_n7; MSR0000_020E"
 	63:48	Reserved.
 	47:12	PhyBase: base address. Read-write. Reset: X_XXXX_XXXXh. Physical base address.
@@ -165,14 +277,56 @@ ValidValues:
 7h	Reserved.
 ValidValuesEnd
 
-#MSR0000_020[1...F] [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
+#MSR0000_0201 [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n0; MSR0000_0201"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_0203 [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n1; MSR0000_0203"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_0205 [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n2; MSR0000_0205"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_0207 [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n3; MSR0000_0207"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_0209 [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n4; MSR0000_0209"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_020B [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n5; MSR0000_020B"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_020D [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n6; MSR0000_020D"
+	63:48	Reserved.
+	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
+	11	Valid: valid. Read-write. Reset: X. 1=The variable-size MTRR pair is enabled.
+	10:0	Reserved.
+
+#MSR0000_020F [Variable-Size MTRRs Mask] (Core::X86::Msr::MtrrVarMask)
 ###"_ccd[7:0]_lthree0_core[7:0]_n7; MSR0000_020F"
 	63:48	Reserved.
 	47:12	PhyMask: address mask. Read-write. Reset: X_XXXX_XXXXh. Physical address mask.
@@ -1580,28 +1734,336 @@ ValidValuesEnd
 	8	APICSWEn: APIC software enable. Reset: 0. All LVT entry mask bits are set and cannot be cleared. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 	7:0	Vector. Reset: FFh. The vector that is sent to the core in the event of a spurious interrupt. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 
-#MSR0000_081[0...7] [In Service Register] (Core::X86::Msr::ISR)
+#MSR0000_0810 [In Service Register] (Core::X86::Msr::ISR)
 ##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR0_aliasMSR; MSR0000_0810"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0811 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR1_aliasMSR; MSR0000_0811"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0812 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR2_aliasMSR; MSR0000_0812"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0813 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR3_aliasMSR; MSR0000_0813"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0814 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR4_aliasMSR; MSR0000_0814"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0815 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR5_aliasMSR; MSR0000_0815"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0816 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR6_aliasMSR; MSR0000_0816"
+	63:32	Reserved.
+	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0817 [In Service Register] (Core::X86::Msr::ISR)
+##Reset: 0000_0000_0000_0000h. Interrupt In Service status bits[255:0] accessible through 8 ISR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nISR7_aliasMSR; MSR0000_0817"
 	63:32	Reserved.
 	31:0	InServiceBits. Reset: 0000_0000h. These bits are set when the corresponding interrupt is being serviced by the core. AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
 
-#MSR0000_081[8...F] [Trigger Mode Register] (Core::X86::Msr::TMR)
+#MSR0000_0818 [Trigger Mode Register] (Core::X86::Msr::TMR)
 ##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR0_aliasMSR; MSR0000_0818"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_0819 [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR1_aliasMSR; MSR0000_0819"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081A [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR2_aliasMSR; MSR0000_081A"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081B [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR3_aliasMSR; MSR0000_081B"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081C [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR4_aliasMSR; MSR0000_081C"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081D [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR5_aliasMSR; MSR0000_081D"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081E [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR6_aliasMSR; MSR0000_081E"
+	63:32	Reserved.
+	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+ValidValues:
+"[0]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[1]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[2]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[3]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[4]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[5]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[6]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[7]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[8]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[9]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[10]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[11]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[12]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[13]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[14]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[15]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[16]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[17]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[18]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[19]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[20]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[21]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[22]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[23]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[24]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[25]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[26]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[27]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[28]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[29]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[30]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+"[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
+ValidValuesEnd
+
+#MSR0000_081F [Trigger Mode Register] (Core::X86::Msr::TMR)
+##Reset: 0000_0000_0000_0000h. Trigger Mode status bits[255:0] accessible through 8 TMR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nTMR7_aliasMSR; MSR0000_081F"
 	63:32	Reserved.
 	31:0	"TriggerModeBits. Reset: 0000_0000h. The corresponding trigger mode bit is updated when an interrupt is accepted." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
@@ -1640,14 +2102,44 @@ ValidValues:
 "[31]"	0=Edge-triggered interrupt. 1=Level-triggered interrupt.
 ValidValuesEnd
 
-#MSR0000_082[0...7] [Interrupt Request Register] (Core::X86::Msr::IRR)
+#MSR0000_0820 [Interrupt Request Register] (Core::X86::Msr::IRR)
 ##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR0_aliasMSR; MSR0000_0820"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0821 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR1_aliasMSR; MSR0000_0821"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0822 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR2_aliasMSR; MSR0000_0822"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0824 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR4_aliasMSR; MSR0000_0824"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0825 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR5_aliasMSR; MSR0000_0825"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0826 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR6_aliasMSR; MSR0000_0826"
+	63:32	Reserved.
+	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
+
+#MSR0000_0827 [Interrupt Request Register] (Core::X86::Msr::IRR)
+##Reset: 0000_0000_0000_0000h. Interrupt Request status bits[255:0] accessible through 8 IRR registers.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nIRR7_aliasMSR; MSR0000_0827"
 	63:32	Reserved.
 	31:0	"RequestBits. Reset: 0000_0000h. The corresponding request bit is set when the an interrupt is accepted by the x2APIC." AccessType: X2APICEN ? Read-only,Error-on-write,Volatile : Error-on-read,Error-on-write.
@@ -1728,9 +2220,21 @@ AccessType: X2APICEN ? Read-only,Volatile : Error-on-read,Error-on-write.
 	10:8	MsgType: message type. Reset: 0h. See2.1.14.2.1.14 [Generalized Local Vector Table]. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 	7:0	Vector. Reset: 00h. Interrupt vector number. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 
-#MSR0000_083[5...6] [LVT LINT[1:0]] (Core::X86::Msr::LVTLINT)
+#MSR0000_0835 [LVT LINT[1:0]] (Core::X86::Msr::LVTLINT)
 ##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nLVTLINT0_aliasMSR; MSR0000_0835"
+	63:17	Reserved.
+	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	15	TM: trigger mode. Reset: 0. 0=Edge. 1=Level. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	14	"RmtIRR. Reset: 0. If trigger mode is level, remote Core::X86::Msr::IRR is set when the interrupt has begun service. Remote Core::X86::Msr::IRR is cleared when the end of interrupt has occurred." AccessType: X2APICEN ? Read-only,Volatile : Error-on-read,Error-on-write.
+	13	Reserved.
+	12	"DS: interrupt delivery status. Reset: 0. 0=Idle. 1=Send pending. (Indicates that the interrupt has not yet been accepted by the core.)" AccessType: X2APICEN ? Read-only,Volatile : Error-on-read,Error-on-write.
+	11	Reserved.
+	10:8	MsgType: message type. Reset: 0h. See2.1.14.2.1.14 [Generalized Local Vector Table]. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	7:0	Vector. Reset: 00h. Interrupt vector number.
+
+#MSR0000_0836 [LVT LINT[1:0]] (Core::X86::Msr::LVTLINT)
+##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_nLVTLINT1_aliasMSR; MSR0000_0836"
 	63:17	Reserved.
 	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
@@ -1819,23 +2323,83 @@ ValidValuesEnd
 	63:32	Reserved.
 	31:16	InterruptEnableBits. Reset: FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 
-#MSR0000_084[9...F] [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+#MSR0000_0849 [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
 ##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1_aliasMSR; MSR0000_0849"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084A [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2_aliasMSR; MSR0000_084A"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084B [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3_aliasMSR; MSR0000_084B"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084C [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n4_aliasMSR; MSR0000_084C"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084D [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n5_aliasMSR; MSR0000_084D"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084E [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n6_aliasMSR; MSR0000_084E"
+	63:32	Reserved.
+	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+
+#MSR0000_084F [Interrupt Enable 7..1] (Core::X86::Msr::InterruptEnable71)
+##Reset: 0000_0000_FFFF_FFFFh.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n7_aliasMSR; MSR0000_084F"
 	63:32	Reserved.
 	31:0	"InterruptEnableBits. Reset: FFFF_FFFFh. The interrupt enable bits can be used to enable each of the 256 interrupts." AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
 
-#MSR0000_085[0...3] [Extended Interrupt Local Vector Table] (Core::X86::Msr::ExtendedInterruptLvtEntries)
+#MSR0000_0850 [Extended Interrupt Local Vector Table] (Core::X86::Msr::ExtendedInterruptLvtEntries)
 ##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0_aliasMSR; MSR0000_0850"
+	63:17	Reserved.
+	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	15:13	Reserved.
+	12	"DS: interrupt delivery status. Reset: 0. 0=Idle. 1=Send pending. Indicates that the interrupt has not yet been accepted by the core." AccessType: X2APICEN ? Read-write,Volatile : Error-on-read,Error-on-write.
+	11	Reserved.
+	10:8	MsgType: message type. Reset: 0h. See2.1.14.2.1.14 [Generalized Local Vector Table]. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	7:0	Vector. Reset: 00h. Interrupt vector number.
+
+#MSR0000_0851 [Extended Interrupt Local Vector Table] (Core::X86::Msr::ExtendedInterruptLvtEntries)
+##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1_aliasMSR; MSR0000_0851"
+	63:17	Reserved.
+	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	15:13	Reserved.
+	12	"DS: interrupt delivery status. Reset: 0. 0=Idle. 1=Send pending. Indicates that the interrupt has not yet been accepted by the core." AccessType: X2APICEN ? Read-write,Volatile : Error-on-read,Error-on-write.
+	11	Reserved.
+	10:8	MsgType: message type. Reset: 0h. See2.1.14.2.1.14 [Generalized Local Vector Table]. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	7:0	Vector. Reset: 00h. Interrupt vector number.
+
+#MSR0000_0852 [Extended Interrupt Local Vector Table] (Core::X86::Msr::ExtendedInterruptLvtEntries)
+##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2_aliasMSR; MSR0000_0852"
+	63:17	Reserved.
+	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	15:13	Reserved.
+	12	"DS: interrupt delivery status. Reset: 0. 0=Idle. 1=Send pending. Indicates that the interrupt has not yet been accepted by the core." AccessType: X2APICEN ? Read-write,Volatile : Error-on-read,Error-on-write.
+	11	Reserved.
+	10:8	MsgType: message type. Reset: 0h. See2.1.14.2.1.14 [Generalized Local Vector Table]. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
+	7:0	Vector. Reset: 00h. Interrupt vector number.
+
+#MSR0000_0853 [Extended Interrupt Local Vector Table] (Core::X86::Msr::ExtendedInterruptLvtEntries)
+##Reset: 0000_0000_0001_0000h.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3_aliasMSR; MSR0000_0853"
 	63:17	Reserved.
 	16	Mask. Reset: 1. 0=Not masked. 1=Masked. AccessType: X2APICEN ? Read-write : Error-on-read,Error-on-write.
@@ -1871,22 +2435,82 @@ ValidValuesEnd
 	31:8	Reserved.
 	7:0	RMID. Read-write. Reset: 00h. Resource Monitoring Identifier.
 
-#MSR0000_0C9[0...F] [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
+#MSR0000_0C90 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n0; MSR0000_0C90"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C91 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n1; MSR0000_0C91"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C92 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n2; MSR0000_0C92"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C93 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n3; MSR0000_0C93"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C94 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n4; MSR0000_0C94"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C95 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n5; MSR0000_0C95"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C96 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n6; MSR0000_0C96"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C97 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n7; MSR0000_0C97"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C98 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n8; MSR0000_0C98"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C99 [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n9; MSR0000_0C99"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9A [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n10; MSR0000_0C9A"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9B [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n11; MSR0000_0C9B"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9C [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n12; MSR0000_0C9C"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9D [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n13; MSR0000_0C9D"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9E [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n14; MSR0000_0C9E"
+	63:16	Reserved.
+	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
+
+#MSR0000_0C9F [L3 QOS Allocation Mask] (Core::X86::Msr::L3QosAllocMask)
 ###"_ccd[7:0]_lthree0_n15; MSR0000_0C9F"
 	63:16	Reserved.
 	15:0	WayMask. Read-write. Reset: FFFFh. L3 way mask used for allocation control.
@@ -2007,22 +2631,82 @@ The address stored in this register must be in canonical form (if not canonical,
 	2	"BRSMEN. Read-write. Reset: 0. Branch Sampling Mode ENable. When set, branch recording is enabled. RSVD4_3 also needs to be written with 11b when this bit is set."
 	1:0	Reserved.
 
-#MSRC000_020[0...F] [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
+#MSRC000_0200 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n0; MSRC000_0200"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0201 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n1; MSRC000_0201"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0202 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n2; MSRC000_0202"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0203 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n3; MSRC000_0203"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0204 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n4; MSRC000_0204"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0205 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n5; MSRC000_0205"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0206 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n6; MSRC000_0206"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0207 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n7; MSRC000_0207"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0208 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n8; MSRC000_0208"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_0209 [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n9; MSRC000_0209"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020A [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n10; MSRC000_020A"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020B [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n11; MSRC000_020B"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020C [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n12; MSRC000_020C"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020D [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n13; MSRC000_020D"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020E [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n14; MSRC000_020E"
+	63:12	Reserved.
+	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
+
+#MSRC000_020F [L3 QOS Bandwidth Control] (Core::X86::Msr::L3QosBwControl)
 ###"_ccd[7:0]_lthree0_n15; MSRC000_020F"
 	63:12	Reserved.
 	11:0	Ceiling. Read-write. Reset: 800h. QOS Bandwidth Control bandwidth ceiling value.
@@ -2176,11 +2860,26 @@ ValidValuesEnd
 	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise "stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused."
 	7:0	"EventSelect[7:0]: event select. Read-write. Reset: 00h. EventSelect[11:0] = {EventSelect[11:8], EventSelect[7:0]}. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding PERF_CTR[5:0] register. The events are specified in 2.1.17.4 [Core Performance Monitor Counters]. Some events are Reserved; when a Reserved event is selected, the results are undefined."
 
-#MSRC001_000[4...7] [Performance Event Counter [3:0]] (Core::X86::Msr::PERF_LEGACY_CTR)
+#MSRC001_0004 [Performance Event Counter [3:0]] (Core::X86::Msr::PERF_LEGACY_CTR)
 ##Read-write,Volatile. Reset: 0000_0000_0000_0000h. "Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_LEGACY_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. The legacy alias of Core::X86::Msr::PERF_CTR. See Core::X86::Msr::PERF_CTR."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0004"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0005 [Performance Event Counter [3:0]] (Core::X86::Msr::PERF_LEGACY_CTR)
+##Read-write,Volatile. Reset: 0000_0000_0000_0000h. "Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_LEGACY_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. The legacy alias of Core::X86::Msr::PERF_CTR. See Core::X86::Msr::PERF_CTR."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0005"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0006 [Performance Event Counter [3:0]] (Core::X86::Msr::PERF_LEGACY_CTR)
+##Read-write,Volatile. Reset: 0000_0000_0000_0000h. "Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_LEGACY_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. The legacy alias of Core::X86::Msr::PERF_CTR. See Core::X86::Msr::PERF_CTR."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0006"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0007 [Performance Event Counter [3:0]] (Core::X86::Msr::PERF_LEGACY_CTR)
+##Read-write,Volatile. Reset: 0000_0000_0000_0000h. "Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_LEGACY_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. The legacy alias of Core::X86::Msr::PERF_CTR. See Core::X86::Msr::PERF_CTR."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0007"
 	63:48	Reserved.
 	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
@@ -2230,9 +2929,18 @@ ValidValuesEnd
 	2:1	Reserved.
 	0	SmmLock: SMM code lock. Read,Write-1-only. Reset: 0. Init: BIOS,1. 1=SMM code in the ASeg and TSeg range and the SMM registers are Read-only and SMI interrupts are not intercepted in SVM. See 2.1.14.1.10 [Locking SMM].
 
-#MSRC001_001[6...8] [IO Range Base] (Core::X86::Msr::IORR_BASE)
+#MSRC001_0016 [IO Range Base] (Core::X86::Msr::IORR_BASE)
 ##Read-write. "Core::X86::Msr::IORR_BASE and Core::X86::Msr::IORR_MASK combine to specify the two sets of base and mask pairs for two IORR ranges. A core access, with address CPUAddr, is determined to be within IORR address range if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. BIOS can use the IORRs to create an IO hole within a range of addresses that would normally be mapped to DRAM. It can also use the IORRs to re-assert a DRAM destination for a range of addresses that fall within a bigger IO hole that overlays DRAM."
 ###"_ccd[7:0]_lthree0_core[7:0]_n0; MSRC001_0016"
+	63:48	Reserved.
+	47:12	PhyBase. Read-write. Reset: X_XXXX_XXXXh. Physical base address for IO range.
+	11:5	Reserved.
+	4	RdMem: read from memory. Read-write. Reset: X. 0=Read accesses to the range are directed to IO. 1=Read accesses to the range are directed to system memory.
+	3	"WrMem: write to memory. Read-write. Reset: X. 0=Write accesses to the range are directed to IO. 1=Write accesses to the range are directed to system memory."
+	2:0	Reserved.
+
+#MSRC001_0018 [IO Range Base] (Core::X86::Msr::IORR_BASE)
+##Read-write. "Core::X86::Msr::IORR_BASE and Core::X86::Msr::IORR_MASK combine to specify the two sets of base and mask pairs for two IORR ranges. A core access, with address CPUAddr, is determined to be within IORR address range if the following equation is true: CPUAddr[47:12] & PhyMask[47:12] == PhyBase[47:12] & PhyMask[47:12]. BIOS can use the IORRs to create an IO hole within a range of addresses that would normally be mapped to DRAM. It can also use the IORRs to re-assert a DRAM destination for a range of addresses that fall within a bigger IO hole that overlays DRAM."
 ###"_ccd[7:0]_lthree0_core[7:0]_n1; MSRC001_0018"
 	63:48	Reserved.
 	47:12	PhyBase. Read-write. Reset: X_XXXX_XXXXh. Physical base address for IO range.
@@ -2241,9 +2949,16 @@ ValidValuesEnd
 	3	"WrMem: write to memory. Read-write. Reset: X. 0=Write accesses to the range are directed to IO. 1=Write accesses to the range are directed to system memory."
 	2:0	Reserved.
 
-#MSRC001_001[7...9] [IO Range Mask] (Core::X86::Msr::IORR_MASK)
+#MSRC001_0017 [IO Range Mask] (Core::X86::Msr::IORR_MASK)
 ##Read-write. Reset: 0000_0000_0000_0000h. See Core::X86::Msr::IORR_BASE.
 ###"_ccd[7:0]_lthree0_core[7:0]_n0; MSRC001_0017"
+	63:48	Reserved.
+	47:12	PhyMask. Read-write. Reset: 0_0000_0000h. Physical address mask for IO range.
+	11	Valid. Read-write. Reset: 0. 1=The pair of registers that specifies an IORR range is valid.
+	10:0	Reserved.
+
+#MSRC001_0019 [IO Range Mask] (Core::X86::Msr::IORR_MASK)
+##Read-write. Reset: 0000_0000_0000_0000h. See Core::X86::Msr::IORR_BASE.
 ###"_ccd[7:0]_lthree0_core[7:0]_n1; MSRC001_0019"
 	63:48	Reserved.
 	47:12	PhyMask. Read-write. Reset: 0_0000_0000h. Physical address mask for IO range.
@@ -2272,13 +2987,73 @@ ValidValuesEnd
 	8	"RedirVecEn. Read-write. Reset: 0. 1=Redirect MCEs (that are directed to this core) to generate a vectored interrupt, using the interrupt vector specified in RedirVector."
 	7:0	RedirVector. Read-write. Reset: 00h. See RedirVecEn.
 
-#MSRC001_003[0...5] [Processor Name String] (Core::X86::Msr::ProcNameString)
+#MSRC001_0030 [Processor Name String] (Core::X86::Msr::ProcNameString)
 ##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0030"
+	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
+	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
+	47:40	CpuNameString5. Read-write. Reset: XXh. CPUID name string in ASCII.
+	39:32	CpuNameString4. Read-write. Reset: XXh. CPUID name string in ASCII.
+	31:24	CpuNameString3. Read-write. Reset: XXh. CPUID name string in ASCII.
+	23:16	CpuNameString2. Read-write. Reset: XXh. CPUID name string in ASCII.
+	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
+	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
+
+
+#MSRC001_0031 [Processor Name String] (Core::X86::Msr::ProcNameString)
+##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0031"
+	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
+	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
+	47:40	CpuNameString5. Read-write. Reset: XXh. CPUID name string in ASCII.
+	39:32	CpuNameString4. Read-write. Reset: XXh. CPUID name string in ASCII.
+	31:24	CpuNameString3. Read-write. Reset: XXh. CPUID name string in ASCII.
+	23:16	CpuNameString2. Read-write. Reset: XXh. CPUID name string in ASCII.
+	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
+	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
+
+
+#MSRC001_0032 [Processor Name String] (Core::X86::Msr::ProcNameString)
+##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0032"
+	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
+	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
+	47:40	CpuNameString5. Read-write. Reset: XXh. CPUID name string in ASCII.
+	39:32	CpuNameString4. Read-write. Reset: XXh. CPUID name string in ASCII.
+	31:24	CpuNameString3. Read-write. Reset: XXh. CPUID name string in ASCII.
+	23:16	CpuNameString2. Read-write. Reset: XXh. CPUID name string in ASCII.
+	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
+	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
+
+
+#MSRC001_0033 [Processor Name String] (Core::X86::Msr::ProcNameString)
+##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0033"
+	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
+	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
+	47:40	CpuNameString5. Read-write. Reset: XXh. CPUID name string in ASCII.
+	39:32	CpuNameString4. Read-write. Reset: XXh. CPUID name string in ASCII.
+	31:24	CpuNameString3. Read-write. Reset: XXh. CPUID name string in ASCII.
+	23:16	CpuNameString2. Read-write. Reset: XXh. CPUID name string in ASCII.
+	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
+	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
+
+
+#MSRC001_0034 [Processor Name String] (Core::X86::Msr::ProcNameString)
+##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n4; MSRC001_0034"
+	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
+	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
+	47:40	CpuNameString5. Read-write. Reset: XXh. CPUID name string in ASCII.
+	39:32	CpuNameString4. Read-write. Reset: XXh. CPUID name string in ASCII.
+	31:24	CpuNameString3. Read-write. Reset: XXh. CPUID name string in ASCII.
+	23:16	CpuNameString2. Read-write. Reset: XXh. CPUID name string in ASCII.
+	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
+	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
+
+
+#MSRC001_0035 [Processor Name String] (Core::X86::Msr::ProcNameString)
+##Read-write. "These 6 registers hold the CPUID name string in ASCII. The state of these registers are returned by CPUID instructions, Core::X86::Cpuid::ProcNameStr0Eax through Core::X86::Cpuid::ProcNameStr2Edx. BIOS should set these registers to the product name for the processor as provided by AMD. Each register contains a block of 8 ASCII characters; the least byte corresponds to the first ASCII character of the block; the most-significant byte corresponds to the last character of the block. MSRC001_0030 contains the first block of the name string; MSRC001_0035 contains the last block of the name string."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n5; MSRC001_0035"
 	63:56	CpuNameString7. Read-write. Reset: XXh. CPUID name string in ASCII.
 	55:48	CpuNameString6. Read-write. Reset: XXh. CPUID name string in ASCII.
@@ -2289,11 +3064,38 @@ ValidValuesEnd
 	15:8	CpuNameString1. Read-write. Reset: XXh. CPUID name string in ASCII.
 	7:0	CpuNameString0. Read-write. Reset: XXh. CPUID name string in ASCII.
 
-#MSRC001_005[0...3] [IO Trap] (Core::X86::Msr::SMI_ON_IO_TRAP)
+#MSRC001_0050 [IO Trap] (Core::X86::Msr::SMI_ON_IO_TRAP)
 ##Read-write. Reset: 0000_0000_0000_0000h. "Core::X86::Msr::SMI_ON_IO_TRAP and Core::X86::Msr::SMI_ON_IO_TRAP_CTL_STS provide a mechanism for executing the SMI handler if a an access to one of the specified addresses is detected. Access address and access type checking is performed before IO instruction execution. If the access address and access type match one of the specified IO address and access types, then: (1) the IO instruction is not executed; (2) any breakpoint, other than the single-step breakpoint, set on the IO instruction is not taken (the single-step breakpoint is taken after resuming from SMM); and (3) issue the SMI-trigger IO cycle specified by Core::X86::Msr::SmiTrigIoCycle if enabled. The status is stored in Core::X86::Smm::LocalSmiStatus[IoTrapSts]. IO-space configuration accesses are special IO accesses. An IO access is defined as an IO-space configuration access when IO instruction address bits[31:0] are CFCh, CFDh, CFEh, or CFFh when IO-space configuration is enabled (IO::IoCfgAddr[ConfigEn]). The access address for a configuration space access is the current value of IO::IoCfgAddr[BusNo,Device,Function,RegNo]. The access address for an IO access that is not a configuration access is equivalent to the IO instruction address, bits[31:0]. The access address is compared with SmiAddr, and the instruction access type is compared with the enabled access types defined by ConfigSMI, SmiOnRdEn, and SmiOnWrEn. Access address bits[23:0] can be masked with SmiMask. IO and configuration space trapping to SMI applies only to single IO instructions; it does not apply to string and REP IO instructions. The conditional GP fault described by Core::X86::Msr::HWCR[IoCfgGpFault] takes priority over this trap."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0050"
+	63	SmiOnRdEn: enable SMI on IO read. Read-write. Reset: 0. 1=Enables SMI generation on a Read access.
+	62	SmiOnWrEn: enable SMI on IO write. Read-write. Reset: 0. 1=Enables SMI generation on a Write access.
+	61	"ConfigSmi: configuration space SMI. Read-write. Reset: 0. 0=IO access (that is not an IO-space configuration access). 1=Configuration access."
+	60:56	Reserved.
+	55:32	SmiMask[23:0]. Read-write. Reset: 00_0000h. 1=Do not mask address bit. 0=Mask address bit. SMI IO trap mask.
+	31:0	SmiAddr[31:0]. Read-write. Reset: 0000_0000h. SMI IO trap address.
+
+#MSRC001_0051 [IO Trap] (Core::X86::Msr::SMI_ON_IO_TRAP)
+##Read-write. Reset: 0000_0000_0000_0000h. "Core::X86::Msr::SMI_ON_IO_TRAP and Core::X86::Msr::SMI_ON_IO_TRAP_CTL_STS provide a mechanism for executing the SMI handler if a an access to one of the specified addresses is detected. Access address and access type checking is performed before IO instruction execution. If the access address and access type match one of the specified IO address and access types, then: (1) the IO instruction is not executed; (2) any breakpoint, other than the single-step breakpoint, set on the IO instruction is not taken (the single-step breakpoint is taken after resuming from SMM); and (3) issue the SMI-trigger IO cycle specified by Core::X86::Msr::SmiTrigIoCycle if enabled. The status is stored in Core::X86::Smm::LocalSmiStatus[IoTrapSts]. IO-space configuration accesses are special IO accesses. An IO access is defined as an IO-space configuration access when IO instruction address bits[31:0] are CFCh, CFDh, CFEh, or CFFh when IO-space configuration is enabled (IO::IoCfgAddr[ConfigEn]). The access address for a configuration space access is the current value of IO::IoCfgAddr[BusNo,Device,Function,RegNo]. The access address for an IO access that is not a configuration access is equivalent to the IO instruction address, bits[31:0]. The access address is compared with SmiAddr, and the instruction access type is compared with the enabled access types defined by ConfigSMI, SmiOnRdEn, and SmiOnWrEn. Access address bits[23:0] can be masked with SmiMask. IO and configuration space trapping to SMI applies only to single IO instructions; it does not apply to string and REP IO instructions. The conditional GP fault described by Core::X86::Msr::HWCR[IoCfgGpFault] takes priority over this trap."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0051"
+	63	SmiOnRdEn: enable SMI on IO read. Read-write. Reset: 0. 1=Enables SMI generation on a Read access.
+	62	SmiOnWrEn: enable SMI on IO write. Read-write. Reset: 0. 1=Enables SMI generation on a Write access.
+	61	"ConfigSmi: configuration space SMI. Read-write. Reset: 0. 0=IO access (that is not an IO-space configuration access). 1=Configuration access."
+	60:56	Reserved.
+	55:32	SmiMask[23:0]. Read-write. Reset: 00_0000h. 1=Do not mask address bit. 0=Mask address bit. SMI IO trap mask.
+	31:0	SmiAddr[31:0]. Read-write. Reset: 0000_0000h. SMI IO trap address.
+
+#MSRC001_0052 [IO Trap] (Core::X86::Msr::SMI_ON_IO_TRAP)
+##Read-write. Reset: 0000_0000_0000_0000h. "Core::X86::Msr::SMI_ON_IO_TRAP and Core::X86::Msr::SMI_ON_IO_TRAP_CTL_STS provide a mechanism for executing the SMI handler if a an access to one of the specified addresses is detected. Access address and access type checking is performed before IO instruction execution. If the access address and access type match one of the specified IO address and access types, then: (1) the IO instruction is not executed; (2) any breakpoint, other than the single-step breakpoint, set on the IO instruction is not taken (the single-step breakpoint is taken after resuming from SMM); and (3) issue the SMI-trigger IO cycle specified by Core::X86::Msr::SmiTrigIoCycle if enabled. The status is stored in Core::X86::Smm::LocalSmiStatus[IoTrapSts]. IO-space configuration accesses are special IO accesses. An IO access is defined as an IO-space configuration access when IO instruction address bits[31:0] are CFCh, CFDh, CFEh, or CFFh when IO-space configuration is enabled (IO::IoCfgAddr[ConfigEn]). The access address for a configuration space access is the current value of IO::IoCfgAddr[BusNo,Device,Function,RegNo]. The access address for an IO access that is not a configuration access is equivalent to the IO instruction address, bits[31:0]. The access address is compared with SmiAddr, and the instruction access type is compared with the enabled access types defined by ConfigSMI, SmiOnRdEn, and SmiOnWrEn. Access address bits[23:0] can be masked with SmiMask. IO and configuration space trapping to SMI applies only to single IO instructions; it does not apply to string and REP IO instructions. The conditional GP fault described by Core::X86::Msr::HWCR[IoCfgGpFault] takes priority over this trap."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0052"
+	63	SmiOnRdEn: enable SMI on IO read. Read-write. Reset: 0. 1=Enables SMI generation on a Read access.
+	62	SmiOnWrEn: enable SMI on IO write. Read-write. Reset: 0. 1=Enables SMI generation on a Write access.
+	61	"ConfigSmi: configuration space SMI. Read-write. Reset: 0. 0=IO access (that is not an IO-space configuration access). 1=Configuration access."
+	60:56	Reserved.
+	55:32	SmiMask[23:0]. Read-write. Reset: 00_0000h. 1=Do not mask address bit. 0=Mask address bit. SMI IO trap mask.
+	31:0	SmiAddr[31:0]. Read-write. Reset: 0000_0000h. SMI IO trap address.
+
+#MSRC001_0053 [IO Trap] (Core::X86::Msr::SMI_ON_IO_TRAP)
+##Read-write. Reset: 0000_0000_0000_0000h. "Core::X86::Msr::SMI_ON_IO_TRAP and Core::X86::Msr::SMI_ON_IO_TRAP_CTL_STS provide a mechanism for executing the SMI handler if a an access to one of the specified addresses is detected. Access address and access type checking is performed before IO instruction execution. If the access address and access type match one of the specified IO address and access types, then: (1) the IO instruction is not executed; (2) any breakpoint, other than the single-step breakpoint, set on the IO instruction is not taken (the single-step breakpoint is taken after resuming from SMM); and (3) issue the SMI-trigger IO cycle specified by Core::X86::Msr::SmiTrigIoCycle if enabled. The status is stored in Core::X86::Smm::LocalSmiStatus[IoTrapSts]. IO-space configuration accesses are special IO accesses. An IO access is defined as an IO-space configuration access when IO instruction address bits[31:0] are CFCh, CFDh, CFEh, or CFFh when IO-space configuration is enabled (IO::IoCfgAddr[ConfigEn]). The access address for a configuration space access is the current value of IO::IoCfgAddr[BusNo,Device,Function,RegNo]. The access address for an IO access that is not a configuration access is equivalent to the IO instruction address, bits[31:0]. The access address is compared with SmiAddr, and the instruction access type is compared with the enabled access types defined by ConfigSMI, SmiOnRdEn, and SmiOnWrEn. Access address bits[23:0] can be masked with SmiMask. IO and configuration space trapping to SMI applies only to single IO instructions; it does not apply to string and REP IO instructions. The conditional GP fault described by Core::X86::Msr::HWCR[IoCfgGpFault] takes priority over this trap."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0053"
 	63	SmiOnRdEn: enable SMI on IO read. Read-write. Reset: 0. 1=Enables SMI generation on a Read access.
 	62	SmiOnWrEn: enable SMI on IO write. Read-write. Reset: 0. 1=Enables SMI generation on a Write access.
@@ -2371,15 +3173,288 @@ ValidValuesEnd
 	63:3	Reserved.
 	2:0	CurPstate: current P-state. Read,Error-on-write,Volatile. Reset: XXXb. This field provides the frequency component of the current non-boosted P-state of the core (regardless of the source of the P-state change, including Core::X86::Msr::PStateCtl[PstateCmd]. 0=P0, 1=P1, etc. The value of this field is updated when the COF transitions to a new value associated with a P-state.
 
-#MSRC001_006[4...B] [P-state [7:0]] (Core::X86::Msr::PStateDef)
+#MSRC001_0064 [P-state [7:0]] (Core::X86::Msr::PStateDef)
 ##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n0_aliasMSR; MSRC001_0064"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_0065 [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n1_aliasMSR; MSRC001_0065"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_0066 [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n2_aliasMSR; MSRC001_0066"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_0067 [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n3_aliasMSR; MSRC001_0067"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_0068 [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n4_aliasMSR; MSRC001_0068"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_0069 [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n5_aliasMSR; MSRC001_0069"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_006A [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n6_aliasMSR; MSRC001_006A"
+	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
+	62:32	Reserved.
+	31:30	IddDiv: current divisor. Read-write. Reset: XXb. See IddValue.
+	29:22	"IddValue: current value. Read-write. Reset: XXXXXXXXb. After a reset, IddDiv and IddValue combine to specify the expected maximum current dissipation of a single core that is in the P-state corresponding to the MSR number. These values are intended to be used to create ACPI-defined _PSS objects. The values are expressed in amps; they are not intended to convey final product power levels; they may not match the power levels specified in the Power and Thermal Datasheets."
+	21:14	CpuVid[7:0]: core VID. Read-write. Reset: XXXXXXXXb.
+	13:8	"CpuDfsId: core divisor ID. Read-write. Reset: XXXXXXb. Specifies the core frequency divisor; see CpuFid. For values [1Ah:08h], 1/8th integer divide steps supported down to VCO/3.25 (Note, L3/L2 FIFO logic related to 4-cycle data heads-up requires core to be 1/3 of L3 frequency or higher). For values [30h:1Ch], 1/4th integer divide steps supported down to VCO/6 (DID[0] should zero if DID[5:0] > 1Ah). (Note, core and L3 frequencies below 400MHz are not supported by the architecture). Core supports DID up to 30h, but L3 must be 2Ch (VCO/5.5) or less."
+ValidValues:
+00h	Off
+07h-01h	Reserved.
+08h	VCO/1
+09h	VCO/1.125
+"1Ah- 0Ah"	VCO/<Value/8>
+1Bh	Reserved.
+1Ch	VCO/<Value/8>
+1Dh	Reserved.
+1Eh	VCO/<Value/8>
+1Fh	Reserved.
+20h	VCO/<Value/8>
+21h	Reserved.
+22h	VCO/<Value/8>
+23h	Reserved.
+24h	VCO/<Value/8>
+25h	Reserved.
+26h	VCO/<Value/8>
+27h	Reserved.
+29h Reserved.
+2Ah VCO/<Value/8>
+2Bh Reserved.
+2Ch VCO/<Value/8>
+3Fh-2Dh Reserved.
+ValidValuesEnd
+	7:0	CpuFid[7:0]: core frequency ID. Read-write. Reset: XXh. Specifies the core frequency multiplier. The core COF is a function of CpuFid and CpuDid, and defined by CoreCOF.
+ValidValues:
+0Fh-00h Reserved.
+FFh-10h <Value>*25
+ValidValuesEnd
+
+#MSRC001_006B [P-state [7:0]] (Core::X86::Msr::PStateDef)
+##Read-write. "Each of these registers specify the frequency and voltage associated with each of the core P-states. The CpuVid field in these registers is required to be programmed to the same value in all cores of a processor, but are allowed to be different between processors in a multi-processor system. All other fields in these registers are required to be programmed to the same value in each core of the coherent fabric."
 ###"_n7_aliasMSR; MSRC001_006B"
 	63	"PstateEn. Read-write. Reset: X. 0=The P-state specified by this MSR is not valid. 1=The P-state specified by this MSR is valid. The purpose of this register is to indicate if the rest of the P-state information in the register is valid after a reset; it controls no hardware."
 	62:32	Reserved.
@@ -2627,13 +3702,38 @@ ValidValuesEnd
 	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused.
 	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. EventSelect[11:0] = {EventSelect[11:8], EventSelect[7:0]}. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding PERF_CTR[5:0] register. The events are specified in 2.1.17.4 [Core Performance Monitor Counters]. Some events are Reserved; when a Reserved event is selected, the results are undefined.
 
-#MSRC001_020[1...B] [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+#MSRC001_0201 [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
 ##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0201"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0203 [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0203"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0205 [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0205"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0207 [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0207"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_0209 [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n4; MSRC001_0209"
+	63:48	Reserved.
+	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
+
+#MSRC001_020B [Performance Event Counter [5:0]] (Core::X86::Msr::PERF_CTR)
+##Note: When counting events that capable of counting greater than 15 events per cycle (MergeEvent) the even and the corresponding odd PERF_CTR must be paired to appear as a single 64-bit counter. See 2.1.17.3 [Large Increment per Cycle Events]. See Core::X86::Msr::PERF_CTL0..5. Core::X86::Msr::PERF_LEGACY_CTR is an alias of MSRC001_020[7,5,3,1]. Also can be Read via x86 instructions RDPMC ECX = [05:00].
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n5; MSRC001_020B"
 	63:48	Reserved.
 	47:0	CTR. Read-write,Volatile. Reset: 0000_0000_0000h. Performance counter value.
@@ -2813,13 +3913,148 @@ ValidValuesEnd
 	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused.
 	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. EventSelect[11:0] = {EventSelect[11:8], EventSelect[7:0]}. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding PERF_CTR[5:0] register. The events are specified in 2.1.17.4 [Core Performance Monitor Counters]. Some events are Reserved; when a Reserved event is selected, the results are undefined.
 
-#MSRC001_023[0...A] [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+#MSRC001_0230 [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
 ##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n0; MSRC001_0230"
+	63:60	Reserved.
+	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
+ValidValues:
+"[0] Thread[0]."
+"[1] Thread[1]."
+"[3:2] Reserved."
+ValidValuesEnd
+	55:51	Reserved.
+	50:48	SliceId. Read-write. Reset: 0h. Controls the L3 slice for which events are counted. Unless otherwise noted by the specific L3PMC event, use Core::X86::Msr::ChL3PmcCfg[SliceId] to select an individual slice or Core::X86::Msr::ChL3PmcCfg[EnAllSlices] to select all slices.
+ValidValues:
+7h-0h <Value> Slice.
+ValidValuesEnd
+	47	EnAllCores. Read-write. Reset: 0. 1=Enable counting L3 events for all cores simultaneously.
+	46	EnAllSlices. Read-write. Reset: 0. 1=Enable counting L3 events for all 8 L3 slices simultaneously.
+	45	Reserved.
+	44:42	CoreId. Read-write. Reset: 0h. Controls core for which events are to be counted. See Core::X86::Msr::ChL3PmcCfg[EnAllCores] to count all cores simultaneously.
+ValidValues:
+7h-0h <Value> CoreId.
+ValidValuesEnd
+	41:23	Reserved.
+	22	Enable: Enable L3 performance counter. Read-write. Reset: 0. 1=Enable.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
+	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
+
+#MSRC001_0232 [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n1; MSRC001_0232"
+	63:60	Reserved.
+	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
+ValidValues:
+"[0] Thread[0]."
+"[1] Thread[1]."
+"[3:2] Reserved."
+ValidValuesEnd
+	55:51	Reserved.
+	50:48	SliceId. Read-write. Reset: 0h. Controls the L3 slice for which events are counted. Unless otherwise noted by the specific L3PMC event, use Core::X86::Msr::ChL3PmcCfg[SliceId] to select an individual slice or Core::X86::Msr::ChL3PmcCfg[EnAllSlices] to select all slices.
+ValidValues:
+7h-0h <Value> Slice.
+ValidValuesEnd
+	47	EnAllCores. Read-write. Reset: 0. 1=Enable counting L3 events for all cores simultaneously.
+	46	EnAllSlices. Read-write. Reset: 0. 1=Enable counting L3 events for all 8 L3 slices simultaneously.
+	45	Reserved.
+	44:42	CoreId. Read-write. Reset: 0h. Controls core for which events are to be counted. See Core::X86::Msr::ChL3PmcCfg[EnAllCores] to count all cores simultaneously.
+ValidValues:
+7h-0h <Value> CoreId.
+ValidValuesEnd
+	41:23	Reserved.
+	22	Enable: Enable L3 performance counter. Read-write. Reset: 0. 1=Enable.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
+	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
+
+#MSRC001_0234 [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n2; MSRC001_0234"
+	63:60	Reserved.
+	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
+ValidValues:
+"[0] Thread[0]."
+"[1] Thread[1]."
+"[3:2] Reserved."
+ValidValuesEnd
+	55:51	Reserved.
+	50:48	SliceId. Read-write. Reset: 0h. Controls the L3 slice for which events are counted. Unless otherwise noted by the specific L3PMC event, use Core::X86::Msr::ChL3PmcCfg[SliceId] to select an individual slice or Core::X86::Msr::ChL3PmcCfg[EnAllSlices] to select all slices.
+ValidValues:
+7h-0h <Value> Slice.
+ValidValuesEnd
+	47	EnAllCores. Read-write. Reset: 0. 1=Enable counting L3 events for all cores simultaneously.
+	46	EnAllSlices. Read-write. Reset: 0. 1=Enable counting L3 events for all 8 L3 slices simultaneously.
+	45	Reserved.
+	44:42	CoreId. Read-write. Reset: 0h. Controls core for which events are to be counted. See Core::X86::Msr::ChL3PmcCfg[EnAllCores] to count all cores simultaneously.
+ValidValues:
+7h-0h <Value> CoreId.
+ValidValuesEnd
+	41:23	Reserved.
+	22	Enable: Enable L3 performance counter. Read-write. Reset: 0. 1=Enable.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
+	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
+
+#MSRC001_0236 [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n3; MSRC001_0236"
+	63:60	Reserved.
+	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
+ValidValues:
+"[0] Thread[0]."
+"[1] Thread[1]."
+"[3:2] Reserved."
+ValidValuesEnd
+	55:51	Reserved.
+	50:48	SliceId. Read-write. Reset: 0h. Controls the L3 slice for which events are counted. Unless otherwise noted by the specific L3PMC event, use Core::X86::Msr::ChL3PmcCfg[SliceId] to select an individual slice or Core::X86::Msr::ChL3PmcCfg[EnAllSlices] to select all slices.
+ValidValues:
+7h-0h <Value> Slice.
+ValidValuesEnd
+	47	EnAllCores. Read-write. Reset: 0. 1=Enable counting L3 events for all cores simultaneously.
+	46	EnAllSlices. Read-write. Reset: 0. 1=Enable counting L3 events for all 8 L3 slices simultaneously.
+	45	Reserved.
+	44:42	CoreId. Read-write. Reset: 0h. Controls core for which events are to be counted. See Core::X86::Msr::ChL3PmcCfg[EnAllCores] to count all cores simultaneously.
+ValidValues:
+7h-0h <Value> CoreId.
+ValidValuesEnd
+	41:23	Reserved.
+	22	Enable: Enable L3 performance counter. Read-write. Reset: 0. 1=Enable.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
+	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
+
+#MSRC001_0238 [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n4; MSRC001_0238"
+	63:60	Reserved.
+	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
+ValidValues:
+"[0] Thread[0]."
+"[1] Thread[1]."
+"[3:2] Reserved."
+ValidValuesEnd
+	55:51	Reserved.
+	50:48	SliceId. Read-write. Reset: 0h. Controls the L3 slice for which events are counted. Unless otherwise noted by the specific L3PMC event, use Core::X86::Msr::ChL3PmcCfg[SliceId] to select an individual slice or Core::X86::Msr::ChL3PmcCfg[EnAllSlices] to select all slices.
+ValidValues:
+7h-0h <Value> Slice.
+ValidValuesEnd
+	47	EnAllCores. Read-write. Reset: 0. 1=Enable counting L3 events for all cores simultaneously.
+	46	EnAllSlices. Read-write. Reset: 0. 1=Enable counting L3 events for all 8 L3 slices simultaneously.
+	45	Reserved.
+	44:42	CoreId. Read-write. Reset: 0h. Controls core for which events are to be counted. See Core::X86::Msr::ChL3PmcCfg[EnAllCores] to count all cores simultaneously.
+ValidValues:
+7h-0h <Value> CoreId.
+ValidValuesEnd
+	41:23	Reserved.
+	22	Enable: Enable L3 performance counter. Read-write. Reset: 0. 1=Enable.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
+	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
+
+#MSRC001_023A [L3 Performance Event Select [5:0]] (Core::X86::Msr::ChL3PmcCfg)
+##Read-write. Reset: 0000_0000_0000_0000h. See 2.1.17.5 [L3 Cache Performance Monitor Counters]
 ###"_ccd[7:0]_lthree0_n5; MSRC001_023A"
 	63:60	Reserved.
 	59:56	ThreadMask. Read-write. Reset: 0h. Controls which of the 2 threads in the selected core are being counted. In non-SMT mode, thread[0] must be selected. One or more threads must be selected unless otherwise specified by the specific L3PMC event.
@@ -2846,24 +4081,95 @@ ValidValuesEnd
 	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored. Unless otherwise stated, the UnitMask values shown may be combined (logically ORed) to select any desired combination of the sub-events for a given event. In some cases, certain combinations can result in misleading counts, or the UnitMask value is an ordinal rather than a bit mask. These situations are described where applicable, or should be obvious from the event descriptions. For events where no UnitMask table is shown, the UnitMask is Unused. When selecting an event for which not all UnitMask bits are defined, the undefined UnitMask bits should be set to zero.
 	7:0	EventSel. Read-write. Reset: 00h. L3 Event select.
 
-#MSRC001_023[1...B] [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+#MSRC001_0231 [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
 ##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n0; MSRC001_0231"
+	63:49	Reserved.
+	48	Overflow. Read-write. Reset: 0. Count overflow bit.
+	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
+	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
+
+#MSRC001_0233 [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n1; MSRC001_0233"
+	63:49	Reserved.
+	48	Overflow. Read-write. Reset: 0. Count overflow bit.
+	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
+	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
+
+#MSRC001_0235 [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n2; MSRC001_0235"
+	63:49	Reserved.
+	48	Overflow. Read-write. Reset: 0. Count overflow bit.
+	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
+	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
+
+#MSRC001_0237 [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n3; MSRC001_0237"
+	63:49	Reserved.
+	48	Overflow. Read-write. Reset: 0. Count overflow bit.
+	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
+	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
+
+#MSRC001_0239 [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n4; MSRC001_0239"
+	63:49	Reserved.
+	48	Overflow. Read-write. Reset: 0. Count overflow bit.
+	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
+	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
+
+#MSRC001_023B [L3 Performance Event Counter [5:0]] (Core::X86::Msr::ChL3Pmc)
+##Reset: 0000_0000_0000_0000h. Also can be read via x86 instructions RDPMC ECX=[0F:0A].
 ###"_ccd[7:0]_lthree0_n5; MSRC001_023B"
 	63:49	Reserved.
 	48	Overflow. Read-write. Reset: 0. Count overflow bit.
 	47:32	CountHi. Read-write,Volatile. Reset: 0000h. Bits[47:32] of the count.
 	31:0	CountLo. Read-write,Volatile. Reset: 0000_0000h. Bits[31:0] of the count.
 
-#MSRC001_024[0...6] [Data Fabric Performance Event Select [3:0]] (Core::X86::Msr::DF_PERF_CTL)
+#MSRC001_0240 [Data Fabric Performance Event Select [3:0]] (Core::X86::Msr::DF_PERF_CTL)
 ##Read-write. Reset: 0000_0000_0000_0000h. "See 2.1.17 [Performance Monitor Counters]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing]."
 ###"_n0; MSRC001_0240"
+	63:61	Reserved.
+	60:59	EventSelect[13:12]. Read-write. Reset: 0h. Performance event select [13:12].
+	58:36	Reserved.
+	35:32	EventSelect[11:8]: performance event select. Read-write. Reset: 0h. Performance event select [11:0].
+	31:23	Reserved.
+	22	En: enable performance counter. Read-write. Reset: 0. 1=Performance event counter is enabled.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored.
+	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. This field, along with EventSelect[13:12] and EventSelect[11:8] above, combine to form the 14-bit event select field, EventSelect[13:0]. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding DF_PERF_CTR[3:0] register. Some events are reserved; when a reserved event is selected, the results are undefined.
+
+#MSRC001_0242 [Data Fabric Performance Event Select [3:0]] (Core::X86::Msr::DF_PERF_CTL)
+##Read-write. Reset: 0000_0000_0000_0000h. "See 2.1.17 [Performance Monitor Counters]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing]."
 ###"_n1; MSRC001_0242"
+	63:61	Reserved.
+	60:59	EventSelect[13:12]. Read-write. Reset: 0h. Performance event select [13:12].
+	58:36	Reserved.
+	35:32	EventSelect[11:8]: performance event select. Read-write. Reset: 0h. Performance event select [11:0].
+	31:23	Reserved.
+	22	En: enable performance counter. Read-write. Reset: 0. 1=Performance event counter is enabled.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored.
+	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. This field, along with EventSelect[13:12] and EventSelect[11:8] above, combine to form the 14-bit event select field, EventSelect[13:0]. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding DF_PERF_CTR[3:0] register. Some events are reserved; when a reserved event is selected, the results are undefined.
+
+#MSRC001_0244 [Data Fabric Performance Event Select [3:0]] (Core::X86::Msr::DF_PERF_CTL)
+##Read-write. Reset: 0000_0000_0000_0000h. "See 2.1.17 [Performance Monitor Counters]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing]."
 ###"_n2; MSRC001_0244"
+	63:61	Reserved.
+	60:59	EventSelect[13:12]. Read-write. Reset: 0h. Performance event select [13:12].
+	58:36	Reserved.
+	35:32	EventSelect[11:8]: performance event select. Read-write. Reset: 0h. Performance event select [11:0].
+	31:23	Reserved.
+	22	En: enable performance counter. Read-write. Reset: 0. 1=Performance event counter is enabled.
+	21:16	Reserved.
+	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored.
+	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. This field, along with EventSelect[13:12] and EventSelect[11:8] above, combine to form the 14-bit event select field, EventSelect[13:0]. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding DF_PERF_CTR[3:0] register. Some events are reserved; when a reserved event is selected, the results are undefined.
+
+#MSRC001_0246 [Data Fabric Performance Event Select [3:0]] (Core::X86::Msr::DF_PERF_CTL)
+##Read-write. Reset: 0000_0000_0000_0000h. "See 2.1.17 [Performance Monitor Counters]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing]."
 ###"_n3; MSRC001_0246"
 	63:61	Reserved.
 	60:59	EventSelect[13:12]. Read-write. Reset: 0h. Performance event select [13:12].
@@ -2875,11 +4181,26 @@ ValidValuesEnd
 	15:8	UnitMask: event qualification. Read-write. Reset: 00h. Each UnitMask bit further specifies or qualifies the event specified by EventSelect. All events selected by UnitMask are simultaneously monitored.
 	7:0	EventSelect[7:0]: event select. Read-write. Reset: 00h. This field, along with EventSelect[13:12] and EventSelect[11:8] above, combine to form the 14-bit event select field, EventSelect[13:0]. EventSelect specifies the event or event duration in a processor unit to be counted by the corresponding DF_PERF_CTR[3:0] register. Some events are reserved; when a reserved event is selected, the results are undefined.
 
-#MSRC001_024[1...7] [Data Fabric Performance Event Counter [3:0]] (Core::X86::Msr::DF_PERF_CTR)
+#MSRC001_0241 [Data Fabric Performance Event Counter [3:0]] (Core::X86::Msr::DF_PERF_CTR)
 ##See Core::X86::Msr::DF_PERF_CTL. Also can be read via x86 instructions RDPMC ECX = [09:06]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing].
 ###"_n0; MSRC001_0241"
+	63:48	Reserved.
+	47:0	CTR[47:0]: performance counter value[47:0]. Read-write,Volatile. Reset: 0000_0000_0000h. The current value of the event counter.
+
+#MSRC001_0243 [Data Fabric Performance Event Counter [3:0]] (Core::X86::Msr::DF_PERF_CTR)
+##See Core::X86::Msr::DF_PERF_CTL. Also can be read via x86 instructions RDPMC ECX = [09:06]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing].
 ###"_n1; MSRC001_0243"
+	63:48	Reserved.
+	47:0	CTR[47:0]: performance counter value[47:0]. Read-write,Volatile. Reset: 0000_0000_0000h. The current value of the event counter.
+
+#MSRC001_0245 [Data Fabric Performance Event Counter [3:0]] (Core::X86::Msr::DF_PERF_CTR)
+##See Core::X86::Msr::DF_PERF_CTL. Also can be read via x86 instructions RDPMC ECX = [09:06]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing].
 ###"_n2; MSRC001_0245"
+	63:48	Reserved.
+	47:0	CTR[47:0]: performance counter value[47:0]. Read-write,Volatile. Reset: 0000_0000_0000h. The current value of the event counter.
+
+#MSRC001_0247 [Data Fabric Performance Event Counter [3:0]] (Core::X86::Msr::DF_PERF_CTR)
+##See Core::X86::Msr::DF_PERF_CTL. Also can be read via x86 instructions RDPMC ECX = [09:06]. The DF Performance Monitors are shared by all cores/threads in the node. See 2.1.11 [Register Sharing].
 ###"_n3; MSRC001_0247"
 	63:48	Reserved.
 	47:0	CTR[47:0]: performance counter value[47:0]. Read-write,Volatile. Reset: 0000_0000_0000h. The current value of the event counter.
@@ -2924,43 +4245,178 @@ ValidValuesEnd
 #MSRC001_02F1 [Protected Processor Inventory Number] (Core::X86::Msr::PPIN)
 	63:0	PPIN. Reset: Fixed,XXXX_XXXX_XXXX_XXXXh. Protected Processor Inventory Number. AccessType: ({Core::X86::Msr::PPIN_CTL[PPIN_EN] , Core::X86::Msr::PPIN_CTL[Lockout]} == 2h) ? Read,Error-on-write : Error-on-read,Error-on-write.
 
-#MSRC001_03[00...1E] [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+#MSRC001_0300 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
 ##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0300"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0302 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0302"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0304 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0304"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0306 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0306"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0308 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n4; MSRC001_0308"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_030A [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n5; MSRC001_030A"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_030C [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n6; MSRC001_030C"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_030E [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n7; MSRC001_030E"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0310 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n8; MSRC001_0310"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0312 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n9; MSRC001_0312"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0314 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n10; MSRC001_0314"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0316 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n11; MSRC001_0316"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_0318 [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n12; MSRC001_0318"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_031A [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n13; MSRC001_031A"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_031C [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n14; MSRC001_031C"
+	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
+
+#MSRC001_031E [Sample Branch From] (Core::X86::Msr::SAMP_BR_FROM)
+##Read-write,Volatile. "These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1."
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n15; MSRC001_031E"
 	63:0	"BranchFrmOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Branch Instruction"
 
-#MSRC001_03[01...1F] [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+#MSRC001_0301 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
 ##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n0; MSRC001_0301"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0303 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n1; MSRC001_0303"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0305 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n2; MSRC001_0305"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0307 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n3; MSRC001_0307"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0309 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n4; MSRC001_0309"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_030B [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n5; MSRC001_030B"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_030D [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n6; MSRC001_030D"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_030F [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n7; MSRC001_030F"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0311 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n8; MSRC001_0311"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0313 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n9; MSRC001_0313"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0315 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n10; MSRC001_0315"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0317 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n11; MSRC001_0317"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_0319 [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n12; MSRC001_0319"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_031B [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n13; MSRC001_031B"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_031D [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n14; MSRC001_031D"
+	63:61	Reserved.
+	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
+
+#MSRC001_031F [Sample Branch To] (Core::X86::Msr::SAMP_BR_TO)
+##These MSRs are paired elements of a SAMP_BR_FROM register N and SAMP_BR_TO register N. The first sample is intended to be in register 0 and the last sample in register N-1.
 ###"_ccd[7:0]_lthree0_core[7:0]_thread[1:0]_n15; MSRC001_031F"
 	63:61	Reserved.
 	60:0	"BranchToOffSet. Read-write,Volatile. Reset: XXXX_XXXX_XXXX_XXXXh. The 64 bit Segment offset (RIP) of the Target of the Branch Instruction."
