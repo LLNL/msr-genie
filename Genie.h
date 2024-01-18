@@ -521,7 +521,6 @@ public:
 	std::vector<std::array<std::string, 4> >getMSRsForAMD(std::string arch)
 	{
 		std::vector<std::array<std::string, 4> > ret;
-		sort(ret.begin(), ret.end());
 		
 		for (const auto &msr : amd_hash[arch])
 		{
@@ -530,9 +529,12 @@ public:
 			temp[1] = msr.second->getAttr("name");
 			temp[2] = msr.second->getAttr("description");
 			temp[3] = msr.second->getAttr("domain");
+			std::string remove_bracket = temp[1].substr(1, temp[1].size()-2);
+			std::string remove_msr_tag = "0x" + temp[0].substr(3, 4) + temp[0].substr(8, 4);
 			ret.push_back(temp);
 		}
-		
+		sort(ret.begin(), ret.end());
+
 		return ret;
 	}
 
@@ -1067,9 +1069,7 @@ public:
 
 		for(const auto &msr : msrs)
 		{
-			std::string remove_bracket = msr[1].substr(1, msr[1].size()-2);
-			std::string remove_msr_tag = "0x" + msr[0].substr(3, 4) + msr[0].substr(8, 4);
-			output << "\n# " << remove_msr_tag << " " << mask_value << " # " << remove_bracket;
+			output << "\n# " << msr[0] << " " << mask_value << " # " << msr[1];
 		}
 
 		output.close();
