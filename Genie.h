@@ -529,8 +529,8 @@ public:
 			temp[1] = msr.second->getAttr("name");
 			temp[2] = msr.second->getAttr("description");
 			temp[3] = msr.second->getAttr("domain");
-			std::string remove_bracket = temp[1].substr(1, temp[1].size()-2);
-			std::string remove_msr_tag = "0x" + temp[0].substr(3, 4) + temp[0].substr(8, 4);
+			temp[1] = temp[1].substr(1, temp[1].size()-2);
+			temp[0] = "0x" + temp[0].substr(3, 4) + temp[0].substr(8, 4);
 			ret.push_back(temp);
 		}
 		sort(ret.begin(), ret.end());
