@@ -72,7 +72,6 @@ void print_help()
     cout << "Print bit-mask: ./GenieCLI bitmask df_dm* msr*\n";
     cout << "Dump all DataStore values: ./GenieCLI debug\n";
 	cout << "Print AMD MSRs associated with an architecture (Only zen3 is currently supported): ./GenieCLI amd_msr *architecture*\n";
-	cout << "Scan the current system for MSRs based on documentation as well as a range of possible address values for-\nundocumented MSRs (Only INTEL/AMD is supported on Linux systems with rdmsr and sudo access): ./GenieCLI msrscan\n";
     cout << "Create allowlist for MSR-Safe: ./GenieCLI allowlist\n\n";
     cout << "*replace with actual value of df_dm or msr being queried, note that bit-mask requires both df_dm\n";
     cout << "as well as the msr. If we with to search for MSRs associated with the df_dm \"06_4FH\" we use the\n";
@@ -216,11 +215,7 @@ int main(int argc, char *argv[])
         manager.createIntelAllowlist();
 		manager.createAMDAllowList();
     }
-	else if (strcmp(argv[1], "msrscan") == 0)
-	{
-		manager.scanMSRs();
-	}
-    else
+	else
     {
         print_help();
         return -1;
