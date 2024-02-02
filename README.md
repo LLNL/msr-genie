@@ -32,6 +32,7 @@ for the CLI version.
 3. Print df_dm list for MSR: ``./GenieCLI [df_dm] [msr]``
 4. Print bitmask: ``./GenieCLI bitmask [df_dm] [msr]``
 5. Dump all DataStore values: ``./GenieCLI debug``
+6. Create MSR allowlist template: ``./GenieCLI allowlist``
 
 ## Building GenieCLI and GenieInterface
 
@@ -41,18 +42,8 @@ beyond a compatible C++ compiler.
 
 ## MSR-Safe Allowlist Template Generator
 
-templatemaker.py is a small utility that can autogenerate msr-safe allowlist templates
-from msr-genie scrapes.
-
-By default, the templatemaker utility expects scrapes to be in ``./Intel_MSRs/blr``, but
-this can be updated by altering the file path at the top of the file.
-
-The templatemaker utility will display a list of architectures you can select and create
-an allowlist for.
-
-Allowlists will be placed in ``./templates/`` by default.
-
-TODO: command line option for location of scraped data directory
+MSR-Safe allow list templates can be generated using the ./GenieCLI allowlist command. 
+By default, it expects a directory called "safelist" within the msr-genie directory.
 
 ## License
 
