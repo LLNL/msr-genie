@@ -42,7 +42,7 @@ beyond a compatible C++ compiler.
 
 ## MSR-Safe Allowlist Template Generator
 
-MSR-Safe allow list templates can be generated using the ./GenieCLI allowlist command. 
+MSR-Safe allowlist templates can be generated using the ./GenieCLI allowlist command.
 By default, it expects a directory called "safelist" within the msr-genie directory.
 
 ## License

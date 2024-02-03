@@ -170,7 +170,7 @@ public:
         }
         else
         {
-            domain.push_back("\n");
+            domain.push_back('\n');
             domain.append(note);
         }
     }
