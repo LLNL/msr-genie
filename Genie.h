@@ -266,8 +266,7 @@ private:
         {
             for (const auto &msr : arch.second)
             {
-                std::cout << arch.first << " -- " << msr.first << " -- " <<
-                          msr.second->getAttr("name");
+                std::cout << arch.first << " -- " << msr.first << " -- " << msr.second->getAttr("name");
                 if (msr.second->getAttr("description") != "")
                 {
                     std::cout << "\n" <<  msr.second->getAttr("description");
@@ -281,8 +280,7 @@ private:
                 {
                     for (const auto &bit_field : bitfields)
                     {
-                        std::cout << "\tBit Range: " << std::setw(6) << bit_field[0] <<
-                                  "\tDescription: " << bit_field[2];
+                        std::cout << "\tBit Range: " << std::setw(6) << bit_field[0] << "\tDescription: " << bit_field[2];
                         if (bit_field[1] != "")
                         {
                             std::cout << "\nValidValues:" << "\n" << bit_field[1] << "\n";
@@ -333,7 +331,6 @@ public:
             //access hash of MSRs by manufacturer and table and hex address
             MSR_info[msr_info[0]][msr_info[5]][msr_info[1]] = new MSR(msr_info, df_dm_list);
         }
-
         else if (msr_info[0] == "AMD")
         {
             amd_hash[msr_info[1]][msr_info[2]] = new MSR(msr_info, df_dm_list);
@@ -383,8 +380,7 @@ public:
         table_lookup[ &MSR_info[manufacturer][tablename]] = tablename;
     }
 
-    void insertDataAMD(std::string type, const std::string &arch, std::string &msr,
-                       std::string &notes)
+    void insertDataAMD(std::string type, const std::string &arch, std::string &msr, std::string &notes)
     {
         if (type == "###")
         {
@@ -676,6 +672,7 @@ private:
                     previous = tokens[0];   //update hex address to current;
                 }
             }
+
             data.insertTablePointer(tablename, "INTEL", tables_to_dfdm[tablename]);
         }
     }
