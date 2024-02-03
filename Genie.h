@@ -83,8 +83,7 @@ private:
 
 public:
 
-    MSR(std::vector<std::string > &input,
-        std::vector<std::string > &df_dm_list)
+    MSR(std::vector<std::string > &input, std::vector<std::string > &df_dm_list)
     {
         if (input[0] == "INTEL")
         {
@@ -354,7 +353,6 @@ public:
             MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(
                 temp);
         }
-
         //AMD info passed in as  [AMD, cpu_architecture, msr, bitfield_description], function is not part of a AMD bitfield entry
         else if (bit_field_info[0] == "AMD")
         {
@@ -463,7 +461,10 @@ public:
         {
             for (auto &p : *table_address)
             {
-                if (seen.find(p.first) != seen.end()) { continue; }
+                if (seen.find(p.first) != seen.end())
+                {
+                    continue;
+                }
                 seen.insert(p.first);
                 std::array<std::string, 5> temp;
                 temp[0] = p.first;
@@ -887,7 +888,10 @@ public:
             for (auto &row : msrs)
             {
                 auto mask = getMask(df_dm, row[0]);
-                if (mask[1] == "") { continue; }
+                if (mask[1] == "")
+                {
+                    continue;
+                }
                 output << "\n#  " << mask[0] << " " << mask_value << " # " << row[1] <<
                        " (Table " << mask[2] << ")";
             }
