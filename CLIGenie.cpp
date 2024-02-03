@@ -48,7 +48,7 @@ unordered_set<string> df_dm_list
 
 unordered_set<string> amd_arch_list
 {
-	"zen3",	
+    "zen3",
 };
 
 void print_help()
@@ -71,7 +71,7 @@ void print_help()
     cout << "Print df_dm list for MSR: ./GenieCLI df_dm msr*\n";
     cout << "Print bit-mask: ./GenieCLI bitmask df_dm* msr*\n";
     cout << "Dump all DataStore values: ./GenieCLI debug\n";
-	cout << "Print AMD MSRs associated with an architecture (Only zen3 is currently supported): ./GenieCLI amd_msr *architecture*\n";
+    cout << "Print AMD MSRs associated with an architecture (Only zen3 is currently supported): ./GenieCLI amd_msr *architecture*\n";
     cout << "Create allowlist for MSR-Safe: ./GenieCLI allowlist\n\n";
     cout << "*replace with actual value of df_dm or msr being queried, note that bit-mask requires both df_dm\n";
     cout << "as well as the msr. If we with to search for MSRs associated with the df_dm \"06_4FH\" we use the\n";
@@ -112,20 +112,20 @@ void print_bitmask(array<string, 3> &bitmask_ret)
 
 void print_amd_msrs(vector<array<string, 4> >&msrs)
 {
-	for (const auto &msr : msrs)
-	{
-		cout << msr[0] << " -- "  << msr[1];
-		if (msr[2] != "")
-		{
-			cout << "\n" << msr[2];
-		}
-		if (msr[3] != "")
-		{
-			cout << "\n" << msr[3];
-		}
+    for (const auto &msr : msrs)
+    {
+        cout << msr[0] << " -- "  << msr[1];
+        if (msr[2] != "")
+        {
+            cout << "\n" << msr[2];
+        }
+        if (msr[3] != "")
+        {
+            cout << "\n" << msr[3];
+        }
 
-		cout << "\n****************************************************\n\n";
-	}
+        cout << "\n****************************************************\n\n";
+    }
 }
 
 int main(int argc, char *argv[])
@@ -155,26 +155,25 @@ int main(int argc, char *argv[])
             return -1;
         }
     }
+    else if (strcmp(argv[1], "amd_msr") == 0)
+    {
+        if (argc != 3)
+        {
+            print_help();
+            return -1;
+        }
 
-	else if (strcmp(argv[1], "amd_msr") == 0)
-	{
-		if (argc != 3)
-		{
-			print_help();
-			return -1;
-		}
-		
-		if (amd_arch_list.find(argv[2]) != amd_arch_list.end())
-		{
-			auto msr_ret = manager.getMSRsForAMD(argv[2]);
-			print_amd_msrs(msr_ret);
-		}
-		else 	
-		{
-			cout << "the amd architecture you entered is not supported!\n";
-			return -1;
-		}
-	}
+        if (amd_arch_list.find(argv[2]) != amd_arch_list.end())
+        {
+            auto msr_ret = manager.getMSRsForAMD(argv[2]);
+            print_amd_msrs(msr_ret);
+        }
+        else
+        {
+            cout << "the amd architecture you entered is not supported!\n";
+            return -1;
+        }
+    }
 
     else if (strcmp(argv[1], "df_dm") == 0)
     {
@@ -211,11 +210,11 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "allowlist") == 0)
     {
-		system("mkdir -p safelist");
+        system("mkdir -p safelist");
         manager.createIntelAllowlist();
-		manager.createAMDAllowList();
+        manager.createAMDAllowList();
     }
-	else
+    else
     {
         print_help();
         return -1;
