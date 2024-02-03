@@ -110,7 +110,7 @@ void print_bitmask(array<string, 3> &bitmask_ret)
              18) << "\tMASK: " << bitmask_ret[1] << "\t Table: " << bitmask_ret[2] << "\n";
 }
 
-void print_amd_msrs(vector<array<string, 4> >&msrs)
+void print_amd_msrs(vector<array<string, 4> > &msrs)
 {
     for (const auto &msr : msrs)
     {

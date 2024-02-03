@@ -260,14 +260,15 @@ private:
         }
     }
 
-//debug AMD
+    //debug AMD
     void printAMD()
     {
         for (const auto &arch : amd_hash)
         {
             for (const auto &msr : arch.second)
             {
-                std::cout << arch.first << " -- " << msr.first << " -- " << msr.second->getAttr("name");
+                std::cout << arch.first << " -- " << msr.first << " -- " <<
+                          msr.second->getAttr("name");
                 if (msr.second->getAttr("description") != "")
                 {
                     std::cout << "\n" <<  msr.second->getAttr("description");
@@ -281,7 +282,8 @@ private:
                 {
                     for (const auto &bit_field : bitfields)
                     {
-                        std::cout << "\tBit Range: " << std::setw(6) << bit_field[0] << "\tDescription: " << bit_field[2];
+                        std::cout << "\tBit Range: " << std::setw(6) << bit_field[0] <<
+                                  "\tDescription: " << bit_field[2];
                         if (bit_field[1] != "")
                         {
                             std::cout << "\nValidValues:" << "\n" << bit_field[1] << "\n";
@@ -349,7 +351,8 @@ public:
             temp[2] = bit_field_info[4];
 
             //manufacturer/table-name/Hex address --> pointer to MSR: insert bitfield into MSR
-            MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(temp);
+            MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(
+                temp);
         }
 
         //AMD info passed in as  [AMD, cpu_architecture, msr, bitfield_description], function is not part of a AMD bitfield entry
@@ -382,7 +385,8 @@ public:
         table_lookup[ &MSR_info[manufacturer][tablename]] = tablename;
     }
 
-    void insertDataAMD(std::string type, const std::string &arch, std::string &msr, std::string &notes)
+    void insertDataAMD(std::string type, const std::string &arch, std::string &msr,
+                       std::string &notes)
     {
         if (type == "###")
         {
@@ -459,7 +463,7 @@ public:
         {
             for (auto &p : *table_address)
             {
-                if (seen.find(p.first) != seen.end()) continue;
+                if (seen.find(p.first) != seen.end()) { continue; }
                 seen.insert(p.first);
                 std::array<std::string, 5> temp;
                 temp[0] = p.first;
@@ -527,7 +531,7 @@ public:
             temp[1] = msr.second->getAttr("name");
             temp[2] = msr.second->getAttr("description");
             temp[3] = msr.second->getAttr("domain");
-            temp[1] = temp[1].substr(1, temp[1].size()-2);
+            temp[1] = temp[1].substr(1, temp[1].size() - 2);
             temp[0] = "0x" + temp[0].substr(3, 4) + temp[0].substr(8, 4);
             ret.push_back(temp);
         }
@@ -687,7 +691,7 @@ private:
 
         std::vector<std::string> valid_values;
 
-        while(std::getline(manual, line))
+        while (std::getline(manual, line))
         {
             //base condition: empty line, skip
             if (line == "")
@@ -705,7 +709,7 @@ private:
             {
                 //combine valid values into one string block
                 std::string valid_val_str = "";
-                for (const auto &str: valid_values)
+                for (const auto &str : valid_values)
                 {
                     valid_val_str += str;
                     valid_val_str += "\n";
@@ -726,18 +730,18 @@ private:
             }
 
             //look for tags
-            std::string tag = line.substr(0,3);
+            std::string tag = line.substr(0, 3);
             if (tag == "###")
             {
-                std::string tag_removed = line.substr(3, line.size()-3);
+                std::string tag_removed = line.substr(3, line.size() - 3);
                 data.insertDataAMD("###", architecture, previous_msr, tag_removed);
             }
-            else if (tag.substr(0,2) == "##")
+            else if (tag.substr(0, 2) == "##")
             {
-                std::string tag_removed = line.substr(2, line.size()-2);
+                std::string tag_removed = line.substr(2, line.size() - 2);
                 data.insertDataAMD("##", architecture, previous_msr, tag_removed);
             }
-            else if (tag.substr(0,1) == "#")
+            else if (tag.substr(0, 1) == "#")
             {
                 std::vector<std::string> line_tokens;
                 int begin = 1;
@@ -749,13 +753,13 @@ private:
                     if (!flag_space && line[i] == ' ')
                     {
                         flag_space = true;
-                        line_tokens.push_back(line.substr(begin, i-1));
-                        begin = i+1;
+                        line_tokens.push_back(line.substr(begin, i - 1));
+                        begin = i + 1;
                     }
                     else if (!flag_bracket && line[i] == '(')
                     {
                         flag_bracket = true;
-                        line_tokens.push_back(line.substr(begin, i-begin-1));
+                        line_tokens.push_back(line.substr(begin, i - begin - 1));
                         line_tokens.push_back(line.substr(i));
                         break;
                     }
@@ -765,16 +769,16 @@ private:
                 std::vector<std::string> empty;
                 data.insertMSR(entry, empty);
             }
-            else if (tag.substr(0,1) == "\t")
+            else if (tag.substr(0, 1) == "\t")
             {
                 std::istringstream linestream(line);
                 std::string token;
                 std::vector<std::string> tokens;
-                tokens.insert(tokens.end(),{"AMD", architecture, previous_msr});
+                tokens.insert(tokens.end(), {"AMD", architecture, previous_msr});
 
-                while(std::getline(linestream, token, '\t'))
+                while (std::getline(linestream, token, '\t'))
                 {
-                    if(token != "")
+                    if (token != "")
                     {
                         tokens.push_back(token);
                     }
@@ -883,7 +887,7 @@ public:
             for (auto &row : msrs)
             {
                 auto mask = getMask(df_dm, row[0]);
-                if (mask[1] == "") continue;
+                if (mask[1] == "") { continue; }
                 output << "\n#  " << mask[0] << " " << mask_value << " # " << row[1] <<
                        " (Table " << mask[2] << ")";
             }
@@ -913,7 +917,7 @@ public:
 
         auto msrs = this->getMSRsForAMD("zen3");
 
-        for(const auto &msr : msrs)
+        for (const auto &msr : msrs)
         {
             output << "\n# " << msr[0] << " " << mask_value << " # " << msr[1];
         }
