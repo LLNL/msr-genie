@@ -347,8 +347,7 @@ public:
             temp[2] = bit_field_info[4];
 
             //manufacturer/table-name/Hex address --> pointer to MSR: insert bitfield into MSR
-            MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(
-                temp);
+            MSR_info[bit_field_info[0]][bit_field_info[5]][bit_field_info[1]]->insertBitfield(temp);
         }
         //AMD info passed in as  [AMD, cpu_architecture, msr, bitfield_description], function is not part of a AMD bitfield entry
         else if (bit_field_info[0] == "AMD")
