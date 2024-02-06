@@ -904,7 +904,7 @@ public:
         std::string mask_value = "0x0000000000000000";
         std::ofstream output;
 
-        std::string filepath = "safelist/al_19_01.txt";
+        std::string filepath = "safelist/al_19_1.txt";
         output.open(filepath);
 
         output << "## This file contains the model-specific registers available in AMD processors of Architecture Zen3\n"
